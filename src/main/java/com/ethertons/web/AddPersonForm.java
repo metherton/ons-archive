@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -43,9 +44,8 @@ public class AddPersonForm extends OnsForm {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String processSubmit(@ModelAttribute("person") Person person, BindingResult result) {
+    public String processSubmit(@ModelAttribute("person") @Valid Person person, BindingResult result) {
         if (result.hasErrors()) {
-            System.out.println(result.toString());
             return PERSONS_FORM;
         } else {
             this.onsService.storePerson(person);

@@ -2,6 +2,8 @@ package com.ethertons.web;
 
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.Surname;
+import org.apache.commons.lang.StringUtils;
+
 
 import java.beans.PropertyEditorSupport;
 
@@ -15,12 +17,12 @@ import java.beans.PropertyEditorSupport;
 
     @Override
     public void setAsText(String text) throws IllegalArgumentException {
-        Surname surname = onsService.findSurnameWith((int) Integer.parseInt(text));
-        System.out.println(text);
-        System.out.println("getname");
-        System.out.println(surname.getName());
-        System.out.println("gotot");
-        setValue(surname);
+        if (StringUtils.isBlank(text)) {
+            return;
+        } else {
+            Surname surname = onsService.findSurnameWith((int) Integer.parseInt(text));
+            setValue(surname);
+        }
     }
 
     @Override

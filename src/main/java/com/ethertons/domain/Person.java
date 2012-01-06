@@ -1,6 +1,8 @@
 package com.ethertons.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -13,10 +15,12 @@ public class Person {
     private int id;
 
     @Column(name="first_name", columnDefinition = "char")
+    @Size(min=1, max=10, message = "The first name must be between 1 and 10 characters long.")
     private String firstName;
 
     @ManyToOne
-    @JoinColumn(name="surname_id", columnDefinition = "int",nullable = true)
+    @JoinColumn(name="surname_id", columnDefinition = "int",nullable = false)
+    @NotNull
     private Surname surname;
 
     @ManyToOne

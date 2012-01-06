@@ -4,14 +4,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <form:form modelAttribute="person" method="POST">
+
     <form:label path="firstName">First Name</form:label>
     <form:input path="firstName" />
-
+    <form:errors path="firstName" cssClass="errors" />
 
     <form:select path="surname">
         <form:option value="" label="--Please Select"/>
         <form:options items="${surnames}" itemValue="id" itemLabel="name" />
     </form:select>
+    <form:errors path="surname" cssClass="errors" />
 
 
     <input type="submit" id="submit"    value="Update Person" />
