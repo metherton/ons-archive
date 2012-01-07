@@ -62,11 +62,11 @@ public class OnsServiceImplTest {
 
     @Test
     public void storePersonShouldStorePersonToDatabase() throws Exception {
-
-
         PersonDao personDao = createMock(PersonDao.class);
-        Person person = null;
+        Person person = new Person();
         OnsService onsService = new OnsServiceImpl(personDao, null, null);
+        onsService.storePerson(person);
+
         replay(personDao);
         onsService.storePerson(person);
         verify(personDao);

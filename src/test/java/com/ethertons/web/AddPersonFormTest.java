@@ -33,7 +33,6 @@ public class AddPersonFormTest {
 
         expect(onsService.findAllSurnames()).andReturn(possibleSurnames);
         expect(model.addAttribute(EasyMock.eq("person"), EasyMock.anyObject(Person.class))).andReturn(model);
-        expect(model.addAttribute("surnames", possibleSurnames)).andReturn(model);
 
         replay(onsService, model);
         String formName = addPersonForm.setUpForm(model);
