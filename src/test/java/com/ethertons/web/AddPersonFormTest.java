@@ -5,6 +5,7 @@ import com.ethertons.domain.OnsServiceImpl;
 import com.ethertons.domain.Person;
 import com.ethertons.domain.Surname;
 import org.easymock.EasyMock;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,20 +21,26 @@ import static org.junit.Assert.assertThat;
 
 public class AddPersonFormTest {
 
+    private OnsService onsService;
+    private Model model;
+    private AddPersonForm addPersonForm;
+    private BindingResult result;
+
+    @Before
+    public void setUp() throws Exception {
+        onsService = EasyMock.createMock(OnsServiceImpl.class);
+        model = EasyMock.createMock(Model.class);
+        addPersonForm = new AddPersonForm(onsService);
+        result = EasyMock.createMock(BindingResult.class);
+    }
+
     @Test
     public void addNewPersonFormShouldBeShown() {
 
-        OnsService onsService = EasyMock.createMock(OnsServiceImpl.class);
-        Model model = EasyMock.createMock(Model.class);
-        AddPersonForm addPersonForm = new AddPersonForm(onsService);
+        List<Surname> possibleSurnames = possibleSurnames();
 
-        List<Surname> possibleSurnames = new ArrayList<Surname>();
-        possibleSurnames.add(new Surname());
-        possibleSurnames.add(new Surname());
-
-        expect(onsService.findAllSurnames()).andReturn(possibleSurnames);
         expect(model.addAttribute(EasyMock.eq("person"), EasyMock.anyObject(Person.class))).andReturn(model);
-
+        
         replay(onsService, model);
         String formName = addPersonForm.setUpForm(model);
         verify(onsService, model);
@@ -42,22 +49,17 @@ public class AddPersonFormTest {
         
     }
 
+    private List<Surname> possibleSurnames() {
+        List<Surname> possibleSurnames = new ArrayList<Surname>();
+        possibleSurnames.add(new Surname());
+        possibleSurnames.add(new Surname());
+        return possibleSurnames;
+    }
+
     @Test
     public void processSubmitShouldCallStorePerson() throws Exception {
 
-        OnsService onsService = EasyMock.createMock(OnsService.class);
-        BindingResult result = EasyMock.createMock(BindingResult.class);
-        
-        Person person = new Person();
-        Surname surname = new Surname();
-        surname.setId(6);
-        surname.setName("Smith");
-        person.setId(5);
-        person.setFirstName("Johnny");
-        person.setSurname(surname);
-
-        AddPersonForm addPersonForm = new AddPersonForm(onsService);
-
+        Person person = aNewPerson();
         expect(result.hasErrors()).andReturn(false);
         onsService.storePerson(person);
 
@@ -66,5 +68,17 @@ public class AddPersonFormTest {
         verify(onsService, result);
         
         assertThat(showPersonForm, is("redirect:/persons/5"));
+    }
+
+    private Person aNewPerson() {
+        Person person = new Person();
+        Surname surname = new Surname();
+        surname.setId(6);
+        surname.setName("Smith");
+        person.setId(5);
+        person.setFirstName("Johnny");
+        person.setSurname(surname);
+        person.setGender(true);
+        return person;
     }
 }

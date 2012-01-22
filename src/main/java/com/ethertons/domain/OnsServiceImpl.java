@@ -39,6 +39,26 @@ public class OnsServiceImpl implements OnsService {
     }
 
     @Override
+    public void storeSurname(Surname surname) {
+        surnameDao.storeSurname(surname);
+    }
+
+    @Override
+    public List<Person> findAllMalePersons() {
+        return personDao.findAllMalePersons();
+    }
+
+    @Override
+    public List<Person> findAllFemalePersons() {
+        return personDao.findAllFemalePersons();
+    }
+
+    @Override
+    public List<Person> findAllPersons() {
+        return personDao.findAllPersons();
+    }
+
+    @Override
     public List<Surname> findAllSurnames() {
         return surnameDao.findAllSurnames();
     }

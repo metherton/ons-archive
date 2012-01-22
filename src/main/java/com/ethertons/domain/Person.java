@@ -15,7 +15,7 @@ public class Person {
     private int id;
 
     @Column(name="first_name", columnDefinition = "char")
-    @Size(min=1, max=10, message = "The first name must be between 1 and 10 characters long.")
+    @Size(min=1, max=50, message = "The first name must be between 1 and 50 characters long.")
     private String firstName;
 
     @ManyToOne
@@ -31,10 +31,15 @@ public class Person {
     @JoinColumn(name="mother_id", columnDefinition = "int")
     private Person mother;
 
+    @Column(name="gender", columnDefinition = "boolean")
+    private boolean gender;
+
+    @Column(name="fullname", columnDefinition = "char")
+    private String fullname;
+    
     public int getId() {
         return id;
     }
-    
     public String getFirstName() {
         return firstName;
     }
@@ -51,6 +56,10 @@ public class Person {
         return mother;
     }
 
+    public boolean getGender() {
+        return gender;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -59,8 +68,27 @@ public class Person {
         this.firstName = firstName;
     }
 
-
     public void setSurname(Surname surname) {
         this.surname = surname;
+    }
+
+    public void setFather(Person father) {
+        this.father = father;
+    }
+
+    public void setMother(Person mother) {
+        this.mother = mother;
+    }
+
+    public void setGender(boolean gender) {
+        this.gender = gender;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 }

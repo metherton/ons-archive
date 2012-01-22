@@ -3,23 +3,39 @@ package com.ethertons.web;
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.OnsServiceImpl;
 import com.ethertons.domain.Person;
+import com.ethertons.domain.Surname;
 import org.easymock.EasyMock;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.ui.Model;
 
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.easymock.EasyMock.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class OnsControllerTest {
-    
+
+    private Person person;
+    private Model model;
+    private OnsService onsService;
+    private OnsController onsController;
+    private Surname surname;
+
+    @Before
+    public void setUp() throws Exception {
+        person = new Person();
+        model = EasyMock.createMock(Model.class);
+        onsService = EasyMock.createMock(OnsServiceImpl.class);
+        onsController = new OnsController(onsService);
+        surname = new Surname();
+    }
+
     @Test
     public void personDetailsPageShouldShowCorrectInformation() {
-        Person person = new Person();
-        Model model = EasyMock.createMock(Model.class);
-        OnsService onsService = EasyMock.createMock(OnsServiceImpl.class);
-        OnsController onsController = new OnsController(onsService);
         expect(onsService.findPersonWith(1)).andReturn(person);
         expect(model.addAttribute("person", person)).andReturn(model);
         
@@ -27,5 +43,33 @@ public class OnsControllerTest {
         String view = onsController.showPersonDetails(1, model);
         verify(onsService, model);
         assertThat(view, is("persons/show"));
+    }
+
+    @Test
+    public void surnameDetailsPageShouldShowCorrectInformation() throws Exception {
+        expect(onsService.findSurnameWith(1)).andReturn(surname);
+        expect(model.addAttribute("surname", surname)).andReturn(model);
+        
+        replay(onsService, model);
+        String view = onsController.showSurnameDetails(1, model);
+        verify(onsService, model);
+        
+        assertThat(view, is("surnames/show"));
+    }
+
+    @Test
+    public void listOfPersonsShouldBeShown() throws Exception {
+        List<Person> persons = new ArrayList<Person>();
+        persons.add(new Person());
+        persons.add(new Person());
+        
+        expect(onsService.findAllPersons()).andReturn(persons);
+        expect(model.addAttribute("persons", persons)).andReturn(model);
+
+        replay(onsService, model);
+        String view = onsController.findAllPersons(model);
+        verify(onsService, model);
+
+        assertThat(view, is("persons/list"));
     }
 }

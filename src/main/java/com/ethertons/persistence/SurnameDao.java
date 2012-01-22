@@ -8,4 +8,6 @@ public interface SurnameDao {
     List<Surname> findAllSurnames();
 
     Surname findSurnameWith(int surnameId);
+
+    void storeSurname(Surname surname);
 }

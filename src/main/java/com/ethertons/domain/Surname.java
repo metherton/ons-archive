@@ -1,6 +1,7 @@
 package com.ethertons.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -17,6 +18,7 @@ public class Surname {
     private int id;
 
     @Column(name="name", columnDefinition = "char")
+    @Size(min=1, max=50, message = "The first name must be between 1 and 50 characters long.")
     private String name;
 
     public String getName() {

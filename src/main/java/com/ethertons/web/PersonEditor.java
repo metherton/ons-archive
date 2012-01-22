@@ -1,17 +1,18 @@
 package com.ethertons.web;
 
 import com.ethertons.domain.OnsService;
+import com.ethertons.domain.Person;
 import com.ethertons.domain.Surname;
 import org.apache.commons.lang.StringUtils;
 
-
+import java.beans.PropertyEditor;
 import java.beans.PropertyEditorSupport;
 
-public class SurnameEditor extends PropertyEditorSupport {
-
+public class PersonEditor  extends PropertyEditorSupport {
+    
     private final OnsService onsService;
 
-    public SurnameEditor(OnsService onsService) {
+    public PersonEditor(OnsService onsService) {
         this.onsService = onsService;
     }
 
@@ -20,19 +21,20 @@ public class SurnameEditor extends PropertyEditorSupport {
         if (StringUtils.isBlank(text)) {
             return;
         } else {
-            Surname surname = onsService.findSurnameWith((int) Integer.parseInt(text));
-            setValue(surname);
+            Person person = onsService.findPersonWith((int) Integer.parseInt(text));
+            setValue(person);
         }
     }
 
     @Override
     public String getAsText() {
-        Surname surname = (Surname) getValue();
-        if (surname == null) {
+        Person person = (Person) getValue();
+        if (person == null) {
             return null;
         } else {
-            return Integer.toString(surname.getId());
+            return Integer.toString(person.getId());
         }
     }
-
+    
+    
 }

@@ -1,6 +1,5 @@
 package com.ethertons.persistence;
 
-import com.ethertons.domain.Person;
 import com.ethertons.domain.Surname;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,17 +11,11 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class SurnameDaoImpl implements SurnameDao {
-
-    private final SessionFactory sessionFactory;
+public class SurnameDaoImpl extends GenericDao implements SurnameDao {
 
     @Autowired
     public SurnameDaoImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
-    private Session currentSession() {
-        return sessionFactory.getCurrentSession();
+        super(sessionFactory);
     }
 
     @Override
@@ -33,5 +26,10 @@ public class SurnameDaoImpl implements SurnameDao {
     @Override
     public Surname findSurnameWith(int surnameId) {
         return (Surname)currentSession().get(Surname.class, surnameId);
+    }
+
+    @Override
+    public void storeSurname(Surname surname) {
+        currentSession().merge(surname);
     }
 }

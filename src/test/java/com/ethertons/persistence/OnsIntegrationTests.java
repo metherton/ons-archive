@@ -12,9 +12,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,10 +32,12 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertThat;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@TestExecutionListeners({DependencyInjectionTestExecutionListener.class})
 @ContextConfiguration(locations = {"classpath:applicationContext-test.xml"})
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
+@RunWith(SpringJUnit4ClassRunner.class)
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
 @Transactional
+@DirtiesContext
 public class OnsIntegrationTests {
 
     @Autowired
@@ -45,20 +52,20 @@ public class OnsIntegrationTests {
     @Autowired
     private SurnameDao surnameDao;
 
-    private Session session;    
-    
+    private Session session;
 
     @Test
     public void canRetrieveAuthorsName() {
         String authorsName = configDao.findAuthor();
         assertThat(authorsName, is("Martin Etherton"));
     }
-    
+
     @Test
     public void retrievesPersonInfo() {
         Person person = personDao.findPersonWith(15);
         assertThat(person.getFirstName(), is("martin"));
         assertThat(person.getSurname().getName(), is("etherton"));
+        assertThat(person.getGender(), is(true));
 //        assertThat(person.getFather().getFirstName(), is("sydney"));
 //        assertThat(person.getFather().getSurname().getName(), is("etherton"));
 //        assertThat(person.getMother().getFirstName(), is("nora"));
@@ -66,7 +73,7 @@ public class OnsIntegrationTests {
 
     }
 
-    
+
     @Test
     public void retrieveSurnames() {
         List<Surname> surnames = surnameDao.findAllSurnames();
@@ -74,8 +81,22 @@ public class OnsIntegrationTests {
     }
 
     @Test
+    public void retrieveAllMalePersons() throws Exception {
+        List<Person> persons = personDao.findAllMalePersons();
+        assertThat(persons.size(), is(greaterThan(0)));
+        boolean femaleFound = false;
+        for (Person person : persons) {
+            if (! person.getGender()) {
+                femaleFound = true;
+                break;
+            }
+        }
+        assertThat(femaleFound, is(false));
+    }
+
+    @Test
     public void storePerson() throws Exception {
-        
+
         Person person = new Person();
         person.setFirstName("Richard");
         Surname surname = new Surname();
@@ -84,6 +105,19 @@ public class OnsIntegrationTests {
         person.setSurname(surname);
 
         personDao.storePerson(person);
-        
+
+    }
+
+    @Test
+    public void storeSurname() throws Exception {
+        Surname surname = new Surname();
+        surname.setName("testname1");
+        surnameDao.storeSurname(surname);
+    }
+
+    @Test
+    public void retrieveAllPersons() throws Exception {
+        List<Person> persons = personDao.findAllPersons();
+        assertThat(persons.size(), is(greaterThan(0)));
     }
 }

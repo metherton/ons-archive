@@ -12,4 +12,12 @@ public interface OnsService {
     void storePerson(Person person);
 
     Surname findSurnameWith(int surnameId);
+
+    void storeSurname(Surname surname);
+
+    List<Person> findAllMalePersons();
+
+    List<Person> findAllFemalePersons();
+
+    List<Person> findAllPersons();
 }

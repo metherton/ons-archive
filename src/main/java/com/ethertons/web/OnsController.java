@@ -2,11 +2,15 @@ package com.ethertons.web;
 
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.Person;
+import com.ethertons.domain.Surname;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.text.AttributedString;
+import java.util.List;
 
 @Controller
 public class OnsController {
@@ -22,7 +26,21 @@ public class OnsController {
     public String showPersonDetails(@PathVariable("personId") int personId, Model model) {
         Person person = onsService.findPersonWith(personId);
         model.addAttribute("person", person);
+        System.out.println("person gender is " + person.getGender());
         return "persons/show";
     }
 
+    @RequestMapping(value="/surnames/{surnameId}")
+    public String showSurnameDetails(@PathVariable("surnameId") int surnameId, Model model) {
+        Surname surname = onsService.findSurnameWith(surnameId);
+        model.addAttribute("surname", surname);
+        return "surnames/show";
+    }
+
+    @RequestMapping(value="/persons")
+    public String findAllPersons(Model model) {
+        List<Person> persons = onsService.findAllPersons();
+        model.addAttribute("persons", persons);
+        return "persons/list";
+    }
 }
