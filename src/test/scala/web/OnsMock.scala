@@ -15,6 +15,7 @@ trait OnsMock extends EasyMockSugar {
   val model = mock[Model]
   val result = mock[BindingResult]
   val addPersonForm = new AddPersonForm(onsService)
+  val addTreeForm = new AddTreeForm(onsService)
   val possibleSurnames = listPossibleSurnames()
   val possibleFathers = listPossibleFathers()
   val possibleMothers = listPossibleMothers()
