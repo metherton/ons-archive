@@ -3,6 +3,7 @@ package com.ethertons.web;
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.Person;
 import com.ethertons.domain.Surname;
+import com.ethertons.domain.Tree;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +27,6 @@ public class OnsController {
     public String showPersonDetails(@PathVariable("personId") int personId, Model model) {
         Person person = onsService.findPersonWith(personId);
         model.addAttribute("person", person);
-        System.out.println("person gender is " + person.getGender());
         return "persons/show";
     }
 
@@ -42,5 +42,12 @@ public class OnsController {
         List<Person> persons = onsService.findAllPersons();
         model.addAttribute("persons", persons);
         return "persons/list";
+    }
+
+    @RequestMapping(value="/trees/{treeId}")
+    public String showTreeDetails(@PathVariable("treeId") int treeId, Model model) {
+        Tree tree = onsService.findTreeWith(treeId);
+        model.addAttribute("tree", tree);
+        return "trees/show";
     }
 }

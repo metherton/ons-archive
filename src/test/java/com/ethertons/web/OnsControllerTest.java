@@ -4,6 +4,7 @@ import com.ethertons.domain.OnsService;
 import com.ethertons.domain.OnsServiceImpl;
 import com.ethertons.domain.Person;
 import com.ethertons.domain.Surname;
+import com.ethertons.domain.Tree;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
@@ -71,5 +72,21 @@ public class OnsControllerTest {
         verify(onsService, model);
 
         assertThat(view, is("persons/list"));
+    }
+
+    @Test
+    public void treeDetailsShouldBeShown() throws Exception {
+        
+        Tree tree = new Tree();
+        tree.setId(1);
+        expect(onsService.findTreeWith(1)).andReturn(tree);
+        expect(model.addAttribute("tree", tree)).andReturn(model);
+        
+        replay(model, onsService);
+        String view = onsController.showTreeDetails(1, model);
+        verify(model, onsService);
+        
+        assertThat(view,is("trees/show"));
+        
     }
 }

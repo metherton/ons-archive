@@ -3,6 +3,7 @@ package com.ethertons.domain;
 import com.ethertons.persistence.ConfigDao;
 import com.ethertons.persistence.PersonDao;
 import com.ethertons.persistence.SurnameDao;
+import com.ethertons.persistence.TreeDao;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,16 +20,20 @@ public class OnsServiceImplTest {
     private SurnameDao surnameDao;
     private Person person;
     private Surname surname;
+    private Tree tree;
     private OnsService onsService;
+    private TreeDao treeDao;
 
     @Before
     public void setUp() throws Exception {
         personDao = createMock(PersonDao.class);
         configDao = createMock(ConfigDao.class);
         surnameDao = createMock(SurnameDao.class);
+        treeDao = createMock(TreeDao.class);
         person = new Person();
         surname = new Surname();
-        onsService = new OnsServiceImpl(personDao, configDao, surnameDao);
+        tree = new Tree();
+        onsService = new OnsServiceImpl(personDao, configDao, surnameDao, treeDao);
     }
 
     @Test
@@ -78,6 +83,15 @@ public class OnsServiceImplTest {
 
     }
 
+    @Test
+    public void findTreeWithIdShouldReturnTreeDetails() throws Exception {
+        
+        expect(treeDao.findTreeWith(1)).andReturn(tree);
+        replay(treeDao);
+        onsService.findTreeWith(1);
+        verify(treeDao);
+        
+    }
 
     @Test
     public void storePersonShouldStorePersonToDatabase() throws Exception {
@@ -95,6 +109,16 @@ public class OnsServiceImplTest {
         replay(surnameDao);
         onsService.storeSurname(surname);
         verify(surnameDao);
+    }
+
+    @Test
+    public void storeTreeShouldStoreTreeToDatabase() throws Exception {
+        treeDao.storeTree(tree);
+
+        replay(treeDao);
+        onsService.storeTree(tree);
+        verify(treeDao);
+
     }
 
     @Test

@@ -3,6 +3,7 @@ package com.ethertons.persistence;
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.Person;
 import com.ethertons.domain.Surname;
+import com.ethertons.domain.Tree;
 import org.hamcrest.Matcher;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -30,6 +31,7 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasSize;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class})
@@ -52,6 +54,9 @@ public class OnsIntegrationTests {
     @Autowired
     private SurnameDao surnameDao;
 
+    @Autowired
+    private TreeDao treeDao;
+
     private Session session;
 
     @Test
@@ -66,13 +71,7 @@ public class OnsIntegrationTests {
         assertThat(person.getFirstName(), is("martin"));
         assertThat(person.getSurname().getName(), is("etherton"));
         assertThat(person.getGender(), is(true));
-//        assertThat(person.getFather().getFirstName(), is("sydney"));
-//        assertThat(person.getFather().getSurname().getName(), is("etherton"));
-//        assertThat(person.getMother().getFirstName(), is("nora"));
-//        assertThat(person.getMother().getSurname().getName(), is("wilkinson"));
-
     }
-
 
     @Test
     public void retrieveSurnames() {
@@ -96,7 +95,6 @@ public class OnsIntegrationTests {
 
     @Test
     public void storePerson() throws Exception {
-
         Person person = new Person();
         person.setFirstName("Richard");
         Surname surname = new Surname();
@@ -105,7 +103,6 @@ public class OnsIntegrationTests {
         person.setSurname(surname);
 
         personDao.storePerson(person);
-
     }
 
     @Test
@@ -119,5 +116,21 @@ public class OnsIntegrationTests {
     public void retrieveAllPersons() throws Exception {
         List<Person> persons = personDao.findAllPersons();
         assertThat(persons.size(), is(greaterThan(0)));
+    }
+
+    @Test
+    public void retrieveTreeInfo() throws Exception {
+        Tree tree = treeDao.findTreeWith(1);
+        assertNotNull(tree);
+        
+    }
+
+    @Test
+    public void storeTree() throws Exception {
+        Tree tree = new Tree();
+        tree.setDescription("test tree 1");
+        Person person = personDao.findPersonWith(1);
+        tree.setPerson(person);
+        treeDao.storeTree(tree);
     }
 }

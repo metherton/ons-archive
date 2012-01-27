@@ -3,6 +3,7 @@ package com.ethertons.domain;
 import com.ethertons.persistence.ConfigDao;
 import com.ethertons.persistence.PersonDao;
 import com.ethertons.persistence.SurnameDao;
+import com.ethertons.persistence.TreeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +15,14 @@ public class OnsServiceImpl implements OnsService {
     private final PersonDao personDao;
     private final ConfigDao configDao;
     private final SurnameDao surnameDao;
+    private final TreeDao treeDao;
 
     @Autowired
-    public OnsServiceImpl(PersonDao personDao, ConfigDao configDao, SurnameDao surnameDao) {
+    public OnsServiceImpl(PersonDao personDao, ConfigDao configDao, SurnameDao surnameDao, TreeDao treeDao) {
         this.personDao = personDao;
         this.configDao = configDao;
         this.surnameDao = surnameDao;
+        this.treeDao =  treeDao;
     }
 
 
@@ -56,6 +59,16 @@ public class OnsServiceImpl implements OnsService {
     @Override
     public List<Person> findAllPersons() {
         return personDao.findAllPersons();
+    }
+
+    @Override
+    public void storeTree(Tree tree) {
+        treeDao.storeTree(tree);
+    }
+
+    @Override
+    public Tree findTreeWith(int treeId) {
+        return treeDao.findTreeWith(treeId);
     }
 
     @Override

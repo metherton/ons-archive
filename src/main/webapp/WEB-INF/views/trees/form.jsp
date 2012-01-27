@@ -16,6 +16,5 @@
     </form:select>
     <form:errors path="person" cssClass="errors" />
 
-
     <input type="submit" id="submit"    value="Add Tree Root Ancestor" />
 </form:form>
