@@ -24,4 +24,6 @@ public interface OnsService {
     void storeTree(Tree tree);
 
     Tree findTreeWith(int treeId);
+
+    List<Tree> findAllTrees();
 }

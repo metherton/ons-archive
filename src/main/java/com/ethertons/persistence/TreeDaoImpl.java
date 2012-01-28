@@ -1,7 +1,9 @@
 package com.ethertons.persistence;
 
+import java.util.List;
 import javax.transaction.TransactionRolledbackException;
 
+import com.ethertons.domain.Person;
 import com.ethertons.domain.Surname;
 import com.ethertons.domain.Tree;
 import org.hibernate.SessionFactory;
@@ -26,5 +28,10 @@ public class TreeDaoImpl extends GenericDao  implements TreeDao {
     @Override
     public void storeTree(Tree tree) {
         currentSession().merge(tree);
+    }
+
+    @Override
+    public List<Tree> findAllTrees() {
+        return (List<Tree>)currentSession().createCriteria(Tree.class).list();
     }
 }

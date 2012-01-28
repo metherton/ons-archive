@@ -129,4 +129,13 @@ public class OnsServiceImplTest {
         onsService.findAllPersons();
         verify(personDao);
     }
+
+    @Test
+    public void findAllTreesShouldRetrieveAllTrees() throws Exception {
+        expect(treeDao.findAllTrees()).andReturn(new ArrayList<Tree>());
+        
+        replay(treeDao);
+        onsService.findAllTrees();
+        verify(treeDao);
+    }
 }

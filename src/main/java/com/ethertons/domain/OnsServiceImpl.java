@@ -72,6 +72,11 @@ public class OnsServiceImpl implements OnsService {
     }
 
     @Override
+    public List<Tree> findAllTrees() {
+        return treeDao.findAllTrees();
+    }
+
+    @Override
     public List<Surname> findAllSurnames() {
         return surnameDao.findAllSurnames();
     }

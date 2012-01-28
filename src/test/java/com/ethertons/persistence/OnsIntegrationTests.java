@@ -133,4 +133,10 @@ public class OnsIntegrationTests {
         tree.setPerson(person);
         treeDao.storeTree(tree);
     }
+
+    @Test
+    public void retrieveAllTrees() throws Exception {
+        List<Tree> trees = treeDao.findAllTrees();
+        assertThat(trees.size(), is(greaterThan(0)));
+    }
 }

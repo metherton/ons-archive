@@ -50,4 +50,11 @@ public class OnsController {
         model.addAttribute("tree", tree);
         return "trees/show";
     }
+
+    @RequestMapping(value="/trees")
+    public String findAllTrees(Model model) {
+        List<Tree> trees = onsService.findAllTrees();
+        model.addAttribute("trees", trees);
+        return "trees/list";
+    }
 }
