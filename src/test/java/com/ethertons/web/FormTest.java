@@ -4,9 +4,11 @@ import com.ethertons.domain.OnsService;
 import com.ethertons.domain.OnsServiceImpl;
 import org.easymock.EasyMock;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
+@Ignore
 public class FormTest {
 
     protected OnsService onsService;
