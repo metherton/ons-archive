@@ -1,38 +1,38 @@
 package com.ethertons.web;
 
+import javax.validation.Valid;
+
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.Person;
-import com.ethertons.domain.Surname;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.util.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@RequestMapping("/persons/new")
+@RequestMapping("/persons/{personId}/edit")
 @SessionAttributes("person")
-public class AddPersonForm extends PersonForm {
-
-    private static final String PERSONS_FORM = "persons/form";
+public class EditPersonForm extends PersonForm {
 
     @Autowired
-    public AddPersonForm(OnsService onsService) {
+    public EditPersonForm(OnsService onsService) {
         super(onsService);
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String setUpForm(Model model) {
-        Person person = new Person();
+    public String setUpForm(@PathVariable("personId") int personId, Model model) {
+
+        Person person = onsService.findPersonWith(personId);
         model.addAttribute("person", person);
         return "persons/form";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.PUT)
     public String processSubmit(@ModelAttribute("person") @Valid Person person, BindingResult result) {
         if (result.hasErrors()) {
             return PERSONS_FORM;
@@ -42,4 +42,5 @@ public class AddPersonForm extends PersonForm {
             return "redirect:/persons/" + person.getId();
         }
     }
+
 }

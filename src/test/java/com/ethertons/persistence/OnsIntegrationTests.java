@@ -67,9 +67,9 @@ public class OnsIntegrationTests {
 
     @Test
     public void retrievesPersonInfo() {
-        Person person = personDao.findPersonWith(15);
-        assertThat(person.getFirstName(), is("martin"));
-        assertThat(person.getSurname().getName(), is("etherton"));
+        Person person = personDao.findPersonWith(1);
+        assertThat(person.getFirstName(), is("Samuel"));
+        assertThat(person.getSurname().getName(), is("Etherton"));
         assertThat(person.getGender(), is(true));
     }
 

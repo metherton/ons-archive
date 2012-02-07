@@ -10,7 +10,7 @@ public class Config {
     @Column(name="config_id", columnDefinition = "int")
     private int id;
 
-    @Column(name="description", columnDefinition = "char")
+    @Column(name="description", columnDefinition = "text")
     private String description;
 
     @Column(name="value", columnDefinition = "char")

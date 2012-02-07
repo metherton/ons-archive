@@ -30,8 +30,7 @@ public class Tree {
     @NotNull
     private Person person;
 
-    @Column(name="description", columnDefinition = "char")
-    @Size(min=1, max=255, message = "The first name must be between 1 and 255 characters long.")
+    @Column(name="description", columnDefinition = "text")
     private String description;
 
     public String getDescription() {
@@ -45,4 +44,5 @@ public class Tree {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

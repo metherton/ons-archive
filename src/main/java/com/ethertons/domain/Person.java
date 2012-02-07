@@ -5,6 +5,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+import com.sun.istack.internal.Builder;
+
 @Entity
 @Table(name="person")
 public class Person {
@@ -36,7 +38,21 @@ public class Person {
 
     @Column(name="fullname", columnDefinition = "char")
     private String fullname;
+
+    public Person() {
+
+    }
     
+    private Person(Builder builder) {
+        id = builder.personId;
+        firstName = builder.firstName;
+        surname = builder.surname;
+    }
+
+    public boolean isNew() {
+        return this.id == 0;
+    }
+
     public int getId() {
         return id;
     }
@@ -90,5 +106,32 @@ public class Person {
 
     public void setFullname(String fullname) {
         this.fullname = fullname;
+    }
+
+    public static class Builder {
+        
+        private final int personId;
+        private String firstName;
+        private Surname surname;
+
+        
+        public Builder(int personId) {
+            this.personId = personId;
+        }
+
+
+        public Builder firstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder surname(Surname surname) {
+            this.surname = surname;
+            return this;
+        }
+
+        public Person build() {
+            return new Person(this);
+        }
     }
 }

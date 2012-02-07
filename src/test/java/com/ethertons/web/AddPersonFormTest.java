@@ -19,25 +19,15 @@ import static org.easymock.EasyMock.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class AddPersonFormTest {
-
-    private OnsService onsService;
-    private Model model;
-    private AddPersonForm addPersonForm;
-    private BindingResult result;
+public class AddPersonFormTest extends FormTest {
 
     @Before
     public void setUp() throws Exception {
-        onsService = EasyMock.createMock(OnsServiceImpl.class);
-        model = EasyMock.createMock(Model.class);
         addPersonForm = new AddPersonForm(onsService);
-        result = EasyMock.createMock(BindingResult.class);
     }
 
     @Test
     public void addNewPersonFormShouldBeShown() {
-
-        List<Surname> possibleSurnames = possibleSurnames();
 
         expect(model.addAttribute(EasyMock.eq("person"), EasyMock.anyObject(Person.class))).andReturn(model);
         

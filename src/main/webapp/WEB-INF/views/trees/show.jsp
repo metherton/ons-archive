@@ -4,3 +4,4 @@
 
 <div id="description">${tree.description}</div>
 <div id="commonAncestor">${tree.person.fullname}</div>
+

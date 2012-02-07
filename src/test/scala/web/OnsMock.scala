@@ -8,7 +8,7 @@ import org.scalatest.Spec
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
 import reflect.Class
-import com.ethertons.web.{OnsController, AddPersonForm}
+import com.ethertons.web.{AddTreeForm, OnsController, AddPersonForm}
 
 trait OnsMock extends EasyMockSugar {
   val onsService = mock[OnsServiceImpl]

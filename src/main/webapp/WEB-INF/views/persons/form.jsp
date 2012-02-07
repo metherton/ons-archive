@@ -3,7 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<form:form modelAttribute="person" method="POST">
+    <c:choose>
+        <c:when test="${person.new}">
+            <c:set var="method" value="post" />
+        </c:when>
+        <c:otherwise>
+            <c:set var="method" value="put" />
+        </c:otherwise>
+    </c:choose>
+<form:form modelAttribute="person" method="${method}">
 
     <form:label path="firstName">First Name</form:label>
     <form:input path="firstName" />
