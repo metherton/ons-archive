@@ -19,6 +19,8 @@
     <!-- Configures the @Controller programming model -->
     <mvc:annotation-driven />
 
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+
     <import resource="classpath:/database.xml"/>
 
 </beans>
