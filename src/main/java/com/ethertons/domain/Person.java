@@ -108,6 +108,26 @@ public class Person {
         this.fullname = fullname;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Person person = (Person) o;
+
+        if (id != person.id) return false;
+        if (fullname != null ? !fullname.equals(person.fullname) : person.fullname != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (fullname != null ? fullname.hashCode() : 0);
+        return result;
+    }
+
     public static class Builder {
         
         private final int personId;

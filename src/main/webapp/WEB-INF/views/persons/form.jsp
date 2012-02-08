@@ -26,14 +26,14 @@
 
     <form:label path="father">Father</form:label>
     <form:select path="father">
-        <form:option value="15" label="--Please Select"/>
+        <form:option value="" label="--Please Select"/>
         <form:options items="${fathers}" itemValue="id" itemLabel="fullname" />
     </form:select>
     <form:errors path="father" cssClass="errors" />
 
     <form:label path="mother">Mother</form:label>
     <form:select path="mother">
-        <form:option value="15" label="--Please Select"/>
+        <form:option value="" label="--Please Select"/>
         <form:options items="${mothers}" itemValue="id" itemLabel="fullname" />
     </form:select>
     <form:errors path="mother" cssClass="errors" />
@@ -41,6 +41,15 @@
     <form:label path="gender">Gender</form:label>
     <form:radiobuttons path="gender" items="${genderOptions}" />
     <form:errors path="gender" cssClass="errors" />
+
+    <c:choose>
+        <c:when test="${person.new}">
+            <input type="submit" value="Add Person" />
+        </c:when>
+        <c:otherwise>
+            <input type="submit" value="Update Person" />
+        </c:otherwise>
+    </c:choose>
 
     <input type="submit" id="submit"    value="Add Person" />
 </form:form>

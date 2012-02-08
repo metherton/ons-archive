@@ -26,7 +26,6 @@ public class EditPersonForm extends PersonForm {
 
     @RequestMapping(method = RequestMethod.GET)
     public String setUpForm(@PathVariable("personId") int personId, Model model) {
-
         Person person = onsService.findPersonWith(personId);
         model.addAttribute("person", person);
         return "persons/form";
