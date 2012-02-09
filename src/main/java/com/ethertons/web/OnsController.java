@@ -57,4 +57,11 @@ public class OnsController {
         model.addAttribute("trees", trees);
         return "trees/list";
     }
+
+    @RequestMapping(value="/surnames")
+    public String findAllSurnames(Model model) {
+        List<Surname> surnames = onsService.findAllSurnames();
+        model.addAttribute("surnames", surnames);
+        return "surnames/list";
+    }
 }

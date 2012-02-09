@@ -102,4 +102,17 @@ public class OnsControllerTest {
         
         assertThat(view, is("trees/list"));
     }
+
+    @Test
+    public void listOfSurnamesShouldBeShown() throws Exception {
+        List<Surname> surnames = new ArrayList<Surname>();
+        expect(onsService.findAllSurnames()).andReturn(surnames);
+        expect(model.addAttribute("surnames", surnames)).andReturn(model);
+        
+        replay(model, onsService);
+        String view = onsController.findAllSurnames(model);
+        verify(model, onsService);
+        
+        assertThat(view, is("surnames/list"));
+    }
 }

@@ -11,13 +11,13 @@
             <div id="menu" style="background-color:ghostwhite;height:259px;width:11%;float:left;">
                 <div style="margin: 0px auto;text-align: center">
                     <a title="Visit Guild of one name studies" href="http://www.goons.org.uk">
-                        <img border="0" align="center" width="116" height="139" src="resources/logo-ghost.png" />
+                        <img border="0" align="center" width="116" height="139" src="<c:url value="/resources/logo-ghost.png" />" />
                     </a>
                 </div>
                 <ul style="list-style:none;">
-                    <li><a href="/trees">Trees</a></li>
-                    <li><a href="/persons">People</a></li>
-                    <li><a href="/surnames">Surnames</a></li>
+                    <li><a href="<c:url value="/trees" />">Trees</a></li>
+                    <li><a href="<c:url value="/persons" />">People</a></li>
+                    <li><a href="<c:url value="/surnames" />">Surnames</a></li>
                 </ul>
             </div>
             <div id="header" style="width:89%;background-color:white;;float:left;">
