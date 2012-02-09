@@ -48,5 +48,4 @@
         </c:otherwise>
     </c:choose>
 
-    <input type="submit" id="submit"    value="Add Person" />
 </form:form>

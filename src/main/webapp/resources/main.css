@@ -6,3 +6,34 @@ html {
 body {
     background-color: ghostwhite;
 }
+
+#logo a {
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: block;
+    height: 139px;
+    text-decoration: none;
+}
+
+#welcomeWrapper {
+    background-color: ghostwhite;
+    border: 0.1em solid lightgrey;
+    margin: 0px auto;
+    width: 97%;
+}
+
+#welcomeBox {
+    width:30em;
+}
+
+#welcome {
+    font-size:1.3em;
+    text-align: center;
+}
+
+#welcome-small {
+    font-size:0.8em;
+    text-align: center;
+    color: lightslategrey;
+}
