@@ -6,7 +6,6 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.sun.istack.internal.Builder;
 
 @Entity
 @Table(name="person")
