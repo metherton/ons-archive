@@ -56,6 +56,11 @@
         <form:errors path="mother" cssClass="errors" />
         </p>
 
+        <p class="container">
+            <form:label class="form-label" path="birthDate"  cssErrorClass="form-label errors">Date of Birth</form:label>
+            <form:input class="input-text" path="birthDate" />
+            <form:errors path="mother" cssClass="errors" />
+        </p>
 
         <p class="container">
         <c:choose>

@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Date;
 
 import com.sun.istack.internal.Builder;
 
@@ -38,6 +39,9 @@ public class Person {
 
     @Column(name="fullname", columnDefinition = "char")
     private String fullname;
+
+    @Column(name="date_of_birth", columnDefinition = "date")
+    private Date birthDate;
 
     public Person() {
 
@@ -126,6 +130,14 @@ public class Person {
         int result = id;
         result = 31 * result + (fullname != null ? fullname.hashCode() : 0);
         return result;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public static class Builder {
