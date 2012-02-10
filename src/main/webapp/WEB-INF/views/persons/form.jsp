@@ -5,12 +5,14 @@
     <c:choose>
         <c:when test="${person.new}">
             <c:set var="method" value="post" />
+            New
         </c:when>
         <c:otherwise>
             <c:set var="method" value="put" />
+            Edit
         </c:otherwise>
     </c:choose>
-    <c:if test="${person.new}">New </c:if><c:if test="${person.new} != true">Edit </c:if>Person
+    Person
     </div>
     <div class="innercontentmiddlebody">
     <form:form modelAttribute="person" method="${method}">
@@ -58,10 +60,10 @@
         <p class="container">
         <c:choose>
             <c:when test="${person.new}">
-                <input type="submit" value="Add Person" />
+                <input id="submit" type="submit" value="Add Person" />
             </c:when>
             <c:otherwise>
-                <input type="submit" value="Update Person" />
+                <input id="submit" type="submit" value="Update Person" />
             </c:otherwise>
         </c:choose>
         </p>
