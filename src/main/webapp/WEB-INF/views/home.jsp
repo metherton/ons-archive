@@ -15,6 +15,7 @@
                     </a>
                 </div>
                 <ul style="list-style:none;">
+                    <li><a href="<c:url value="/" />">Home</a></li>
                     <li><a href="<c:url value="/trees" />">Trees</a></li>
                     <li><a href="<c:url value="/persons" />">People</a></li>
                     <li><a href="<c:url value="/surnames" />">Surnames</a></li>
@@ -31,10 +32,21 @@
                     </div>
                 </div>
             </div>
-            <div id="content" style="background-color:#EEEEEE;height:200px;width:89%;float:left;">
+            <div id="content" style="background-color:white;height:200px;width:89%;float:left;">
                 <div style="margin: 0px auto;width:98%;background-color: red">
-                    <div style="width: 50%;background-color: yellow;height:100px;float: left;"></div>
-                    <div style="width: 50%;background-color: green;height:100px; float: left;"></div>
+                    <div style="width: 54%;background-color: yellow;height:100px;float: left;">
+                        <div class="innercontentleft">
+                            <div class="innercontentleftheader">On this day</div>
+                            <div class="innercontentleftbody">dsafab<br />sdfas<br/>sdfsafa<br/></div>
+                        </div>
+                    </div>
+                    <div style="width:0.3%;float: left">&nbsp;</div>
+                    <div style="width: 45.7%;background-color: green;height:100px; float: left;">
+                        <div class="innercontentright">
+                            <div class="innercontentrightheader">In the news</div>
+                            <div class="innercontentrightbody">dsafab<br />sdfas<br/>sdfsafa<br/></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="footer" style="background-color:ghostwhite;clear:both;text-align:center;">

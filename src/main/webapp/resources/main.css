@@ -21,6 +21,9 @@ body {
     border: 0.1em solid lightgrey;
     margin: 0px auto;
     width: 97%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 2em;
 }
 
 #welcomeBox {
@@ -36,4 +39,29 @@ body {
     font-size:0.8em;
     text-align: center;
     color: lightslategrey;
+}
+
+.innercontentleft {
+    background-color: honeydew;
+    border: 0.1em solid mediumspringgreen;
+    padding: 0.5em;
+}
+
+.innercontentleftheader {
+    background-color: #CEF2E0;
+    font-weight: bold;
+    border: 0.1em solid lightgrey;
+}
+
+.innercontentrightheader {
+    background-color: #CEDFF2;
+    font-weight: bold;
+    border: 0.1em solid lightgrey;
+}
+
+
+.innercontentright {
+    background-color: #F5FAFF;
+    border: 0.1em solid #CEDFF2;
+    padding: 0.5em;
 }
