@@ -178,6 +178,7 @@
   </dependencies>
 
   <build>
+    <finalName>ons</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
