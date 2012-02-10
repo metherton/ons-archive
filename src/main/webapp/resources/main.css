@@ -51,12 +51,19 @@ body {
     background-color: #CEF2E0;
     font-weight: bold;
     border: 0.1em solid lightgrey;
+    padding-left:1em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
 }
 
 .innercontentrightheader {
     background-color: #CEDFF2;
     font-weight: bold;
     border: 0.1em solid lightgrey;
+    padding-left:1em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+
 }
 
 
@@ -64,4 +71,47 @@ body {
     background-color: #F5FAFF;
     border: 0.1em solid #CEDFF2;
     padding: 0.5em;
+}
+
+.innercontentmiddle {
+    background-color: honeydew;
+    border: 0.1em solid mediumspringgreen;
+    padding:1em;
+}
+
+.innercontentmiddleheader {
+    background-color: #CEF2E0;
+    font-weight: bold;
+    border: 0.1em solid lightgrey;
+    padding-left: 1em;
+    padding-bottom: 0.2em;
+    padding-top: 0.2em;
+}
+
+.innercontentmiddlebody {
+}
+
+.container {
+    width: 100%;
+}
+
+.form-label {
+    display: block;
+    width: 20em;
+    font-size: 0.8em;
+}
+
+.input-text {
+    width: 10em;
+    font-size: 0.8em;
+}
+
+.input-select {
+    width: 10em;
+    font-size: 0.8em;
+}
+
+.errors {
+    color: red;
+    font-size: 0.8em;
 }

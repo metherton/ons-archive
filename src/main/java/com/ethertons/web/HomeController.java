@@ -19,6 +19,7 @@ public class HomeController {
     @RequestMapping({"/","/home"})
     public String showHomePage(Model model) {
         model.addAttribute("webmaster", onsService.findWebMaster());
+        model.addAttribute("welcome", "Welcome to the ");
         return "home";
     }
 

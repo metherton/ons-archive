@@ -30,6 +30,7 @@ public class HomeControllerTest {
     public void homePageShouldBeReturnedForDefaultMapping() {
         expect(onsService.findWebMaster()).andReturn("Martin Etherton");
         expect(model.addAttribute("webmaster", "Martin Etherton")).andReturn(model);
+        expect(model.addAttribute("welcome", "Welcome to the ")).andReturn(model);
 
         replay(model, onsService);
         String homeView = homeController.showHomePage(model);
