@@ -35,7 +35,7 @@ public class AddPersonFormTest extends FormTest {
         String formName = addPersonForm.setUpForm(model);
         verify(onsService, model);
         
-        assertThat(formName, is("persons/form1"));
+        assertThat(formName, is("persons/form"));
         
     }
 
