@@ -13,12 +13,14 @@
                 <img border="0" align="center" width="116" height="139" src="<c:url value="/resources/logo-ghost.png" />" />
             </a>
         </div>
-        <ul style="list-style:none;font-size: 0.8em">
-            <li style="padding-bottom: 0.5em;"><a href="<c:url value="/" />">Home</a></li>
-            <li style="padding-bottom: 0.5em;"><a href="<c:url value="/trees" />">Trees</a></li>
-            <li style="padding-bottom: 0.5em;"> <a href="<c:url value="/persons" />">People</a></li>
-            <li style="padding-bottom: 0.5em;"><a href="<c:url value="/surnames" />">Surnames</a></li>
-        </ul>
+        <div style="padding-top: 1em;">
+            <ul style="margin: 0; margin-left: 2em; padding: 0;list-style:none;font-size: 0.8em">
+                <li style="padding-bottom: 0.5em;"><a href="<c:url value="/" />">Home</a></li>
+                <li style="padding-bottom: 0.5em;"><a href="<c:url value="/trees" />">Trees</a></li>
+                <li style="padding-bottom: 0.5em;"> <a href="<c:url value="/persons" />">People</a></li>
+                <li style="padding-bottom: 0.5em;"><a href="<c:url value="/surnames" />">Surnames</a></li>
+            </ul>
+        </div>
     </div>
     <div id="header" style="width:89%;background-color:white;;float:left;">
         <div style="padding:1%;">
