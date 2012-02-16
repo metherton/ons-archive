@@ -12,7 +12,7 @@
             Edit
         </c:otherwise>
     </c:choose>
-    Person
+    Birth
     </div>
     <div class="innercontentmiddlebody">
     <form:form modelAttribute="person" method="${method}">
@@ -58,7 +58,7 @@
 
         <p class="container">
             <form:label class="form-label" path="birthDate"  cssErrorClass="form-label errors">Date of Birth</form:label>
-            <form:input class="input-text" path="birthDate" />
+            <form:input class="input-text" path="birthDate"  />
             <form:errors path="mother" cssClass="errors" />
         </p>
 

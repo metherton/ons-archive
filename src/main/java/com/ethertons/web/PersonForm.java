@@ -1,5 +1,10 @@
 package com.ethertons.web;
 
+import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +12,7 @@ import java.util.Map;
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.Person;
 import com.ethertons.domain.Surname;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,6 +26,9 @@ public class PersonForm extends OnsForm {
         dataBinder.registerCustomEditor(Surname.class, "surname", new SurnameEditor(onsService));
         dataBinder.registerCustomEditor(Person.class, "father", new PersonEditor(onsService));
         dataBinder.registerCustomEditor(Person.class, "mother", new PersonEditor(onsService));
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormat.setLenient(false);
+        dataBinder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
 
     @ModelAttribute("surnames")

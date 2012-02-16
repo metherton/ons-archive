@@ -2,17 +2,15 @@
 <%@ include file="/WEB-INF/views/header.jsp" %>
 <div class="innercontentmiddle">
     <div class="innercontentmiddleheader">
-        <div style="float:left;width:85%">Details for ${person.fullname}</div>
-        <div style="float:left;width:15%"><a style="font-size:0.8em;" href="<c:url value="/persons/${person.id}/edit" />">Edit Person</a></div>
+        <div id="fullName" style="float:left;width:85%">Details for ${person.fullname}</div>
+        <div style="float:left;width:15%"><a style="font-size:0.8em;" href="<c:url value="/persons/${person.id}/edit" />">Edit Birth</a></div>
         <div style="clear:both;"></div>
     </div>
     <div class="innercontentmiddlebody">
-        <div id="firstName">${person.firstName}</div>
-        <div id="surname">${person.surname.name}</div>
-        <div id="father">${person.father.firstName} ${person.father.surname.name}</div>
-        <div id="mother">${person.mother.firstName} ${person.mother.surname.name}</div>
-        <div id="gender"><c:if test="${person.gender}">Male</c:if><c:if test="not ${person.gender}">Female</c:if></div>
-        <div id="birthDate"><fmt:formatDate value="${person.birthDate}" /></div>
+        <div id="father"><div style="float:left;width:10em">Father:</div><div style="float:left;width:10em">${person.father.firstName} ${person.father.surname.name}</div><div style="clear:both;"></div></div>
+        <div id="mother"><div style="float:left;width:10em">Mother:</div><div style="float:left;width:10em">${person.mother.firstName} ${person.mother.surname.name}</div><div style="clear:both;"></div></div>
+        <div id="gender"><div style="float:left;width:10em">Gender:</div><div style="float:left;width:10em"><c:if test="${person.gender}">Male</c:if><c:if test="not ${person.gender}">Female</c:if></div><div style="clear:both;"></div></div>
+        <div id="birthDate"><div style="float:left;width:10em">Date of Birth:</div><div style="float:left;width:10em"><fmt:formatDate value="${person.birthDate}" /></div><div style="clear:both;"></div></div>
     </div>
 </div>
 <%@ include file="/WEB-INF/views/footer.jsp" %>

@@ -17,7 +17,7 @@
             <ul style="margin: 0; margin-left: 2em; padding: 0;list-style:none;font-size: 0.8em">
                 <li style="padding-bottom: 0.5em;"><a href="<c:url value="/" />">Home</a></li>
                 <li style="padding-bottom: 0.5em;"><a href="<c:url value="/trees" />">Trees</a></li>
-                <li style="padding-bottom: 0.5em;"> <a href="<c:url value="/persons" />">People</a></li>
+                <li style="padding-bottom: 0.5em;"> <a href="<c:url value="/persons" />">Births</a></li>
                 <li style="padding-bottom: 0.5em;"><a href="<c:url value="/surnames" />">Surnames</a></li>
             </ul>
         </div>
