@@ -3,7 +3,7 @@ package com.ethertons.web;
 import javax.validation.Valid;
 
 import com.ethertons.domain.OnsService;
-import com.ethertons.domain.Person;
+import com.ethertons.domain.Tree;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,32 +15,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@RequestMapping("/persons/{personId}/edit")
-@SessionAttributes("person")
-public class EditPersonForm extends PersonForm {
+@RequestMapping("/trees/{treeId}/edit")
+@SessionAttributes("tree")
+public class EditTreeForm extends TreeForm {
 
     @Autowired
-    public EditPersonForm(OnsService onsService) {
+    public EditTreeForm(OnsService onsService) {
         super(onsService);
     }
 
-
-
     @RequestMapping(method = RequestMethod.GET)
-    public String setUpForm(@PathVariable("personId") int personId, Model model) {
-        Person person = onsService.findPersonWith(personId);
-        model.addAttribute("person", person);
-        return "persons/form";
+    public String setUpForm(@PathVariable("treeId") int treeId, Model model) {
+        Tree tree = onsService.findTreeWith(treeId);
+        model.addAttribute("tree", tree);
+        return "trees/form";
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public String processSubmit(@ModelAttribute("person") @Valid Person person, BindingResult result) {
+    public String processSubmit(@ModelAttribute("tree") @Valid Tree tree, BindingResult result) {
         if (result.hasErrors()) {
-            return PERSONS_FORM;
+            return "trees/form";
         } else {
-            person.setFullname(person.getFirstName() + " " + person.getSurname().getName());
-            this.onsService.storePerson(person);
-            return "redirect:/persons/" + person.getId();
+            this.onsService.storeTree(tree);
+            return "redirect:/trees/" + tree.getId();
         }
     }
 

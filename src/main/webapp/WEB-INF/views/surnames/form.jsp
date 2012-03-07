@@ -1,5 +1,10 @@
 <%@ include file="/WEB-INF/views/includes.jsp" %>
 <%@ include file="/WEB-INF/views/header.jsp" %>
+<div class="innercontentmiddle">
+    <div class="innercontentmiddleheader">
+    Add Surname
+    </div>
+    <div class="innercontentmiddlebody">
 <form:form modelAttribute="surname" method="POST">
 
     <p class="container">
@@ -10,3 +15,5 @@
 
     <input type="submit" id="submit"    value="Add Surname" />
 </form:form>
+    </div>
+</div>
