@@ -1,10 +1,16 @@
 package com.ethertons.domain;
 
-import javax.persistence.*;
+import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
-import java.util.Date;
 
 
 @Entity
@@ -42,10 +48,20 @@ public class Person {
     @Column(name="date_of_birth", columnDefinition = "date")
     private Date birthDate;
 
+
+    @Column(name="latitude", columnDefinition = "double")
+    private double latitude;
+
+
+    @Column(name="longitude", columnDefinition = "double")
+    private double longitude;
+
+
+
     public Person() {
 
     }
-    
+
     private Person(Builder builder) {
         id = builder.personId;
         firstName = builder.firstName;
@@ -139,13 +155,29 @@ public class Person {
         this.birthDate = birthDate;
     }
 
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
     public static class Builder {
-        
+
         private final int personId;
         private String firstName;
         private Surname surname;
 
-        
+
         public Builder(int personId) {
             this.personId = personId;
         }

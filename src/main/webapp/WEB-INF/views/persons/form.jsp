@@ -59,7 +59,23 @@
         <p class="container">
             <form:label class="form-label" path="birthDate"  cssErrorClass="form-label errors">Date of Birth</form:label>
             <form:input class="input-text" path="birthDate"  />
-            <form:errors path="mother" cssClass="errors" />
+            <form:errors path="birthDate" cssClass="errors" />
+        </p>
+
+        <p class="container">
+            <div id="map_canvas" style="width: 300px; height: 300px;"></div>
+        </p>
+
+        <p class="container">
+            <form:label class="form-label" path="latitude"  cssErrorClass="form-label errors">Latitude</form:label>
+            <form:input class="input-text" path="latitude"  />
+            <form:errors path="latitude" cssClass="errors" />
+        </p>
+
+        <p class="container">
+            <form:label class="form-label" path="longitude"  cssErrorClass="form-label errors">Longitude</form:label>
+            <form:input class="input-text" path="longitude"  />
+            <form:errors path="longitude" cssClass="errors" />
         </p>
 
         <p class="container">

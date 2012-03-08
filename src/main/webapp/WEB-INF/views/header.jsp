@@ -4,6 +4,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet"  href="<c:url value="/resources/main.css" />" type="text/css" >
     <title>Etherton One Name Study - A worldwide study of the Etherton surname</title>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="<c:url value="/resources/js/jquery-1.5.1.min.js" /> "></script>
+    <script type="text/javascript" src="<c:url value="/resources/js/jquery-ui-1.8.14.custom.min.js" /> "></script>
+    <script type="text/javascript" src="<c:url value="/resources/js/main.js" /> "></script>
+
 </head>
 <body style="background-color:ghostwhite;margin:0">
 <div id="container" style="width:100%">
