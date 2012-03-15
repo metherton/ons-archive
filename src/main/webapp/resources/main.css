@@ -111,6 +111,11 @@ body {
     font-size: 0.8em;
 }
 
+.input-text-long {
+    width: 30em;
+    font-size: 0.8em;
+}
+
 .errors {
     color: red;
     font-size: 0.8em;

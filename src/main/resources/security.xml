@@ -7,10 +7,10 @@
 
  
   <http auto-config='true'>
-    <intercept-url pattern="/*/new" access="ROLE_ADMIN" />
-    <intercept-url pattern="/*/*/edit" access="ROLE_ADMIN" />
-    <intercept-url pattern="/*/*/delete" access="ROLE_ADMIN" />    
-  </http>  
+    <intercept-url pattern="/*/*/edit" access="ROLE_ADMIN"  />
+    <intercept-url pattern="/*/new" access="ROLE_ADMIN"  />
+    <intercept-url pattern="/*/*/delete" access="ROLE_ADMIN" />
+  </http>
    
   <authentication-manager>
     <authentication-provider>

@@ -63,6 +63,12 @@
         </p>
 
         <p class="container">
+            <form:label class="form-label" path="address"  cssErrorClass="form-label errors">Address</form:label>
+            <form:input class="input-text-long" path="address"  />
+            <form:errors path="address" cssClass="errors" />
+        </p>
+
+        <p class="container">
             <div id="map_canvas" style="width: 300px; height: 300px;"></div>
         </p>
 

@@ -56,6 +56,16 @@ public class Person {
     @Column(name="longitude", columnDefinition = "double")
     private double longitude;
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Column(name="address", columnDefinition = "char")
+    private String address;
 
 
     public Person() {
