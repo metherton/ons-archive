@@ -1,13 +1,13 @@
 package com.ethertons.domain;
 
+import java.util.List;
+
 import com.ethertons.persistence.ConfigDao;
 import com.ethertons.persistence.PersonDao;
 import com.ethertons.persistence.SurnameDao;
 import com.ethertons.persistence.TreeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class OnsServiceImpl implements OnsService {
@@ -74,6 +74,16 @@ public class OnsServiceImpl implements OnsService {
     @Override
     public List<Tree> findAllTrees() {
         return treeDao.findAllTrees();
+    }
+
+    @Override
+    public FamilyTree findFamilyTreeFor(int personId) {
+        FamilyTree familyTree = new FamilyTree();
+        familyTree.setParents(personDao.findParentsFor(personId));
+        familyTree.setSiblings(personDao.findSiblingsFor(personId));
+        Person person = personDao.findPersonWith(personId);
+        familyTree.setChildren(personDao.findChildrenFor(person));
+        return familyTree;
     }
 
     @Override

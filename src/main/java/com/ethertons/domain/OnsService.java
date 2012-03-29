@@ -26,4 +26,6 @@ public interface OnsService {
     Tree findTreeWith(int treeId);
 
     List<Tree> findAllTrees();
+
+    FamilyTree findFamilyTreeFor(int personId);
 }

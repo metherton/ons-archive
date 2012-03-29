@@ -1,5 +1,8 @@
 package com.ethertons.web;
 
+import java.util.List;
+
+import com.ethertons.domain.FamilyTree;
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.Person;
 import com.ethertons.domain.Surname;
@@ -9,9 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.text.AttributedString;
-import java.util.List;
 
 @Controller
 public class OnsController {
@@ -63,5 +63,12 @@ public class OnsController {
         List<Surname> surnames = onsService.findAllSurnames();
         model.addAttribute("surnames", surnames);
         return "surnames/list";
+    }
+
+    @RequestMapping(value="/trees/{personId}/view")
+    public String showFamilyTree(@PathVariable("personId") int personId, Model model) {
+        FamilyTree familyTree = onsService.findFamilyTreeFor(personId);
+        model.addAttribute("familyTree", familyTree);
+        return "trees/view";
     }
 }

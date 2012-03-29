@@ -1,38 +1,28 @@
 package com.ethertons.persistence;
 
-import com.ethertons.domain.OnsService;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+
+import java.util.List;
+
 import com.ethertons.domain.Person;
 import com.ethertons.domain.Surname;
 import com.ethertons.domain.Tree;
-import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.Resource;
-
-import java.util.List;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
 
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class})
 @ContextConfiguration(locations = {"classpath:applicationContext-test.xml"})
@@ -138,5 +128,17 @@ public class OnsIntegrationTests {
     public void retrieveAllTrees() throws Exception {
         List<Tree> trees = treeDao.findAllTrees();
         assertThat(trees.size(), is(greaterThan(0)));
+    }
+    
+    @Test
+    public void retrieveFamilyTree() throws Exception {
+        List<Person> parents = personDao.findParentsFor(172);
+        assertThat(parents.size(), is(2));
+        List<Person> siblings = personDao.findSiblingsFor(172);
+        assertThat(siblings.size(), is(3));
+        Person father = personDao.findPersonWith(172);
+        Person mother = personDao.findPersonWith(174);
+        List<Person> children = personDao.findChildrenFor(father);
+        assertThat(children.size(), Matchers.is(1));
     }
 }

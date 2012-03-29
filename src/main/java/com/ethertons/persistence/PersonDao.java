@@ -1,8 +1,8 @@
 package com.ethertons.persistence;
 
-import com.ethertons.domain.Person;
-
 import java.util.List;
+
+import com.ethertons.domain.Person;
 
 public interface PersonDao {
     Person findPersonWith(int personId);
@@ -14,4 +14,10 @@ public interface PersonDao {
     List<Person> findAllFemalePersons();
 
     List<Person> findAllPersons();
+
+    List<Person> findParentsFor(int personId);
+
+    List<Person> findSiblingsFor(int personId);
+
+    List<Person> findChildrenFor(Person father);
 }

@@ -1,22 +1,24 @@
 package com.ethertons.web;
 
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.OnsServiceImpl;
 import com.ethertons.domain.Person;
 import com.ethertons.domain.Surname;
 import com.ethertons.domain.Tree;
+import com.ethertons.domain.FamilyTree;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.ui.Model;
-
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.easymock.EasyMock.*;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 
 public class OnsControllerTest {
 
@@ -90,6 +92,20 @@ public class OnsControllerTest {
         
     }
 
+    @Test
+    public void familyTreeShouldBeShown() throws Exception {
+        FamilyTree familyTree = new FamilyTree();
+        expect(onsService.findFamilyTreeFor(1)).andReturn(familyTree);
+        expect(model.addAttribute("familyTree", familyTree)).andReturn(model);
+        
+        replay(model, onsService);
+        String view = onsController.showFamilyTree(1, model);
+        verify(model, onsService);
+        
+        assertThat(view, is("trees/1/view"));
+    }
+    
+    
     @Test
     public void listOfTreesShouldBeShown() throws Exception {
         List<Tree> trees = new ArrayList<Tree>();
