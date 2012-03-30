@@ -154,7 +154,7 @@ public class OnsServiceImplTest {
         expect(personDao.findChildrenFor(father)).andReturn(new ArrayList<Person>());
         
         replay(personDao);
-        onsService.findFamilyTreeFor(1);
+        onsService.findRelativesFor(1);
         verify(personDao);
 
     }

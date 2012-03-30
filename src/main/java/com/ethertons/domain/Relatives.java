@@ -2,7 +2,7 @@ package com.ethertons.domain;
 
 import java.util.List;
 
-public class FamilyTree {
+public class Relatives {
 
     private List<Person> parents;
     private List<Person> siblings;

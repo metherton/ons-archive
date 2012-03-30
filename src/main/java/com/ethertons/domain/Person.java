@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
+
 @Entity
 @Table(name="person")
 public class Person {
@@ -76,6 +77,9 @@ public class Person {
         id = builder.personId;
         firstName = builder.firstName;
         surname = builder.surname;
+        father = builder.father;
+        mother = builder.mother;
+        fullname = builder.fullname;
     }
 
     public boolean isNew() {
@@ -137,6 +141,8 @@ public class Person {
         this.fullname = fullname;
     }
 
+    
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -181,11 +187,22 @@ public class Person {
         this.longitude = longitude;
     }
 
+    public int getFatherId() {
+        return father != null ? father.getId() : 0;
+    }
+
+    public int getMotherId() {
+        return mother != null ? mother.getId() : 0;
+    }
+
     public static class Builder {
 
         private final int personId;
         private String firstName;
         private Surname surname;
+        private Person father;
+        private Person mother;
+        private String fullname;
 
 
         public Builder(int personId) {
@@ -203,8 +220,23 @@ public class Person {
             return this;
         }
 
+        public Builder father(Person father) {
+            this.father = father;
+            return this;
+        }
+
+        public Builder mother(Person mother) {
+            this.mother = mother;
+            return this;
+        }
+
         public Person build() {
             return new Person(this);
+        }
+
+        public Builder fullname(String fullname) {
+            this.fullname = fullname;
+            return this;
         }
     }
 }

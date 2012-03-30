@@ -77,13 +77,13 @@ public class OnsServiceImpl implements OnsService {
     }
 
     @Override
-    public FamilyTree findFamilyTreeFor(int personId) {
-        FamilyTree familyTree = new FamilyTree();
-        familyTree.setParents(personDao.findParentsFor(personId));
-        familyTree.setSiblings(personDao.findSiblingsFor(personId));
+    public Relatives findRelativesFor(int personId) {
+        Relatives relatives = new Relatives();
+        relatives.setParents(personDao.findParentsFor(personId));
+        relatives.setSiblings(personDao.findSiblingsFor(personId));
         Person person = personDao.findPersonWith(personId);
-        familyTree.setChildren(personDao.findChildrenFor(person));
-        return familyTree;
+        relatives.setChildren(personDao.findChildrenFor(person));
+        return relatives;
     }
 
     @Override

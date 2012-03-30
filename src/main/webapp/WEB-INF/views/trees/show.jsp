@@ -9,7 +9,7 @@
     <div class="innercontentmiddlebody">
         <div id="description">${tree.description}</div>
         <div id="commonAncestor">${tree.person.fullname}</div>
-        <div><a href="/trees/${tree.person.id}/view">View tree</a></div>
+        <div><a href="<c:url value="/trees/${tree.person.id}/view" />">View tree</a></div>
     </div>
 </div>
 <%@ include file="/WEB-INF/views/footer.jsp" %>

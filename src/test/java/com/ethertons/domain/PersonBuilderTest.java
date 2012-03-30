@@ -13,9 +13,18 @@ public class PersonBuilderTest {
         Surname surname = new Surname();
         surname.setName("Etherton");
 
-        Person builtPerson = new Person.Builder(1).firstName("Martin").surname(surname).build();
+        Person father = new Person();
+        father.setId(42);
+        
+        Person mother = new Person();
+        mother.setId(43);
+        
+        Person builtPerson = new Person.Builder(1).firstName("Martin").surname(surname).father(father).mother(mother).fullname("Martin Etherton").build();
         assertThat(builtPerson.getId(), is(1));
         assertThat(builtPerson.getFirstName(), is("Martin"));
         assertThat(builtPerson.getSurname().getName(), is("Etherton"));
+        assertThat(builtPerson.getFather().getId(), is(42));
+        assertThat(builtPerson.getMother().getId(), is(43));
+        assertThat(builtPerson.getFullname(), is("Martin Etherton"));
     }
 }

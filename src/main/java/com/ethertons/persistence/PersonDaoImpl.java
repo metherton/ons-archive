@@ -21,7 +21,8 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
 
     @Override
     public Person findPersonWith(int personId) {
-        return (Person)currentSession().get(Person.class, personId);
+        Person person = (Person)currentSession().get(Person.class, personId);
+        return person != null ? person : new Person.Builder(0).fullname("Unknown").build();
     }
 
     @Override
@@ -52,8 +53,9 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
     public List<Person> findParentsFor(int personId) {
         Person person = this.findPersonWith(personId);
         List<Person> parents = new ArrayList<Person>();
-        parents.add((Person)this.findPersonWith(person.getFather().getId()));
-        parents.add((Person)this.findPersonWith(person.getMother().getId()));
+        //here add blank if not found
+        parents.add((Person)this.findPersonWith(person.getFatherId()));
+        parents.add((Person)this.findPersonWith(person.getMotherId()));
         return parents;
     }
 
@@ -61,7 +63,13 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
     public List<Person> findSiblingsFor(int personId) {
         Person person = this.findPersonWith(personId);
         List<Person> siblings = this.findChildrenFor(person.getFather());
-        return siblings;
+        if (siblings.size() > 0) {
+            return siblings;
+        } else {
+            List<Person> personList = new ArrayList<Person>();
+            personList.add(person);
+            return personList;
+        }
     }
 
     @Override
