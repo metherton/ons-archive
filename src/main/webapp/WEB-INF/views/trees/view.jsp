@@ -1,18 +1,27 @@
 <%@ include file="/WEB-INF/views/includes.jsp" %>
 <%@ include file="/WEB-INF/views/header.jsp" %>
-<div id="firstGeneration">
-<c:forEach var="person" items="${relatives.parents}" >
-    <div id="${person.id}">${person.fullname}</div>
+<div class="generation" id="firstGeneration">
+<c:forEach var="person" items="${relatives.parents}" varStatus="personLoopCount" >
+    <c:if test="${personLoopCount.count > 1}">
+        <div class="marriagejoin">&nbsp;</div>
+    </c:if>
+    <div class="treenode" id="${person.id}"><div class="fullname">${person.fullname}</div></div>
 </c:forEach>
 </div>
-<div id="secondGeneration">
-<c:forEach var="person" items="${relatives.siblings}" >
-    <div id="${person.id}">${person.fullname}</div>
+<div class="generation" id="secondGeneration">
+<c:forEach var="person" items="${relatives.siblings}" varStatus="personLoopCount" >
+    <c:if test="${personLoopCount.count > 1}">
+        <div class="nodespace"></div>
+    </c:if>
+    <div class="treenode" id="${person.id}"><div class="fullname">${person.fullname}</div></div>
 </c:forEach>
 </div>
-<div id="thirdGeneration">
-<c:forEach var="person" items="${relatives.children}" >
-    <div id="${person.id}">${person.fullname}</div>
+<div class="generation" id="thirdGeneration">
+<c:forEach var="person" items="${relatives.children}"  varStatus="personLoopCount" >
+    <c:if test="${personLoopCount.count > 1}">
+        <div class="nodespace"></div>
+    </c:if>
+    <div class="treenode" id="${person.id}"><div class="fullname">${person.fullname}</div></div>
 </c:forEach>
 </div>
 <%@ include file="/WEB-INF/views/footer.jsp" %>

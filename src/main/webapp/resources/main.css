@@ -91,6 +91,35 @@ body {
 .innercontentmiddlebody {
 }
 
+.treenode {
+    float: left;
+    width: 10em;
+    background-color: #f0fff0;
+    border-style: solid;
+    border-width: thin;
+}
+
+.marriagejoin {
+    float: left;
+    width: 5em;
+    background-image: dot.jpg; /* 1x1 px, whatever color u want */
+    background-repeat: repeat-x;
+    background-position: 0% 50%;
+
+}
+
+.nodespace {
+    float: left;
+    width: 5em;
+}
+
+.fullname {
+    font-size: 0.7em;
+    font-weight: bold;
+}
+.generation {
+    clear: both;
+}
 .container {
     width: 100%;
 }
