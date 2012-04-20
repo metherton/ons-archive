@@ -77,13 +77,8 @@ public class OnsServiceImpl implements OnsService {
     }
 
     @Override
-    public Relatives findRelativesFor(int personId) {
-        Relatives relatives = new Relatives();
-        relatives.setParents(personDao.findParentsFor(personId));
-        relatives.setSiblings(personDao.findSiblingsFor(personId));
-        Person person = personDao.findPersonWith(personId);
-        relatives.setChildren(personDao.findChildrenFor(person));
-        return relatives;
+    public ImmediateFamily findRelativesFor(int personId) {
+        return FamilyFactory.buildImmediateFamilyFor(personId, personDao);
     }
 
     @Override

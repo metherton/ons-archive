@@ -2,7 +2,7 @@ package com.ethertons.web;
 
 import java.util.List;
 
-import com.ethertons.domain.Relatives;
+import com.ethertons.domain.ImmediateFamily;
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.Person;
 import com.ethertons.domain.Surname;
@@ -67,8 +67,8 @@ public class OnsController {
 
     @RequestMapping(value="/trees/{personId}/view")
     public String showFamilyTree(@PathVariable("personId") int personId, Model model) {
-        Relatives relatives = onsService.findRelativesFor(personId);
-        model.addAttribute("relatives", relatives);
+        ImmediateFamily immediateFamily = onsService.findRelativesFor(personId);
+        model.addAttribute("immediateFamily", immediateFamily);
         return "trees/view";
     }
 }

@@ -12,7 +12,7 @@ import java.util.List;
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.OnsServiceImpl;
 import com.ethertons.domain.Person;
-import com.ethertons.domain.Relatives;
+import com.ethertons.domain.ImmediateFamily;
 import com.ethertons.domain.Surname;
 import com.ethertons.domain.Tree;
 import org.easymock.EasyMock;
@@ -94,9 +94,9 @@ public class OnsControllerTest {
 
     @Test
     public void familyTreeShouldBeShown() throws Exception {
-        Relatives relatives = new Relatives();
-        expect(onsService.findRelativesFor(1)).andReturn(relatives);
-        expect(model.addAttribute("relatives", relatives)).andReturn(model);
+        ImmediateFamily immediateFamily = new ImmediateFamily();
+        expect(onsService.findRelativesFor(1)).andReturn(immediateFamily);
+        expect(model.addAttribute("immediateFamily", immediateFamily)).andReturn(model);
         
         replay(model, onsService);
         String view = onsController.showFamilyTree(1, model);

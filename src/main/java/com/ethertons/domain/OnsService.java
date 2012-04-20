@@ -27,5 +27,5 @@ public interface OnsService {
 
     List<Tree> findAllTrees();
 
-    Relatives findRelativesFor(int personId);
+    ImmediateFamily findRelativesFor(int personId);
 }

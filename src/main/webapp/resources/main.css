@@ -102,15 +102,17 @@ body {
 .marriagejoin {
     float: left;
     width: 5em;
-    background-image: dot.jpg; /* 1x1 px, whatever color u want */
-    background-repeat: repeat-x;
-    background-position: 0% 50%;
-
+    border-top: thin solid;
+    border-bottom: thin solid;
+    height: 0.2em;
+    position: relative;
+    top: 0.8em;
 }
 
 .nodespace {
     float: left;
     width: 5em;
+    height: 1em;
 }
 
 .fullname {
