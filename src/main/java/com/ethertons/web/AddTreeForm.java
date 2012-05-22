@@ -23,21 +23,15 @@ public class AddTreeForm extends TreeForm {
         super(onsService);
     }
 
-
-
     @RequestMapping(method = RequestMethod.GET)
     public String setUpForm(Model model) {
-        model.addAttribute("tree", new Tree());
-        return "trees/form";
+        Tree tree = new Tree();
+        return addTreeToModelAndReturnView(model, tree);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public String processSubmit(@ModelAttribute("tree") @Valid Tree tree, BindingResult result) {
-        if (result.hasErrors()) {
-            return "trees/form";
-        } else {
-            onsService.storeTree(tree);
-            return "redirect:/trees/" + tree.getId();
-        }
+        return saveTreeAndReturnTreeView(tree, result);
     }
+
 }

@@ -9,12 +9,14 @@ import static org.junit.Assert.assertThat;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ethertons.domain.ImmediateFamily;
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.OnsServiceImpl;
 import com.ethertons.domain.Person;
-import com.ethertons.domain.ImmediateFamily;
 import com.ethertons.domain.Surname;
 import com.ethertons.domain.Tree;
+import com.ethertons.persistence.PersonDao;
+import com.ethertons.persistence.PersonDaoImpl;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
@@ -94,15 +96,18 @@ public class OnsControllerTest {
 
     @Test
     public void familyTreeShouldBeShown() throws Exception {
-        ImmediateFamily immediateFamily = new ImmediateFamily();
+        PersonDao mockPersonDao = EasyMock.createMock(PersonDaoImpl.class);
+        ImmediateFamily immediateFamily = ImmediateFamily.build(1, mockPersonDao);
         expect(onsService.findRelativesFor(1)).andReturn(immediateFamily);
+        expect(model.addAttribute("activePersonId", 1)).andReturn(model);
         expect(model.addAttribute("immediateFamily", immediateFamily)).andReturn(model);
+        expect(model.addAttribute("childPositioningOffset", 0)).andReturn(model);
         
         replay(model, onsService);
         String view = onsController.showFamilyTree(1, model);
         verify(model, onsService);
         
-        assertThat(view, is("trees/1/view"));
+        assertThat(view, is("trees/view"));
     }
     
     

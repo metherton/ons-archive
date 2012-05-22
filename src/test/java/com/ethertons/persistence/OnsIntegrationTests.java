@@ -136,6 +136,8 @@ public class OnsIntegrationTests {
         assertThat(parents.size(), is(2));
         List<Person> siblings = personDao.findSiblingsFor(172);
         assertThat(siblings.size(), is(3));
+        List<Person> wives = personDao.findWivesFor(172);
+        assertThat(wives.size(), Matchers.is(1));
         Person father = personDao.findPersonWith(172);
         Person mother = personDao.findPersonWith(174);
         List<Person> children = personDao.findChildrenFor(father);

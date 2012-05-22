@@ -92,11 +92,10 @@ body {
 }
 
 .treenode {
-    float: left;
+    position: absolute;
+    height: 4em;
     width: 10em;
-    background-color: #f0fff0;
-    border-style: solid;
-    border-width: thin;
+    padding: 2em;
 }
 
 .marriagejoin {
@@ -116,8 +115,11 @@ body {
 }
 
 .fullname {
-    font-size: 0.7em;
-    font-weight: bold;
+    background-color: #f0fff0;
+    border-style: solid;
+    border-width: thin;
+    height: 4em;
+    width: 10em;
 }
 .generation {
     clear: both;
@@ -126,10 +128,58 @@ body {
     width: 100%;
 }
 
+.tree-container {
+    height: 58em;
+    width: 150em;
+    overflow: visible;
+    position: relative;
+    font-size: 0.7em;
+    font-weight: bold;
+}
+
 .form-label {
     display: block;
     width: 20em;
     font-size: 0.8em;
+}
+
+.mline {
+    position: absolute;
+    border-bottom: 0.1em solid #000000;
+    border-top: 0.1em solid #000000;
+    height: 0.4em;
+    display: block;
+}
+
+div.treenode .pline {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+div.treenode .pline .l1 {
+    width: 0.1em;
+    position: absolute;
+    background-color: black;
+    height: 50%;
+    top: -4em;
+}
+
+div.treenode .pline .l2 {
+    width: 0.1em;
+    position: absolute;
+    background-color: black;
+    height: 0.1em;
+}
+
+div.treenode .pline .l3 {
+    width: 0.1em;
+    position: absolute;
+    background-color: black;
+    height: 25%;
+    left: 50%;
 }
 
 .input-text {
@@ -147,7 +197,17 @@ body {
     font-size: 0.8em;
 }
 
+label {
+    font-size: 0.8em;
+}
+
+
 .errors {
     color: red;
     font-size: 0.8em;
 }
+
+a.treenode-link:link {text-decoration:none;}
+a.treenode-link:visited {text-decoration:none;}
+a.treenode-link:hover {text-decoration:underline;}
+a.treenode-link :active {text-decoration:underline;}

@@ -195,6 +195,23 @@ public class Person {
         return mother != null ? mother.getId() : 0;
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", surname=" + surname +
+                ", father=" + father +
+                ", mother=" + mother +
+                ", gender=" + gender +
+                ", fullname='" + fullname + '\'' +
+                ", birthDate=" + birthDate +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", address='" + address + '\'' +
+                '}';
+    }
+
     public static class Builder {
 
         private final int personId;

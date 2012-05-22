@@ -1,13 +1,13 @@
 package com.ethertons.domain;
 
 import static org.easymock.EasyMock.createMock;
-import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.ethertons.persistence.PersonDao;
-import org.easymock.EasyMock;
 import org.junit.Test;
 
 public class FamilyFactoryTest {
@@ -23,13 +23,9 @@ public class FamilyFactoryTest {
         List<Person> persons = new ArrayList<Person>();
         persons.add(person);
         personDao = createMock(PersonDao.class);
-        expect(personDao.findParentsFor(personId)).andReturn(persons);
-        expect(personDao.findSiblingsFor(personId)).andReturn(persons);
-        expect(personDao.findPersonWith(personId)).andReturn(person);
-        expect(personDao.findChildrenFor(person)).andReturn(persons);
-        EasyMock.replay(personDao);
+        replay(personDao);
         ImmediateFamily immediateFamily = FamilyFactory.buildImmediateFamilyFor(personId, personDao);
-        EasyMock.verify(personDao);
+        verify(personDao);
         
     }
 }

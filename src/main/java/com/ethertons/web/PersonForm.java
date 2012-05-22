@@ -1,8 +1,5 @@
 package com.ethertons.web;
 
-import java.text.DateFormat;
-import java.text.FieldPosition;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -13,6 +10,8 @@ import com.ethertons.domain.OnsService;
 import com.ethertons.domain.Person;
 import com.ethertons.domain.Surname;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,6 +19,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 public class PersonForm extends OnsForm {
 
     protected static final String PERSONS_FORM = "persons/form";
+
+    public PersonForm(OnsService onsService) {
+        super(onsService);
+    }
 
     @InitBinder
     public void initBinder(WebDataBinder dataBinder) {
@@ -55,7 +58,18 @@ public class PersonForm extends OnsForm {
         return genderOptions;
     }
 
-    public PersonForm(OnsService onsService) {
-        super(onsService);
+    protected String addPersonToModelAndReturnView(Model model, Person person) {
+        model.addAttribute("person", person);
+        return "persons/form";
+    }
+
+    protected String savePersonAndReturnPersonView(Person person, BindingResult result) {
+        if (result.hasErrors()) {
+            return PERSONS_FORM;
+        } else {
+            person.setFullname(person.getFirstName() + " " + person.getSurname().getName());
+            this.onsService.storePerson(person);
+            return "redirect:/persons/" + person.getId();
+        }
     }
 }

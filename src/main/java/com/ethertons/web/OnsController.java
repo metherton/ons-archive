@@ -68,7 +68,9 @@ public class OnsController {
     @RequestMapping(value="/trees/{personId}/view")
     public String showFamilyTree(@PathVariable("personId") int personId, Model model) {
         ImmediateFamily immediateFamily = onsService.findRelativesFor(personId);
+        model.addAttribute("activePersonId", personId);
         model.addAttribute("immediateFamily", immediateFamily);
+        model.addAttribute("childPositioningOffset", immediateFamily.findSiblingPosition(personId));
         return "trees/view";
     }
 }

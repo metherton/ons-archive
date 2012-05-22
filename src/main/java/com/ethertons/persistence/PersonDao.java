@@ -20,4 +20,10 @@ public interface PersonDao {
     List<Person> findSiblingsFor(int personId);
 
     List<Person> findChildrenFor(Person father);
+
+    List<Person> findWivesFor(int personId);
+
+    List<Person> findChildrenForCouple(Person person, Person wife);
+
+    List<Person> findSpousesFor(int activePersonId);
 }

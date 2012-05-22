@@ -27,18 +27,12 @@ public class EditTreeForm extends TreeForm {
     @RequestMapping(method = RequestMethod.GET)
     public String setUpForm(@PathVariable("treeId") int treeId, Model model) {
         Tree tree = onsService.findTreeWith(treeId);
-        model.addAttribute("tree", tree);
-        return "trees/form";
+        return addTreeToModelAndReturnView(model, tree);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     public String processSubmit(@ModelAttribute("tree") @Valid Tree tree, BindingResult result) {
-        if (result.hasErrors()) {
-            return "trees/form";
-        } else {
-            this.onsService.storeTree(tree);
-            return "redirect:/trees/" + tree.getId();
-        }
+        return saveTreeAndReturnTreeView(tree, result);
     }
 
 }

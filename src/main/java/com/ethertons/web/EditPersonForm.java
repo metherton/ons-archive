@@ -24,24 +24,15 @@ public class EditPersonForm extends PersonForm {
         super(onsService);
     }
 
-
-
     @RequestMapping(method = RequestMethod.GET)
     public String setUpForm(@PathVariable("personId") int personId, Model model) {
         Person person = onsService.findPersonWith(personId);
-        model.addAttribute("person", person);
-        return "persons/form";
+        return addPersonToModelAndReturnView(model, person);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     public String processSubmit(@ModelAttribute("person") @Valid Person person, BindingResult result) {
-        if (result.hasErrors()) {
-            return PERSONS_FORM;
-        } else {
-            person.setFullname(person.getFirstName() + " " + person.getSurname().getName());
-            this.onsService.storePerson(person);
-            return "redirect:/persons/" + person.getId();
-        }
+        return savePersonAndReturnPersonView(person, result);
     }
 
 }

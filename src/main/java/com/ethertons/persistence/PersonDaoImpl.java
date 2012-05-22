@@ -1,10 +1,13 @@
 package com.ethertons.persistence;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.ethertons.domain.Person;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,6 +37,7 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
     public List<Person> findAllMalePersons() {
         return (List<Person>)currentSession().createCriteria(Person.class).
                                                 add(Restrictions.eq("gender", true)).
+                                                addOrder(Order.asc("birthDate")).
                                                 list();
     }
 
@@ -41,12 +45,13 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
     public List<Person> findAllFemalePersons() {
         return (List<Person>)currentSession().createCriteria(Person.class).
                 add(Restrictions.eq("gender", false)).
+                addOrder(Order.asc("birthDate")).
                 list();
     }
 
     @Override
     public List<Person> findAllPersons() {
-        return (List<Person>)currentSession().createCriteria(Person.class).list();
+        return (List<Person>)currentSession().createCriteria(Person.class).addOrder(Order.asc("birthDate")).list();
     }
 
     @Override
@@ -62,7 +67,7 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
     @Override
     public List<Person> findSiblingsFor(int personId) {
         Person person = this.findPersonWith(personId);
-        List<Person> siblings = this.findChildrenFor(person.getFather());
+        List<Person> siblings = this.findChildrenForCouple(person.getFather(), person.getMother());
         if (siblings.size() > 0) {
             return siblings;
         } else {
@@ -74,7 +79,65 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
 
     @Override
     public List<Person> findChildrenFor(Person father) {
-        return (List<Person>)currentSession().createCriteria(Person.class).add(Restrictions.eq("father", father)).list();
+        return (List<Person>)currentSession().createCriteria(Person.class).add(Restrictions.eq("father", father)).addOrder(Order.asc("birthDate")).list();
+    }
+
+    @Override
+    public List<Person> findWivesFor(int personId) {
+        Person person = this.findPersonWith(personId);
+        List<Person> children = (List<Person>)currentSession().createCriteria(Person.class).add(Restrictions.eq("father", person)).addOrder(Order.asc("birthDate")).list();
+        List<Person> wives = new ArrayList<Person>();
+        Set<Integer> wifeIds = new HashSet<Integer>();
+        for (Person child : children) {
+            if (child.getMotherId() != 0) {
+                wifeIds.add(child.getMotherId());
+            }
+        }
+        for (int wifeId : wifeIds) {
+            Person wife = this.findPersonWith(wifeId);
+            wives.add(wife);
+        }
+        return wives;
+    }
+
+    @Override
+    public List<Person> findChildrenForCouple(Person person, Person wife) {
+        return (List<Person>)currentSession().createCriteria(Person.class).add(Restrictions.eq("father", person)).add(Restrictions.eq("mother", wife)).addOrder(Order.asc("birthDate")).list();
+    }
+
+    @Override
+    public List<Person> findSpousesFor(int personId) {
+        Person person = this.findPersonWith(personId);
+        List<Person> children;
+        if (person.getGender()) {
+            children = (List<Person>)currentSession().createCriteria(Person.class).add(Restrictions.eq("father", person)).addOrder(Order.asc("birthDate")).list();
+        } else {
+            children = (List<Person>)currentSession().createCriteria(Person.class).add(Restrictions.eq("mother", person)).addOrder(Order.asc("birthDate")).list();
+        }
+        List<Person> spouses = new ArrayList<Person>();
+        List<Integer> spouseIds = new ArrayList<Integer>();
+        for (Person child : children) {
+            if (person.getGender()) {
+                if (child.getMotherId() != 0) {
+                    if (!spouseIds.contains(child.getMotherId())) {
+                        spouseIds.add(child.getMotherId());
+                    }
+                }
+            } else {
+                if (child.getFatherId() != 0) {
+                    if (!spouseIds.contains(child.getFatherId())) {
+                        spouseIds.add(child.getFatherId());
+                    }
+                }
+            }
+        }
+        System.out.println("spouseids" + spouseIds);
+        for (int spouseId : spouseIds) {
+            Person spouse = this.findPersonWith(spouseId);
+            spouses.add(spouse);
+        }
+        System.out.println(spouses);
+        return spouses;
     }
 
 }
