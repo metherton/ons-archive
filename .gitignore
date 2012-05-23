@@ -3,3 +3,4 @@ src/test/resources/db.properties
 .idea/*
 *.iml
 target/*
+lib/*

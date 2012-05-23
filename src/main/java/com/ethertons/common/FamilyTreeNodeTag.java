@@ -12,12 +12,13 @@ import com.ethertons.domain.Person;
 
 public class FamilyTreeNodeTag extends SimpleTagSupport {
 
+    private static final int FAMILY_NODE_WIDTH_EM = 14;
     private ImmediateFamily immediateFamily;
 
     static class ParentNodeConverter {
         public static FamilyTreeNode convert(int parentCounter, Person person) {
             FamilyTreeNode familyTreeNode = new FamilyTreeNode();
-            familyTreeNode.setLeft(String.format("%d", (parentCounter)*14));
+            familyTreeNode.setLeft(String.format("%d", (parentCounter)* FAMILY_NODE_WIDTH_EM));
             familyTreeNode.setTop("0");
             familyTreeNode.setId(format("%d", person.getId()));
             familyTreeNode.setFullname(person.getFullname());
@@ -38,12 +39,12 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
         public static FamilyTreeNode convert(int siblingCounter, Person person, int activePersonPosition, int afterActivePersonOffset) {
             FamilyTreeNode familyTreeNode = new FamilyTreeNode();
             if (siblingCounter <= activePersonPosition) {
-                familyTreeNode.setLeft(String.format("%d", (siblingCounter) * 14));
+                familyTreeNode.setLeft(String.format("%d", (siblingCounter) * FAMILY_NODE_WIDTH_EM));
                 familyTreeNode.setTop("8");
                 familyTreeNode.setId(format("%d", person.getId()));
                 familyTreeNode.setFullname(person.getFullname());
             } else {
-                familyTreeNode.setLeft(String.format("%d", (siblingCounter+afterActivePersonOffset)*14));
+                familyTreeNode.setLeft(String.format("%d", (siblingCounter+afterActivePersonOffset)*FAMILY_NODE_WIDTH_EM));
                 familyTreeNode.setTop("8");
                 familyTreeNode.setId(format("%d", person.getId()));
                 familyTreeNode.setFullname(person.getFullname());
@@ -93,7 +94,7 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
 
             FamilyTreeNode wifeFamilyTreeNode = new FamilyTreeNode();
             if (wifeNo == 1) {
-                wifeFamilyTreeNode.setLeft(String.format("%d", (activePersonPosition + wifeNo)*14));
+                wifeFamilyTreeNode.setLeft(String.format("%d", (activePersonPosition + wifeNo)*FAMILY_NODE_WIDTH_EM));
                 wifeFamilyTreeNode.setTop("8");
                 wifeFamilyTreeNode.setId(format("%d", wife.getId()));
                 wifeFamilyTreeNode.setFullname(wife.getFullname());
@@ -115,7 +116,7 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
                 while (children.hasNext()) {
                     Person child = (Person) children.next();
                     FamilyTreeNode familyTreeNodeChild = new FamilyTreeNode();
-                    familyTreeNodeChild.setLeft(String.format("%d", (activePersonPosition + (childCount-1)) * 14));
+                    familyTreeNodeChild.setLeft(String.format("%d", (activePersonPosition + (childCount-1)) * FAMILY_NODE_WIDTH_EM));
                     familyTreeNodeChild.setTop("16");
                     familyTreeNodeChild.setId(format("%d", child.getId()));
                     familyTreeNodeChild.setFullname(child.getFullname());
@@ -147,14 +148,14 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
             } else {
 
                 wifeFamilyTreeNode.setLeft(String.format("%d",
-                                                    (activePersonPosition + wifeNo + afterActivePersonOffset) * 14 ) );
+                                                    (activePersonPosition + wifeNo + afterActivePersonOffset) * FAMILY_NODE_WIDTH_EM ) );
                 wifeFamilyTreeNode.setTop("8");
                 wifeFamilyTreeNode.setId(format("%d", wife.getId()));
                 wifeFamilyTreeNode.setFullname(wife.getFullname());
 
                 wifeFamilyTreeNode.setMlineDisplay("block");
-                wifeFamilyTreeNode.setMlineLeft(String.format("-%d",( (activePersonPosition + wifeNo + afterActivePersonOffset) * 14 ) - (((activePersonPosition + wifeNo - 1)*14) + 12 ) ));
-                wifeFamilyTreeNode.setMlineWidth(String.format("%d",((activePersonPosition + wifeNo + afterActivePersonOffset) * 14 ) - ((activePersonPosition + wifeNo - 1)*14) - 10 ));
+                wifeFamilyTreeNode.setMlineLeft(String.format("-%d",( (activePersonPosition + wifeNo + afterActivePersonOffset) * FAMILY_NODE_WIDTH_EM ) - (((activePersonPosition + wifeNo - 1)*14) + 12 ) ));
+                wifeFamilyTreeNode.setMlineWidth(String.format("%d",((activePersonPosition + wifeNo + afterActivePersonOffset) * FAMILY_NODE_WIDTH_EM ) - ((activePersonPosition + wifeNo - 1)*14) - 10 ));
                 wifeFamilyTreeNode.setMlineTop("3.8");
                 wifeFamilyTreeNode.setL1PlineDisplay("none");
                 wifeFamilyTreeNode.setL3PlineDisplay("none");
@@ -170,7 +171,7 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
                 while (children.hasNext()) {
                     Person child = (Person) children.next();
                     FamilyTreeNode familyTreeNodeChild = new FamilyTreeNode();
-                    familyTreeNodeChild.setLeft(String.format("%d", (activePersonPosition + wifeNo + afterActivePersonOffset + childCount-1) * 14));
+                    familyTreeNodeChild.setLeft(String.format("%d", (activePersonPosition + wifeNo + afterActivePersonOffset + childCount-1) * FAMILY_NODE_WIDTH_EM));
                     familyTreeNodeChild.setTop("16");
                     familyTreeNodeChild.setId(format("%d", child.getId()));
                     familyTreeNodeChild.setFullname(child.getFullname());
@@ -273,6 +274,10 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
             }
             return offset;
         }
+    }
+
+    public void setImmediateFamily(ImmediateFamily immediateFamily) {
+        this.immediateFamily = immediateFamily;
     }
 
 }
