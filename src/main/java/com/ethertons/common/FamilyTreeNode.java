@@ -10,6 +10,26 @@ public class FamilyTreeNode {
     private String mlineTop;
     private String mlineLeft;
 
+    public FamilyTreeNode(Wife builder) {
+        left = builder.left;
+        top = builder.top;
+        id = builder.id;
+        fullname = builder.fullname;
+        mlineDisplay = builder.mlineDisplay;
+        mlineTop = builder.mlineTop;
+        mlineLeft = builder.mlineLeft;
+    }
+
+    public FamilyTreeNode(Child builder) {
+        left = builder.left;
+        top = builder.top;
+        id = builder.id;
+        fullname = builder.fullname;
+        mlineDisplay = builder.mlineDisplay;
+        mlineTop = builder.mlineTop;
+        mlineLeft = builder.mlineLeft;
+    }
+
     public String getMlineWidth() {
         return mlineWidth;
     }
@@ -186,4 +206,446 @@ public class FamilyTreeNode {
     public void setL3PlineDisplay(String l3PlineDisplay) {
         this.l3PlineDisplay = l3PlineDisplay;
     }
+
+    @Override
+    public String toString() {
+        return "FamilyTreeNode{" +
+                "left='" + left + '\'' +
+                ", top='" + top + '\'' +
+                ", id='" + id + '\'' +
+                ", fullname='" + fullname + '\'' +
+                ", mlineDisplay='" + mlineDisplay + '\'' +
+                ", mlineTop='" + mlineTop + '\'' +
+                ", mlineLeft='" + mlineLeft + '\'' +
+                ", mlineWidth='" + mlineWidth + '\'' +
+                ", l1PlineDisplay='" + l1PlineDisplay + '\'' +
+                ", l2PlineDisplay='" + l2PlineDisplay + '\'' +
+                ", l3PlineDisplay='" + l3PlineDisplay + '\'' +
+                ", l1PlineLeft='" + l1PlineLeft + '\'' +
+                ", l2PlineTop='" + l2PlineTop + '\'' +
+                ", l2PlineLeft='" + l2PlineLeft + '\'' +
+                ", l3PlineTop='" + l3PlineTop + '\'' +
+                ", l3PlineLeft='" + l3PlineLeft + '\'' +
+                ", l1PlineTop='" + l1PlineTop + '\'' +
+                ", l1PlineWidth='" + l1PlineWidth + '\'' +
+                ", l2PlineWidth='" + l2PlineWidth + '\'' +
+                ", l3PlineWidth='" + l3PlineWidth + '\'' +
+                '}';
+    }
+
+    public static class Wife {
+        private String left;
+        private String top;
+        private String id;
+        private String fullname;
+        private String mlineDisplay;
+        private String mlineTop;
+        private String mlineLeft;
+        private String mlineWidth;
+        private String l1PlineDisplay;
+        private String l2PlineDisplay;
+        private String l3PlineDisplay;
+        private String l1PlineLeft;
+        private String l2PlineTop;
+        private String l2PlineLeft;
+        private String l3PlineTop;
+        private String l3PlineLeft;
+
+        public Wife left(String val) {
+            left = val;
+            return this;
+        }
+
+        public Wife top(String val) {
+            top = val;
+            return this;
+        }
+        
+        public Wife id(String val) {
+            id = val;
+            return this;
+        }
+        
+        public Wife fullname(String val) {
+            fullname = val;
+            return this;
+        }
+        
+        public Wife mLineDisplay(String val) {
+            mlineDisplay = val;
+            return this;
+        }
+        
+        public Wife mLineTop(String val) {
+            mlineTop = val;
+            return this;
+        }
+        
+        public Wife mLineLeft(String val) {
+            mlineLeft = val;
+            return this;
+        }
+        
+        public Wife mLineWidth(String val) {
+            mlineWidth = val;
+            return this;
+        }
+
+        public Wife l1PlineDisplay(String val) {
+            l1PlineDisplay = val;
+            return this;
+        }
+        
+        public Wife l2PlineDisplay(String val) {
+            l2PlineDisplay = val;
+            return this;
+        }
+        
+        public Wife l3PlineDisplay(String val) {
+            l3PlineDisplay = val;
+            return this;
+        }
+
+        public Wife l1PlineLeft(String val) {
+            l1PlineLeft = val;
+            return this;
+        }
+
+        public Wife l2PlineLeft(String val) {
+            l2PlineLeft = val;
+            return this;
+        }
+
+        public Wife l3PlineLeft(String val) {
+            l3PlineLeft = val;
+            return this;
+        }
+
+        public Wife l2PlineTop(String val) {
+            l2PlineTop = val;
+            return this;
+        }
+
+        public Wife l3PlineTop(String val) {
+            l3PlineTop = val;
+            return this;
+        }
+        
+        public FamilyTreeNode build() {
+            return new FamilyTreeNode(this);
+        }
+    }
+       /*
+    public static class Wife {
+        private String left;
+        private String top;
+        private String id;
+        private String fullname;
+        private String mlineDisplay;
+        private String mlineTop;
+        private String mlineLeft;
+        private String mlineWidth;
+        private String l1PlineDisplay;
+        private String l2PlineDisplay;
+        private String l3PlineDisplay;
+        private String l1PlineLeft;
+        private String l2PlineTop;
+        private String l2PlineLeft;
+        private String l3PlineTop;
+        private String l3PlineLeft;
+
+        public Wife left(String val) {
+            left = val;
+            return this;
+        }
+
+        public Wife top(String val) {
+            top = val;
+            return this;
+        }
+
+        public Wife id(String val) {
+            id = val;
+            return this;
+        }
+
+        public Wife fullname(String val) {
+            fullname = val;
+            return this;
+        }
+
+        public Wife mLineDisplay(String val) {
+            mlineDisplay = val;
+            return this;
+        }
+
+        public Wife mLineTop(String val) {
+            mlineTop = val;
+            return this;
+        }
+
+        public Wife mLineLeft(String val) {
+            mlineLeft = val;
+            return this;
+        }
+
+        public Wife mLineWidth(String val) {
+            mlineWidth = val;
+            return this;
+        }
+
+        public Wife l1PlineDisplay(String val) {
+            l1PlineDisplay = val;
+            return this;
+        }
+
+        public Wife l2PlineDisplay(String val) {
+            l2PlineDisplay = val;
+            return this;
+        }
+
+        public Wife l3PlineDisplay(String val) {
+            l3PlineDisplay = val;
+            return this;
+        }
+
+        public Wife l1PlineLeft(String val) {
+            l1PlineLeft = val;
+            return this;
+        }
+
+        public Wife l2PlineLeft(String val) {
+            l2PlineLeft = val;
+            return this;
+        }
+
+        public Wife l3PlineLeft(String val) {
+            l3PlineLeft = val;
+            return this;
+        }
+
+        public Wife l2PlineTop(String val) {
+            l2PlineTop = val;
+            return this;
+        }
+
+        public Wife l3PlineTop(String val) {
+            l3PlineTop = val;
+            return this;
+        }
+
+        public FamilyTreeNode build() {
+            return new FamilyTreeNode(this);
+        }
+    }
+    public static class Wife {
+        private String left;
+        private String top;
+        private String id;
+        private String fullname;
+        private String mlineDisplay;
+        private String mlineTop;
+        private String mlineLeft;
+        private String mlineWidth;
+        private String l1PlineDisplay;
+        private String l2PlineDisplay;
+        private String l3PlineDisplay;
+        private String l1PlineLeft;
+        private String l2PlineTop;
+        private String l2PlineLeft;
+        private String l3PlineTop;
+        private String l3PlineLeft;
+
+        public Wife left(String val) {
+            left = val;
+            return this;
+        }
+
+        public Wife top(String val) {
+            top = val;
+            return this;
+        }
+
+        public Wife id(String val) {
+            id = val;
+            return this;
+        }
+
+        public Wife fullname(String val) {
+            fullname = val;
+            return this;
+        }
+
+        public Wife mLineDisplay(String val) {
+            mlineDisplay = val;
+            return this;
+        }
+
+        public Wife mLineTop(String val) {
+            mlineTop = val;
+            return this;
+        }
+
+        public Wife mLineLeft(String val) {
+            mlineLeft = val;
+            return this;
+        }
+
+        public Wife mLineWidth(String val) {
+            mlineWidth = val;
+            return this;
+        }
+
+        public Wife l1PlineDisplay(String val) {
+            l1PlineDisplay = val;
+            return this;
+        }
+
+        public Wife l2PlineDisplay(String val) {
+            l2PlineDisplay = val;
+            return this;
+        }
+
+        public Wife l3PlineDisplay(String val) {
+            l3PlineDisplay = val;
+            return this;
+        }
+
+        public Wife l1PlineLeft(String val) {
+            l1PlineLeft = val;
+            return this;
+        }
+
+        public Wife l2PlineLeft(String val) {
+            l2PlineLeft = val;
+            return this;
+        }
+
+        public Wife l3PlineLeft(String val) {
+            l3PlineLeft = val;
+            return this;
+        }
+
+        public Wife l2PlineTop(String val) {
+            l2PlineTop = val;
+            return this;
+        }
+
+        public Wife l3PlineTop(String val) {
+            l3PlineTop = val;
+            return this;
+        }
+
+        public FamilyTreeNode build() {
+            return new FamilyTreeNode(this);
+        }
+    }
+
+    */
+
+
+    public static class Child {
+        private String left;
+        private String top;
+        private String id;
+        private String fullname;
+        private String mlineDisplay;
+        private String mlineTop;
+        private String mlineLeft;
+        private String mlineWidth;
+        private String l1PlineDisplay;
+        private String l2PlineDisplay;
+        private String l3PlineDisplay;
+        private String l1PlineLeft;
+        private String l2PlineTop;
+        private String l2PlineLeft;
+        private String l3PlineTop;
+        private String l3PlineLeft;
+
+        public Child left(String val) {
+            left = val;
+            return this;
+        }
+
+        public Child top(String val) {
+            top = val;
+            return this;
+        }
+
+        public Child id(String val) {
+            id = val;
+            return this;
+        }
+
+        public Child fullname(String val) {
+            fullname = val;
+            return this;
+        }
+
+        public Child mLineDisplay(String val) {
+            mlineDisplay = val;
+            return this;
+        }
+
+        public Child mLineTop(String val) {
+            mlineTop = val;
+            return this;
+        }
+
+        public Child mLineLeft(String val) {
+            mlineLeft = val;
+            return this;
+        }
+
+        public Child mLineWidth(String val) {
+            mlineWidth = val;
+            return this;
+        }
+
+        public Child l1PlineDisplay(String val) {
+            l1PlineDisplay = val;
+            return this;
+        }
+
+        public Child l2PlineDisplay(String val) {
+            l2PlineDisplay = val;
+            return this;
+        }
+
+        public Child l3PlineDisplay(String val) {
+            l3PlineDisplay = val;
+            return this;
+        }
+
+        public Child l1PlineLeft(String val) {
+            l1PlineLeft = val;
+            return this;
+        }
+
+        public Child l2PlineLeft(String val) {
+            l2PlineLeft = val;
+            return this;
+        }
+
+        public Child l3PlineLeft(String val) {
+            l3PlineLeft = val;
+            return this;
+        }
+
+        public Child l2PlineTop(String val) {
+            l2PlineTop = val;
+            return this;
+        }
+
+        public Child l3PlineTop(String val) {
+            l3PlineTop = val;
+            return this;
+        }
+
+        public FamilyTreeNode build() {
+            return new FamilyTreeNode(this);
+        }
+    }
+
+
 }

@@ -9,7 +9,7 @@ import com.ethertons.domain.Person;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
-public class PersonTagTest {
+public class PersonTagTest1 {
 
 
     @Test
