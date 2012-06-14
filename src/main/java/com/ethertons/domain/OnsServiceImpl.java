@@ -33,7 +33,7 @@ public class OnsServiceImpl implements OnsService {
 
     @Override
     public Person findPersonWith(int personId) {
-        return personDao.findPersonWith(personId);
+        return personDao.findPersonWithId(personId);
     }
 
     @Override

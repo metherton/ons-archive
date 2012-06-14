@@ -23,7 +23,7 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
     }
 
     @Override
-    public Person findPersonWith(int personId) {
+    public Person findPersonWithId(int personId) {
         Person person = (Person)currentSession().get(Person.class, personId);
         return person != null ? person : new Person.Builder(0).fullname("Unknown").build();
     }
@@ -56,17 +56,17 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
 
     @Override
     public List<Person> findParentsFor(int personId) {
-        Person person = this.findPersonWith(personId);
+        Person person = this.findPersonWithId(personId);
         List<Person> parents = new ArrayList<Person>();
         //here add blank if not found
-        parents.add((Person)this.findPersonWith(person.getFatherId()));
-        parents.add((Person)this.findPersonWith(person.getMotherId()));
+        parents.add((Person)this.findPersonWithId(person.getFatherId()));
+        parents.add((Person)this.findPersonWithId(person.getMotherId()));
         return parents;
     }
 
     @Override
     public List<Person> findSiblingsFor(int personId) {
-        Person person = this.findPersonWith(personId);
+        Person person = this.findPersonWithId(personId);
         List<Person> siblings = this.findChildrenForCouple(person.getFather(), person.getMother());
         if (siblings.size() > 0) {
             return siblings;
@@ -84,7 +84,7 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
 
     @Override
     public List<Person> findWivesFor(int personId) {
-        Person person = this.findPersonWith(personId);
+        Person person = this.findPersonWithId(personId);
         List<Person> children = (List<Person>)currentSession().createCriteria(Person.class).add(Restrictions.eq("father", person)).addOrder(Order.asc("birthDate")).list();
         List<Person> wives = new ArrayList<Person>();
         Set<Integer> wifeIds = new HashSet<Integer>();
@@ -94,7 +94,7 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
             }
         }
         for (int wifeId : wifeIds) {
-            Person wife = this.findPersonWith(wifeId);
+            Person wife = this.findPersonWithId(wifeId);
             wives.add(wife);
         }
         return wives;
@@ -107,7 +107,7 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
 
     @Override
     public List<Person> findSpousesFor(int personId) {
-        Person person = this.findPersonWith(personId);
+        Person person = this.findPersonWithId(personId);
         List<Person> children;
         if (person.getGender()) {
             children = (List<Person>)currentSession().createCriteria(Person.class).add(Restrictions.eq("father", person)).addOrder(Order.asc("birthDate")).list();
@@ -133,7 +133,7 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
         }
         System.out.println("spouseids" + spouseIds);
         for (int spouseId : spouseIds) {
-            Person spouse = this.findPersonWith(spouseId);
+            Person spouse = this.findPersonWithId(spouseId);
             spouses.add(spouse);
         }
         System.out.println(spouses);

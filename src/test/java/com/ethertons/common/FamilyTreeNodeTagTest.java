@@ -7,6 +7,7 @@ import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.servlet.jsp.JspContext;
 import javax.servlet.jsp.tagext.JspFragment;
@@ -26,17 +27,44 @@ public class FamilyTreeNodeTagTest {
         familyTreeNodeTag.setImmediateFamily(immediateFamily);
 
         Person grandad = addPerson(1, "Grandad Etherton");
-
         Person nannan = addPerson(2, "Nannan Etherton");
-
         List<Person> grandparents = addPersons(grandad, nannan);
 
         expect(immediateFamily.getParents()).andReturn(grandparents);
+        expect(immediateFamily.getSiblings()).andReturn(Collections.<Person>emptyList());
+        expect(immediateFamily.getActivePersonId()).andStubReturn(1);
+        expect(immediateFamily.findSiblingPosition(1)).andStubReturn(2);
+        expect((immediateFamily.getSpouses())).andReturn(Collections.<Person>emptyList());
+        expectLastCall().times(3);
 
-        FamilyTreeNode familyTreeNode = new FamilyTreeNode.Wife().build();
+
+
+
+        FamilyTreeNode grandadNode = new FamilyTreeNode.Wife().left("0")
+                                                                 .top("0")
+                                                                 .id("1")
+                                                                 .fullname("Grandad Etherton")
+                                                                 .mLineDisplay("block")
+                                                                 .mLineTop("3.8")
+                                                                 .mLineLeft("12")
+                                                                 .mLineWidth("4")
+                                                                 .l1PlineDisplay("none")
+                                                                 .l2PlineDisplay("none")
+                                                                 .l3PlineDisplay("none")
+                                                                 .build();
+
+        FamilyTreeNode nannanNode = new FamilyTreeNode.Wife().left("14")
+                .top("0")
+                .id("2")
+                .fullname("Nannan Etherton")
+                .l1PlineDisplay("none")
+                .l2PlineDisplay("none")
+                .l3PlineDisplay("none")
+                .build();
 
         JspContext jspContext = createMock(JspContext.class);
-        jspContext.setAttribute("familyTreeNode", familyTreeNode);
+        jspContext.setAttribute("familyTreeNode",grandadNode);
+        jspContext.setAttribute("familyTreeNode",nannanNode);
         familyTreeNodeTag.setJspContext(jspContext);
         JspFragment jspBodyFragment =  createMock(JspFragment.class);
         jspBodyFragment.invoke(null);

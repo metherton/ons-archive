@@ -33,8 +33,8 @@ public class ImmediateFamily {
     }
 
     public List<Person> getChildrenWithWife(int wifeId) {
-        Person person = personDao.findPersonWith(activePersonId);
-        Person wife = personDao.findPersonWith(wifeId);
+        Person person = personDao.findPersonWithId(activePersonId);
+        Person wife = personDao.findPersonWithId(wifeId);
         return personDao.findChildrenForCouple(person, wife);
     }
 

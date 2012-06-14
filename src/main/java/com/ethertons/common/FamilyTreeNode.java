@@ -18,6 +18,10 @@ public class FamilyTreeNode {
         mlineDisplay = builder.mlineDisplay;
         mlineTop = builder.mlineTop;
         mlineLeft = builder.mlineLeft;
+        mlineWidth = builder.mlineWidth;
+        l1PlineDisplay = builder.l1PlineDisplay;
+        l2PlineDisplay = builder.l2PlineDisplay;
+        l3PlineDisplay = builder.l3PlineDisplay;
     }
 
     public FamilyTreeNode(Child builder) {
@@ -231,6 +235,65 @@ public class FamilyTreeNode {
                 ", l2PlineWidth='" + l2PlineWidth + '\'' +
                 ", l3PlineWidth='" + l3PlineWidth + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FamilyTreeNode that = (FamilyTreeNode) o;
+
+        if (fullname != null ? !fullname.equals(that.fullname) : that.fullname != null) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (l1PlineDisplay != null ? !l1PlineDisplay.equals(that.l1PlineDisplay) : that.l1PlineDisplay != null)
+            return false;
+        if (l1PlineLeft != null ? !l1PlineLeft.equals(that.l1PlineLeft) : that.l1PlineLeft != null) return false;
+        if (l1PlineTop != null ? !l1PlineTop.equals(that.l1PlineTop) : that.l1PlineTop != null) return false;
+        if (l1PlineWidth != null ? !l1PlineWidth.equals(that.l1PlineWidth) : that.l1PlineWidth != null) return false;
+        if (l2PlineDisplay != null ? !l2PlineDisplay.equals(that.l2PlineDisplay) : that.l2PlineDisplay != null)
+            return false;
+        if (l2PlineLeft != null ? !l2PlineLeft.equals(that.l2PlineLeft) : that.l2PlineLeft != null) return false;
+        if (l2PlineTop != null ? !l2PlineTop.equals(that.l2PlineTop) : that.l2PlineTop != null) return false;
+        if (l2PlineWidth != null ? !l2PlineWidth.equals(that.l2PlineWidth) : that.l2PlineWidth != null) return false;
+        if (l3PlineDisplay != null ? !l3PlineDisplay.equals(that.l3PlineDisplay) : that.l3PlineDisplay != null)
+            return false;
+        if (l3PlineLeft != null ? !l3PlineLeft.equals(that.l3PlineLeft) : that.l3PlineLeft != null) return false;
+        if (l3PlineTop != null ? !l3PlineTop.equals(that.l3PlineTop) : that.l3PlineTop != null) return false;
+        if (l3PlineWidth != null ? !l3PlineWidth.equals(that.l3PlineWidth) : that.l3PlineWidth != null) return false;
+        if (left != null ? !left.equals(that.left) : that.left != null) return false;
+        if (mlineDisplay != null ? !mlineDisplay.equals(that.mlineDisplay) : that.mlineDisplay != null) return false;
+        if (mlineLeft != null ? !mlineLeft.equals(that.mlineLeft) : that.mlineLeft != null) return false;
+        if (mlineTop != null ? !mlineTop.equals(that.mlineTop) : that.mlineTop != null) return false;
+        if (mlineWidth != null ? !mlineWidth.equals(that.mlineWidth) : that.mlineWidth != null) return false;
+        if (top != null ? !top.equals(that.top) : that.top != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = left != null ? left.hashCode() : 0;
+        result = 31 * result + (top != null ? top.hashCode() : 0);
+        result = 31 * result + (id != null ? id.hashCode() : 0);
+        result = 31 * result + (fullname != null ? fullname.hashCode() : 0);
+        result = 31 * result + (mlineDisplay != null ? mlineDisplay.hashCode() : 0);
+        result = 31 * result + (mlineTop != null ? mlineTop.hashCode() : 0);
+        result = 31 * result + (mlineLeft != null ? mlineLeft.hashCode() : 0);
+        result = 31 * result + (mlineWidth != null ? mlineWidth.hashCode() : 0);
+        result = 31 * result + (l1PlineDisplay != null ? l1PlineDisplay.hashCode() : 0);
+        result = 31 * result + (l2PlineDisplay != null ? l2PlineDisplay.hashCode() : 0);
+        result = 31 * result + (l3PlineDisplay != null ? l3PlineDisplay.hashCode() : 0);
+        result = 31 * result + (l1PlineLeft != null ? l1PlineLeft.hashCode() : 0);
+        result = 31 * result + (l2PlineTop != null ? l2PlineTop.hashCode() : 0);
+        result = 31 * result + (l2PlineLeft != null ? l2PlineLeft.hashCode() : 0);
+        result = 31 * result + (l3PlineTop != null ? l3PlineTop.hashCode() : 0);
+        result = 31 * result + (l3PlineLeft != null ? l3PlineLeft.hashCode() : 0);
+        result = 31 * result + (l1PlineTop != null ? l1PlineTop.hashCode() : 0);
+        result = 31 * result + (l1PlineWidth != null ? l1PlineWidth.hashCode() : 0);
+        result = 31 * result + (l2PlineWidth != null ? l2PlineWidth.hashCode() : 0);
+        result = 31 * result + (l3PlineWidth != null ? l3PlineWidth.hashCode() : 0);
+        return result;
     }
 
     public static class Wife {

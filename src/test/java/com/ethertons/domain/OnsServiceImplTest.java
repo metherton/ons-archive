@@ -49,7 +49,7 @@ public class OnsServiceImplTest {
 
     @Test
     public void findPersonWithIdShouldReturnCorrectPersonInfo() {
-        expect(personDao.findPersonWith(1)).andReturn(person);
+        expect(personDao.findPersonWithId(1)).andReturn(person);
 
         replay(personDao);
         onsService.findPersonWith(1);

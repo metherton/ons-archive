@@ -7,6 +7,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.ethertons.domain.ImmediateFamily;
@@ -102,15 +103,15 @@ public class OnsControllerTest {
         expect(model.addAttribute("activePersonId", 1)).andReturn(model);
         expect(model.addAttribute("immediateFamily", immediateFamily)).andReturn(model);
         expect(model.addAttribute("childPositioningOffset", 0)).andReturn(model);
+        expect(mockPersonDao.findSiblingsFor(1)).andReturn(Collections.<Person>emptyList());
         
-        replay(model, onsService);
+        replay(model, onsService, mockPersonDao);
         String view = onsController.showFamilyTree(1, model);
-        verify(model, onsService);
+        verify(model, onsService, mockPersonDao);
         
         assertThat(view, is("trees/view"));
     }
-    
-    
+
     @Test
     public void listOfTreesShouldBeShown() throws Exception {
         List<Tree> trees = new ArrayList<Tree>();

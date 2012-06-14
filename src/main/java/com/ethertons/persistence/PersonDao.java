@@ -5,7 +5,7 @@ import java.util.List;
 import com.ethertons.domain.Person;
 
 public interface PersonDao {
-    Person findPersonWith(int personId);
+    Person findPersonWithId(int personId);
 
     void storePerson(Person person);
 
