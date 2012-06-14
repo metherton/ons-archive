@@ -35,7 +35,11 @@ public class ImmediateFamily {
     public List<Person> getChildrenWithWife(int wifeId) {
         Person person = personDao.findPersonWithId(activePersonId);
         Person wife = personDao.findPersonWithId(wifeId);
-        return personDao.findChildrenForCouple(person, wife);
+        if (person.getGender()) {
+            return personDao.findChildrenForCouple(person, wife);
+        } else {
+            return personDao.findChildrenForCouple(wife, person);
+        }
     }
 
     public int findSiblingPosition(int personId) {

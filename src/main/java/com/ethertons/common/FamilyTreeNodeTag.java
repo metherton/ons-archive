@@ -16,7 +16,6 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
     private static final int FAMILY_NODE_WIDTH_EM = 14;
     private ImmediateFamily immediateFamily;
 
-
     public void doTag() throws IOException, JspException {
         renderParentNodes();
         renderSiblings();

@@ -5,7 +5,6 @@
 
 <div class="tree-container" >
     <familyTreeNodeDetails:familyTreeNode immediateFamily="${immediateFamily}">
-
         <c:if test="${familyTreeNode.id > 0}"><a class="treenode-link" href="<c:url value="/trees/${familyTreeNode.id}/view" />"></c:if>
         <div class="treenode" style="height:4em;width: 10em; top: ${familyTreeNode.top}em ; left: ${familyTreeNode.left}em" id="${familyTreeNode.id}">
             <div id="${familyTreeNode.id}" class="fullname">${familyTreeNode.fullname}</div>
