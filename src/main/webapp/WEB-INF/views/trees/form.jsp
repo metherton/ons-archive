@@ -19,7 +19,7 @@ Tree
 
     <p class="container">
     <form:label class="form-label" cssErrorClass="form-label errors" path="description">Description</form:label>
-    <form:input class="input-text" path="description" />
+    <form:textarea rows="30" columns="180" class="input-textarea" path="description" />
     <form:errors path="description" cssClass="errors" />
     </p>
 
