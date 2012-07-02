@@ -1,29 +1,31 @@
 package datastructures2;
 
+import com.ethertons.None;
 import com.ethertons.Option;
+import com.ethertons.Some;
 
 public class ListModule {
 
     public static interface List<T> {
 
         public abstract Option<T> head();
-        public abstract List<T> tail();
+        public abstract Option<List<T>> tail();
         public abstract boolean isEmpty();
     }
 
     public static final class NonEmptyList<T> implements List<T> {
 
         public Option<T>       head()    { return _head; }
-        public List<T> tail()    { return _tail; }
+        public Option<List<T>> tail()    { return _tail; }
         public boolean isEmpty() { return false; }
 
         protected NonEmptyList(Option<T> head, List<T> tail) {
             this._head = head;
-            this._tail = tail;
+            this._tail = new Some(tail);
         }
 
         private final Option<T> _head;
-        private final List<T> _tail;
+        private final Option<List<T>> _tail;
 
         @Override
         public boolean equals(Object other) {
@@ -42,8 +44,11 @@ public class ListModule {
 
     public static final List<? extends Object> EMPTY = new List<Object>() {
 
-        public Option<Object> head()    { throw new EmptyListHasNoHead(); }
-        public List<Object> tail()    { throw new EmptyListHasNoTail(); }
+        private final Option<Object> _head = new None<Object>();
+        private final Option<List<Object>> _tail = new None<List<Object>>();
+
+        public Option<Object> head()    { return _head; }
+        public Option<List<Object>> tail()    { return _tail; }
         public boolean      isEmpty() { return true; }
 
     };

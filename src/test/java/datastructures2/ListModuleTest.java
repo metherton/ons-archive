@@ -4,6 +4,7 @@ import static datastructures2.ListModule.list;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import com.ethertons.None;
 import com.ethertons.Option;
 import com.ethertons.Some;
 import org.junit.Test;
@@ -21,9 +22,12 @@ public class ListModuleTest {
 
         ListModule.List<String> stringList = list(head, tail);
         assertThat(stringList.head().get(), is("one"));
-        assertThat(stringList.tail(), is(tail));
-//        assertThat(stringList.tail().head().get(), is("two"));
-//        assertThat(stringList.tail().tail().head().get(), is("three"));
+        assertThat(stringList.tail().get(), is(tailOption.get()));
+    }
 
+    @Test
+    public void emptyListHeadAndTailShouldNotThrowException() throws Exception {
+        ListModule.List<String> stringList = list(new None<String>(), ListModule.<String>emptyList());
+        assertThat(stringList.head().getOrElse("empty"), is("empty"));
     }
 }
