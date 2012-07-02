@@ -12,13 +12,18 @@ public class ListModuleTest {
 
     @Test
     public void testVarArgList() throws Exception {
-        Option<String> s = new Some<String>("one");
+        Option<String> head = new Some<String>("one");
         Option<String> t = new Some<String>("two");
         Option<String> u = new Some<String>("three");
+        ListModule.List<String> tail = list(t, list(u, ListModule.<String>emptyList()));
 
-        ListModule.List<String> stringList = list(s, list(t, list(u,  ListModule.<String>emptyList())));
+        Option<ListModule.List<String>> tailOption = new Some<ListModule.List<String>>(tail);
+
+        ListModule.List<String> stringList = list(head, tail);
         assertThat(stringList.head().get(), is("one"));
-        assertThat(stringList.tail().head().get(), is("two"));
-        assertThat(stringList.tail().tail().head().get(), is("three"));
+        assertThat(stringList.tail(), is(tail));
+//        assertThat(stringList.tail().head().get(), is("two"));
+//        assertThat(stringList.tail().tail().head().get(), is("three"));
+
     }
 }
