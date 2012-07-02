@@ -1,5 +1,6 @@
 package datastructures2;
 
+import static datastructures2.ListModule.list;
 import static org.junit.Assert.assertThat;
 
 import com.ethertons.Option;
@@ -15,9 +16,7 @@ public class ListModuleTest {
         Option<String> t = new Some<String>("two");
         Option<String> u = new Some<String>("three");
 
-        ListModule.List<String> stringList = ListModule.list(s, ListModule.<String>emptyList());
-       // ListModule.List<String> stringList = ListModule.list(s, t, u);
-//        assertThat(stringList.head(), Matchers.is("three"));
+        ListModule.List<String> stringList = list(s, list(t, ListModule.<String>emptyList()));
         assertThat(stringList.head().get(), Matchers.is("one"));
     }
 }
