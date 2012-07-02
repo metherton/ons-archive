@@ -1,6 +1,8 @@
 package com.ethertons.common;
 
 import static com.ethertons.common.FamilyTreeNodeConverter.*;
+import static com.ethertons.common.FamilyTreeNodeTag.AfterActivePersonOffset.*;
+import static com.ethertons.common.FamilyTreeNodeTag.AfterActivePersonWifeOffset.*;
 import static java.lang.String.format;
 
 import java.io.IOException;
@@ -19,24 +21,24 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
     public void doTag() throws IOException, JspException {
         renderParentNodes();
         renderSiblings();
-        renderWivesAndChildren();
+        renderSpousesAndChildren();
     }
 
-    private void renderWivesAndChildren() throws JspException, IOException {
+    private void renderSpousesAndChildren() throws JspException, IOException {
         Iterator spouses = immediateFamily.getSpouses().iterator();
-        int wifeNo = 1;
+        int spouseNumber = 1;
 
         while (spouses.hasNext()) {
-            Person wife = (Person) spouses.next();
+            Person spouse = (Person) spouses.next();
 
-            int afterActivePersonOffset = AfterActivePersonWifeOffset.calculate(immediateFamily, wifeNo);
+            int afterActivePersonOffset = calculate(immediateFamily, spouseNumber);
 
             int activePersonPosition = immediateFamily.findSiblingPosition(immediateFamily.getActivePersonId());
 
-            convertWifeAndChildren(wifeNo, wife, afterActivePersonOffset, activePersonPosition);
+            convertWifeAndChildren(spouseNumber, spouse, afterActivePersonOffset, activePersonPosition);
 
 
-            wifeNo++;
+            spouseNumber++;
         }
     }
 
@@ -146,7 +148,7 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
         Iterator siblings = immediateFamily.getSiblings().iterator();
         int siblingCount = 0;
         int activePersonPosition = immediateFamily.findSiblingPosition(immediateFamily.getActivePersonId());
-        int afterActivePersonOffset = AfterActivePersonOffset.calculate(immediateFamily);
+        int afterActivePersonOffset = calculate(immediateFamily);
         while (siblings.hasNext()) {
             Person person = (Person) siblings.next();
             getJspContext().setAttribute("familyTreeNode", convertSibling(siblingCount, person, activePersonPosition, afterActivePersonOffset));

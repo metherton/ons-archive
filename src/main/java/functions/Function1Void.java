@@ -1,4 +1,4 @@
-package com.ethertons;
+package functions;
 
 public interface Function1Void<T> {
 

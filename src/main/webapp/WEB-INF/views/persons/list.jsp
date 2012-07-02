@@ -12,9 +12,10 @@
     <br />
     <div class="innercontentmiddlebody">
         <personDetails:person persons="${persons}">
-            <div style="width: 100%">
-            <div style="float:left;width:40%;font-size:small;;padding:0.5em;" id="personFullName"><a href="<c:url value="/persons/${person.id}" />">${person.fullname}&nbsp;</a></div>
-            <div style="float:left;width:40%;font-size:small;;padding:0.5em;" id="personBirthDate"><a href="<c:url value="/persons/${person.id}" />"><fmt:formatDate value="${person.birthDate}" />&nbsp;</a></div>
+            <div class="person" id='${person.id}'>
+            <div style="float:left;width:25%;font-size:small;;padding:0.5em;" id="personFullName"><a href="<c:url value="/persons/${person.id}" />">${person.fullname}&nbsp;</a></div>
+            <div style="float:left;width:10%;font-size:small;;padding:0.5em;" id="personBirthDate"><a href="<c:url value="/persons/${person.id}" />"><fmt:formatDate value="${person.birthDate}" />&nbsp;</a></div>
+            <div style="float:left;width:45%;font-size:small;;padding:0.5em;" id="personAddress"><a href="<c:url value="/persons/${person.id}" />">${person.address}&nbsp;</a></div>
             <div style="clear:both;"></div>
             </div>
         </personDetails:person>

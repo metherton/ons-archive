@@ -151,6 +151,10 @@ body {
     display: block;
 }
 
+div.person {
+    width: 100%;
+}
+
 div.treenode .pline {
     height: 100%;
     position: absolute;
