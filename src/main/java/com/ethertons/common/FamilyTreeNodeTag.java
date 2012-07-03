@@ -24,21 +24,6 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
         renderSpousesAndChildren();
     }
 
-    private void renderSpousesAndChildren() throws JspException, IOException {
-        Iterator spouses = immediateFamily.getSpouses().iterator();
-        int spouseNumber = 1;
-
-        while (spouses.hasNext()) {
-            Person spouse = (Person) spouses.next();
-
-            int afterActivePersonOffset = calculate(immediateFamily, spouseNumber);
-
-            int activePersonPosition = immediateFamily.findSiblingPosition(immediateFamily.getActivePersonId());
-
-            convertSpouseAndChildren(spouseNumber, spouse, afterActivePersonOffset, activePersonPosition);
-            spouseNumber++;
-        }
-    }
 
     private void convertSpouseAndChildren(int spouseNumber, Person spouse, int afterActivePersonOffset, int activePersonPosition) throws JspException, IOException {
         FamilyTreeNode spouseFamilyNode = new FamilyTreeNode.Spouse().build();
@@ -163,6 +148,22 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
             getJspContext().setAttribute("familyTreeNode", convertParent(parentCount, person));
             getJspBody().invoke(null);
             parentCount++;
+        }
+    }
+
+    private void renderSpousesAndChildren() throws JspException, IOException {
+        Iterator spouses = immediateFamily.getSpouses().iterator();
+        int spouseNumber = 1;
+
+        while (spouses.hasNext()) {
+            Person spouse = (Person) spouses.next();
+
+            int afterActivePersonOffset = calculate(immediateFamily, spouseNumber);
+
+            int activePersonPosition = immediateFamily.findSiblingPosition(immediateFamily.getActivePersonId());
+
+            convertSpouseAndChildren(spouseNumber, spouse, afterActivePersonOffset, activePersonPosition);
+            spouseNumber++;
         }
     }
 

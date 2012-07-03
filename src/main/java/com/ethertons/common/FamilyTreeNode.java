@@ -9,6 +9,19 @@ public class FamilyTreeNode {
     private String mlineDisplay;
     private String mlineTop;
     private String mlineLeft;
+    private String mlineWidth;
+    private String l1PlineDisplay;
+    private String l2PlineDisplay;
+    private String l3PlineDisplay;
+    private String l1PlineLeft;
+    private String l2PlineTop;
+    private String l2PlineLeft;
+    private String l3PlineTop;
+    private String l3PlineLeft;
+    private String l1PlineTop;
+    private String l1PlineWidth;
+    private String l2PlineWidth;
+    private String l3PlineWidth;
 
     public FamilyTreeNode(Spouse builder) {
         left = builder.left;
@@ -42,16 +55,6 @@ public class FamilyTreeNode {
         this.mlineWidth = mlineWidth;
     }
 
-    private String mlineWidth;
-    private String l1PlineDisplay;
-    private String l2PlineDisplay;
-    private String l3PlineDisplay;
-    private String l1PlineLeft;
-    private String l2PlineTop;
-    private String l2PlineLeft;
-    private String l3PlineTop;
-    private String l3PlineLeft;
-
     public String getL1PlineTop() {
         return l1PlineTop;
     }
@@ -59,8 +62,6 @@ public class FamilyTreeNode {
     public void setL1PlineTop(String l1PlineTop) {
         this.l1PlineTop = l1PlineTop;
     }
-
-    private String l1PlineTop;
 
     public String getL1PlineLeft() {
         return l1PlineLeft;
@@ -102,7 +103,6 @@ public class FamilyTreeNode {
         this.l3PlineLeft = l3PlineLeft;
     }
 
-
     public String getL1PlineWidth() {
         return l1PlineWidth;
     }
@@ -126,10 +126,6 @@ public class FamilyTreeNode {
     public void setL3PlineWidth(String l3PlineWidth) {
         this.l3PlineWidth = l3PlineWidth;
     }
-
-    private String l1PlineWidth;
-    private String l2PlineWidth;
-    private String l3PlineWidth;
 
     public String getLeft() {
         return left;
