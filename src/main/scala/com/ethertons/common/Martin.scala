@@ -1,3 +1,4 @@
+package com.ethertons.common
 
 class Martin {
 
