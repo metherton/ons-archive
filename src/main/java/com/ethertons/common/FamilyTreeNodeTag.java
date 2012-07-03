@@ -26,20 +26,20 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
 
 
     private void convertSpouseAndChildren(int spouseNumber, Person spouse, int afterActivePersonOffset, int activePersonPosition) throws JspException, IOException {
-        FamilyTreeNode spouseFamilyNode = new FamilyTreeNode.Spouse().build();
+        FamilyTreeNode spouseFamilyFamilyTreeNode = new FamilyTreeNode.Builder().build();
         if (spouseNumber == 1) {
-            spouseFamilyNode.setLeft(String.format("%d", (activePersonPosition + spouseNumber) * FAMILY_NODE_WIDTH_EM));
-            spouseFamilyNode.setTop("8");
-            spouseFamilyNode.setId(format("%d", spouse.getId()));
-            spouseFamilyNode.setFullname(spouse.getFullname());
-            spouseFamilyNode.setMlineDisplay("block");
-            spouseFamilyNode.setMlineLeft("-2");
-            spouseFamilyNode.setMlineWidth("4");
-            spouseFamilyNode.setMlineTop("3.8");
-            spouseFamilyNode.setL1PlineDisplay("none");
-            spouseFamilyNode.setL3PlineDisplay("none");
+            spouseFamilyFamilyTreeNode.setLeft(String.format("%d", (activePersonPosition + spouseNumber) * FAMILY_NODE_WIDTH_EM));
+            spouseFamilyFamilyTreeNode.setTop("8");
+            spouseFamilyFamilyTreeNode.setId(format("%d", spouse.getId()));
+            spouseFamilyFamilyTreeNode.setFullname(spouse.getFullname());
+            spouseFamilyFamilyTreeNode.setMlineDisplay("block");
+            spouseFamilyFamilyTreeNode.setMlineLeft("-2");
+            spouseFamilyFamilyTreeNode.setMlineWidth("4");
+            spouseFamilyFamilyTreeNode.setMlineTop("3.8");
+            spouseFamilyFamilyTreeNode.setL1PlineDisplay("none");
+            spouseFamilyFamilyTreeNode.setL3PlineDisplay("none");
 
-            getJspContext().setAttribute("familyTreeNode", spouseFamilyNode);
+            getJspContext().setAttribute("familyTreeNode", spouseFamilyFamilyTreeNode);
             getJspBody().invoke(null);
 
             Iterator children = immediateFamily.getChildrenWithWife(spouse.getId()).iterator();
@@ -49,7 +49,7 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
 
             while (children.hasNext()) {
                 Person child = (Person) children.next();
-                FamilyTreeNode familyTreeNodeChild = new FamilyTreeNode.Spouse().left(String.format("%d", (activePersonPosition + (childCount-1)) * FAMILY_NODE_WIDTH_EM))
+                FamilyTreeNode familyTreeNodeChild = new FamilyTreeNode.Builder().left(String.format("%d", (activePersonPosition + (childCount-1)) * FAMILY_NODE_WIDTH_EM))
                                                                                  .top("16")
                                                                                  .id(format("%d", child.getId()))
                                                                                  .fullname(child.getFullname())
@@ -79,20 +79,20 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
 
         } else {
 
-            spouseFamilyNode.setLeft(String.format("%d",
+            spouseFamilyFamilyTreeNode.setLeft(String.format("%d",
                     (activePersonPosition + spouseNumber + afterActivePersonOffset) * FAMILY_NODE_WIDTH_EM));
-            spouseFamilyNode.setTop("8");
-            spouseFamilyNode.setId(format("%d", spouse.getId()));
-            spouseFamilyNode.setFullname(spouse.getFullname());
+            spouseFamilyFamilyTreeNode.setTop("8");
+            spouseFamilyFamilyTreeNode.setId(format("%d", spouse.getId()));
+            spouseFamilyFamilyTreeNode.setFullname(spouse.getFullname());
 
-            spouseFamilyNode.setMlineDisplay("block");
-            spouseFamilyNode.setMlineLeft(String.format("-%d", ((activePersonPosition + spouseNumber + afterActivePersonOffset) * FAMILY_NODE_WIDTH_EM) - (((activePersonPosition + spouseNumber - 1) * 14) + 12)));
-            spouseFamilyNode.setMlineWidth(String.format("%d", ((activePersonPosition + spouseNumber + afterActivePersonOffset) * FAMILY_NODE_WIDTH_EM) - ((activePersonPosition + spouseNumber - 1) * 14) - 10));
-            spouseFamilyNode.setMlineTop("3.8");
-            spouseFamilyNode.setL1PlineDisplay("none");
-            spouseFamilyNode.setL3PlineDisplay("none");
+            spouseFamilyFamilyTreeNode.setMlineDisplay("block");
+            spouseFamilyFamilyTreeNode.setMlineLeft(String.format("-%d", ((activePersonPosition + spouseNumber + afterActivePersonOffset) * FAMILY_NODE_WIDTH_EM) - (((activePersonPosition + spouseNumber - 1) * 14) + 12)));
+            spouseFamilyFamilyTreeNode.setMlineWidth(String.format("%d", ((activePersonPosition + spouseNumber + afterActivePersonOffset) * FAMILY_NODE_WIDTH_EM) - ((activePersonPosition + spouseNumber - 1) * 14) - 10));
+            spouseFamilyFamilyTreeNode.setMlineTop("3.8");
+            spouseFamilyFamilyTreeNode.setL1PlineDisplay("none");
+            spouseFamilyFamilyTreeNode.setL3PlineDisplay("none");
 
-            getJspContext().setAttribute("familyTreeNode", spouseFamilyNode);
+            getJspContext().setAttribute("familyTreeNode", spouseFamilyFamilyTreeNode);
             getJspBody().invoke(null);
 
             Iterator children = immediateFamily.getChildrenWithWife(spouse.getId()).iterator();
@@ -102,7 +102,7 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
 
             while (children.hasNext()) {
                 Person child = (Person) children.next();
-                FamilyTreeNode familyTreeNodeChild = new FamilyTreeNode.Spouse().build();
+                FamilyTreeNode familyTreeNodeChild = new FamilyTreeNode.Builder().build();
                 familyTreeNodeChild.setLeft(String.format("%d", (activePersonPosition + spouseNumber + afterActivePersonOffset + childCount-1) * FAMILY_NODE_WIDTH_EM));
                 familyTreeNodeChild.setTop("16");
                 familyTreeNodeChild.setId(format("%d", child.getId()));

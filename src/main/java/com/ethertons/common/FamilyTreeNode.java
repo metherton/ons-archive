@@ -23,7 +23,115 @@ public class FamilyTreeNode {
     private String l2PlineWidth;
     private String l3PlineWidth;
 
-    public FamilyTreeNode(Spouse builder) {
+    public static class Builder {
+
+        private String left;
+        private String top;
+        private String id;
+        private String fullname;
+        private String mlineDisplay;
+        private String mlineTop;
+        private String mlineLeft;
+        private String mlineWidth;
+        private String l1PlineDisplay;
+        private String l2PlineDisplay;
+        private String l3PlineDisplay;
+        private String l1PlineLeft;
+        private String l2PlineTop;
+        private String l2PlineLeft;
+        private String l3PlineTop;
+        private String l3PlineLeft;
+
+        public Builder() {
+
+        }
+
+        public Builder left(String val) {
+            left = val;
+            return this;
+        }
+
+        public Builder top(String val) {
+            top = val;
+            return this;
+        }
+
+        public Builder id(String val) {
+            id = val;
+            return this;
+        }
+
+        public Builder fullname(String val) {
+            fullname = val;
+            return this;
+        }
+
+        public Builder mLineDisplay(String val) {
+            mlineDisplay = val;
+            return this;
+        }
+
+        public Builder mLineTop(String val) {
+            mlineTop = val;
+            return this;
+        }
+
+        public Builder mLineLeft(String val) {
+            mlineLeft = val;
+            return this;
+        }
+
+        public Builder mLineWidth(String val) {
+            mlineWidth = val;
+            return this;
+        }
+
+        public Builder l1PlineDisplay(String val) {
+            l1PlineDisplay = val;
+            return this;
+        }
+
+        public Builder l2PlineDisplay(String val) {
+            l2PlineDisplay = val;
+            return this;
+        }
+
+        public Builder l3PlineDisplay(String val) {
+            l3PlineDisplay = val;
+            return this;
+        }
+
+        public Builder l1PlineLeft(String val) {
+            l1PlineLeft = val;
+            return this;
+        }
+
+        public Builder l2PlineLeft(String val) {
+            l2PlineLeft = val;
+            return this;
+        }
+
+        public Builder l3PlineLeft(String val) {
+            l3PlineLeft = val;
+            return this;
+        }
+
+        public Builder l2PlineTop(String val) {
+            l2PlineTop = val;
+            return this;
+        }
+
+        public Builder l3PlineTop(String val) {
+            l3PlineTop = val;
+            return this;
+        }
+
+        public FamilyTreeNode build() {
+            return new FamilyTreeNode(this);
+        }
+    }
+
+    private FamilyTreeNode(Builder builder) {
         left = builder.left;
         top = builder.top;
         id = builder.id;
@@ -35,16 +143,6 @@ public class FamilyTreeNode {
         l1PlineDisplay = builder.l1PlineDisplay;
         l2PlineDisplay = builder.l2PlineDisplay;
         l3PlineDisplay = builder.l3PlineDisplay;
-    }
-
-    public FamilyTreeNode(Child builder) {
-        left = builder.left;
-        top = builder.top;
-        id = builder.id;
-        fullname = builder.fullname;
-        mlineDisplay = builder.mlineDisplay;
-        mlineTop = builder.mlineTop;
-        mlineLeft = builder.mlineLeft;
     }
 
     public String getMlineWidth() {
@@ -291,212 +389,5 @@ public class FamilyTreeNode {
         result = 31 * result + (l3PlineWidth != null ? l3PlineWidth.hashCode() : 0);
         return result;
     }
-
-    public static class Spouse {
-        private String left;
-        private String top;
-        private String id;
-        private String fullname;
-        private String mlineDisplay;
-        private String mlineTop;
-        private String mlineLeft;
-        private String mlineWidth;
-        private String l1PlineDisplay;
-        private String l2PlineDisplay;
-        private String l3PlineDisplay;
-        private String l1PlineLeft;
-        private String l2PlineTop;
-        private String l2PlineLeft;
-        private String l3PlineTop;
-        private String l3PlineLeft;
-
-        public Spouse left(String val) {
-            left = val;
-            return this;
-        }
-
-        public Spouse top(String val) {
-            top = val;
-            return this;
-        }
-        
-        public Spouse id(String val) {
-            id = val;
-            return this;
-        }
-        
-        public Spouse fullname(String val) {
-            fullname = val;
-            return this;
-        }
-        
-        public Spouse mLineDisplay(String val) {
-            mlineDisplay = val;
-            return this;
-        }
-        
-        public Spouse mLineTop(String val) {
-            mlineTop = val;
-            return this;
-        }
-        
-        public Spouse mLineLeft(String val) {
-            mlineLeft = val;
-            return this;
-        }
-        
-        public Spouse mLineWidth(String val) {
-            mlineWidth = val;
-            return this;
-        }
-
-        public Spouse l1PlineDisplay(String val) {
-            l1PlineDisplay = val;
-            return this;
-        }
-        
-        public Spouse l2PlineDisplay(String val) {
-            l2PlineDisplay = val;
-            return this;
-        }
-        
-        public Spouse l3PlineDisplay(String val) {
-            l3PlineDisplay = val;
-            return this;
-        }
-
-        public Spouse l1PlineLeft(String val) {
-            l1PlineLeft = val;
-            return this;
-        }
-
-        public Spouse l2PlineLeft(String val) {
-            l2PlineLeft = val;
-            return this;
-        }
-
-        public Spouse l3PlineLeft(String val) {
-            l3PlineLeft = val;
-            return this;
-        }
-
-        public Spouse l2PlineTop(String val) {
-            l2PlineTop = val;
-            return this;
-        }
-
-        public Spouse l3PlineTop(String val) {
-            l3PlineTop = val;
-            return this;
-        }
-        
-        public FamilyTreeNode build() {
-            return new FamilyTreeNode(this);
-        }
-    }
-
-    public static class Child {
-        private String left;
-        private String top;
-        private String id;
-        private String fullname;
-        private String mlineDisplay;
-        private String mlineTop;
-        private String mlineLeft;
-        private String mlineWidth;
-        private String l1PlineDisplay;
-        private String l2PlineDisplay;
-        private String l3PlineDisplay;
-        private String l1PlineLeft;
-        private String l2PlineTop;
-        private String l2PlineLeft;
-        private String l3PlineTop;
-        private String l3PlineLeft;
-
-        public Child left(String val) {
-            left = val;
-            return this;
-        }
-
-        public Child top(String val) {
-            top = val;
-            return this;
-        }
-
-        public Child id(String val) {
-            id = val;
-            return this;
-        }
-
-        public Child fullname(String val) {
-            fullname = val;
-            return this;
-        }
-
-        public Child mLineDisplay(String val) {
-            mlineDisplay = val;
-            return this;
-        }
-
-        public Child mLineTop(String val) {
-            mlineTop = val;
-            return this;
-        }
-
-        public Child mLineLeft(String val) {
-            mlineLeft = val;
-            return this;
-        }
-
-        public Child mLineWidth(String val) {
-            mlineWidth = val;
-            return this;
-        }
-
-        public Child l1PlineDisplay(String val) {
-            l1PlineDisplay = val;
-            return this;
-        }
-
-        public Child l2PlineDisplay(String val) {
-            l2PlineDisplay = val;
-            return this;
-        }
-
-        public Child l3PlineDisplay(String val) {
-            l3PlineDisplay = val;
-            return this;
-        }
-
-        public Child l1PlineLeft(String val) {
-            l1PlineLeft = val;
-            return this;
-        }
-
-        public Child l2PlineLeft(String val) {
-            l2PlineLeft = val;
-            return this;
-        }
-
-        public Child l3PlineLeft(String val) {
-            l3PlineLeft = val;
-            return this;
-        }
-
-        public Child l2PlineTop(String val) {
-            l2PlineTop = val;
-            return this;
-        }
-
-        public Child l3PlineTop(String val) {
-            l3PlineTop = val;
-            return this;
-        }
-
-        public FamilyTreeNode build() {
-            return new FamilyTreeNode(this);
-        }
-    }
-
 
 }
