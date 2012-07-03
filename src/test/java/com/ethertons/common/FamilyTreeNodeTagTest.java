@@ -40,7 +40,7 @@ public class FamilyTreeNodeTagTest {
 
 
 
-        FamilyTreeNode grandadNode = new FamilyTreeNode.Wife().left("0")
+        FamilyTreeNode grandadNode = new FamilyTreeNode.Spouse().left("0")
                                                                  .top("0")
                                                                  .id("1")
                                                                  .fullname("Grandad Etherton")
@@ -53,7 +53,7 @@ public class FamilyTreeNodeTagTest {
                                                                  .l3PlineDisplay("none")
                                                                  .build();
 
-        FamilyTreeNode nannanNode = new FamilyTreeNode.Wife().left("14")
+        FamilyTreeNode nannanNode = new FamilyTreeNode.Spouse().left("14")
                 .top("0")
                 .id("2")
                 .fullname("Nannan Etherton")

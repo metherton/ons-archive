@@ -10,7 +10,7 @@ public class FamilyTreeNode {
     private String mlineTop;
     private String mlineLeft;
 
-    public FamilyTreeNode(Wife builder) {
+    public FamilyTreeNode(Spouse builder) {
         left = builder.left;
         top = builder.top;
         id = builder.id;
@@ -296,7 +296,7 @@ public class FamilyTreeNode {
         return result;
     }
 
-    public static class Wife {
+    public static class Spouse {
         private String left;
         private String top;
         private String id;
@@ -314,82 +314,82 @@ public class FamilyTreeNode {
         private String l3PlineTop;
         private String l3PlineLeft;
 
-        public Wife left(String val) {
+        public Spouse left(String val) {
             left = val;
             return this;
         }
 
-        public Wife top(String val) {
+        public Spouse top(String val) {
             top = val;
             return this;
         }
         
-        public Wife id(String val) {
+        public Spouse id(String val) {
             id = val;
             return this;
         }
         
-        public Wife fullname(String val) {
+        public Spouse fullname(String val) {
             fullname = val;
             return this;
         }
         
-        public Wife mLineDisplay(String val) {
+        public Spouse mLineDisplay(String val) {
             mlineDisplay = val;
             return this;
         }
         
-        public Wife mLineTop(String val) {
+        public Spouse mLineTop(String val) {
             mlineTop = val;
             return this;
         }
         
-        public Wife mLineLeft(String val) {
+        public Spouse mLineLeft(String val) {
             mlineLeft = val;
             return this;
         }
         
-        public Wife mLineWidth(String val) {
+        public Spouse mLineWidth(String val) {
             mlineWidth = val;
             return this;
         }
 
-        public Wife l1PlineDisplay(String val) {
+        public Spouse l1PlineDisplay(String val) {
             l1PlineDisplay = val;
             return this;
         }
         
-        public Wife l2PlineDisplay(String val) {
+        public Spouse l2PlineDisplay(String val) {
             l2PlineDisplay = val;
             return this;
         }
         
-        public Wife l3PlineDisplay(String val) {
+        public Spouse l3PlineDisplay(String val) {
             l3PlineDisplay = val;
             return this;
         }
 
-        public Wife l1PlineLeft(String val) {
+        public Spouse l1PlineLeft(String val) {
             l1PlineLeft = val;
             return this;
         }
 
-        public Wife l2PlineLeft(String val) {
+        public Spouse l2PlineLeft(String val) {
             l2PlineLeft = val;
             return this;
         }
 
-        public Wife l3PlineLeft(String val) {
+        public Spouse l3PlineLeft(String val) {
             l3PlineLeft = val;
             return this;
         }
 
-        public Wife l2PlineTop(String val) {
+        public Spouse l2PlineTop(String val) {
             l2PlineTop = val;
             return this;
         }
 
-        public Wife l3PlineTop(String val) {
+        public Spouse l3PlineTop(String val) {
             l3PlineTop = val;
             return this;
         }

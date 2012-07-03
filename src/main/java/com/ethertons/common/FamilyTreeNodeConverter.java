@@ -9,7 +9,7 @@ public class FamilyTreeNodeConverter {
     private static final int FAMILY_NODE_WIDTH_EM = 14;
 
     public static FamilyTreeNode convertParent(int parentCounter, Person person) {
-        FamilyTreeNode familyTreeNode = new FamilyTreeNode.Wife().build();
+        FamilyTreeNode familyTreeNode = new FamilyTreeNode.Spouse().build();
         familyTreeNode.setLeft(String.format("%d", (parentCounter)* FAMILY_NODE_WIDTH_EM));
         familyTreeNode.setTop("0");
         familyTreeNode.setId(format("%d", person.getId()));
@@ -28,7 +28,7 @@ public class FamilyTreeNodeConverter {
     }
 
     public static FamilyTreeNode convertSibling(int siblingCounter, Person person, int activePersonPosition, int afterActivePersonOffset) {
-        FamilyTreeNode familyTreeNode = new FamilyTreeNode.Wife().build();
+        FamilyTreeNode familyTreeNode = new FamilyTreeNode.Spouse().build();
         if (siblingCounter <= activePersonPosition) {
             familyTreeNode.setLeft(String.format("%d", (siblingCounter) * FAMILY_NODE_WIDTH_EM));
             familyTreeNode.setTop("8");
