@@ -57,8 +57,8 @@ public class OnsIntegrationTests {
 
     @Test
     public void retrievesPersonInfo() {
-        Person person = personDao.findPersonWithId(169);
-        assertThat(person.getFirstName(), is("Sydney Arthur (jr)"));
+        Person person = personDao.findPersonWithId(5);
+        assertThat(person.getFirstName(), is("Sydney Arthur (Jr)"));
         assertThat(person.getSurname().getName(), is("Etherton"));
         assertThat(person.getGender(), is(true));
     }
@@ -119,7 +119,7 @@ public class OnsIntegrationTests {
     public void storeTree() throws Exception {
         Tree tree = new Tree();
         tree.setDescription("test tree 1");
-        Person person = personDao.findPersonWithId(169);
+        Person person = personDao.findPersonWithId(5);
         tree.setPerson(person);
         treeDao.storeTree(tree);
     }
@@ -132,14 +132,14 @@ public class OnsIntegrationTests {
     
     @Test
     public void retrieveFamilyTree() throws Exception {
-        List<Person> parents = personDao.findParentsFor(172);
+        List<Person> parents = personDao.findParentsFor(6);
         assertThat(parents.size(), is(2));
-        List<Person> siblings = personDao.findSiblingsFor(172);
+        List<Person> siblings = personDao.findSiblingsFor(6);
         assertThat(siblings.size(), is(3));
-        List<Person> wives = personDao.findWivesFor(172);
+        List<Person> wives = personDao.findWivesFor(6);
         assertThat(wives.size(), Matchers.is(1));
-        Person father = personDao.findPersonWithId(172);
-        Person mother = personDao.findPersonWithId(174);
+        Person father = personDao.findPersonWithId(6);
+        Person mother = personDao.findPersonWithId(10);
         List<Person> children = personDao.findChildrenFor(father);
         assertThat(children.size(), Matchers.is(1));
     }

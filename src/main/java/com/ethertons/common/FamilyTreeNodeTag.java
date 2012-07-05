@@ -141,6 +141,7 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
     }
 
     private void renderParentNodes() throws JspException, IOException {
+
         Iterator parents = immediateFamily.getParents().iterator();
         int parentCount = 0;
         while (parents.hasNext()) {
