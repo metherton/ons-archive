@@ -10,12 +10,23 @@ class GedcomParser(_gedComFile: String) {
     val gedcomRecords = mergedElements map (xs =>
       xs.head.toString match {
         case s if s.startsWith("0 TRLR") => new GedcomTrailer
-        case s if s.startsWith("0 @P") => new GedcomIndividual(s)
+        case s if s.startsWith("0 @P") => new GedcomIndividual( fullname(xs.tail find (_ startsWith("1 NAME"))) )
         case _ => new UnknownGedcomRecord
       }
 
       )
     List(new GedcomIndividual("Martin Etherton"))
+  }
+
+  def fullname(s: Option[String]): String =
+    s match {
+      case s: Some[String] => stripOutPrefix(s)
+      case _ => "unknown name"
+    }
+
+
+  def stripOutPrefix(s: Some[String]): String =  {
+    s.getOrElse("Unknown value").stripPrefix("1 NAME ")
   }
 
   def mergeLists[A](accum: List[List[A]], xs: List[List[A]]): List[List[A]] = {
