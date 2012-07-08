@@ -1,0 +1,5 @@
+package gedcom
+
+class GedcomRoot {
+
+}
