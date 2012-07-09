@@ -1,6 +1,7 @@
 package gedcom
 
 import io.Source
+import collection.generic.CanBuildFrom
 
 class GedcomParser(_gedComFile: String) {
 
@@ -13,8 +14,10 @@ class GedcomParser(_gedComFile: String) {
         case s if s.startsWith("0 @P") => new GedcomIndividual( fullname(xs.tail find (_ startsWith("1 NAME"))) )
         case _ => new UnknownGedcomRecord
       }
+    )
 
-      )
+    val individualRecords = gedcomRecords.filter(_.isInstanceOf[GedcomIndividual])
+
     List(new GedcomIndividual("Martin Etherton"))
   }
 
