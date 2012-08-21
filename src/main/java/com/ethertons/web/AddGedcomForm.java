@@ -8,6 +8,7 @@ import com.ethertons.domain.Gedcom;
 import com.ethertons.domain.OnsService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,6 +25,9 @@ import org.springframework.web.multipart.MultipartFile;
 public class AddGedcomForm extends OnsForm {
 
     public static final String GEDCOMS_FORM = "gedcoms/form";
+
+    @Value("${gedcomfiles.directory}")
+    public String gedcomfilesDirectory;
 
     @Autowired
     public AddGedcomForm(OnsService onsService) {
@@ -45,7 +49,7 @@ public class AddGedcomForm extends OnsForm {
 //        spitterService.saveSpitter(spitter);
             if(!gedcomfile.isEmpty()){
                 validateImage(gedcomfile);
-                saveGedcomFile(gedcom.getId()+".ged",gedcomfile);//
+                saveGedcomFile(gedcomfilesDirectory + gedcom.getId()+".ged",gedcomfile);//
             }
 //        } catch(ImageUploadExceptione){
 //            bindingResult.reject(e.getMessage());

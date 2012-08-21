@@ -14,6 +14,7 @@
         <property name="locations">
             <list>
                 <value>file:/etc/ons/db.properties</value>
+                <value>file:/etc/ons/ons.properties</value>
             </list>
         </property>
         <property name="ignoreResourceNotFound" value="true"/>
