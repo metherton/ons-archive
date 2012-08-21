@@ -3,6 +3,7 @@ package com.ethertons.domain;
 import java.util.List;
 
 import com.ethertons.persistence.ConfigDao;
+import com.ethertons.persistence.GedcomDao;
 import com.ethertons.persistence.PersonDao;
 import com.ethertons.persistence.SurnameDao;
 import com.ethertons.persistence.TreeDao;
@@ -16,13 +17,15 @@ public class OnsServiceImpl implements OnsService {
     private final ConfigDao configDao;
     private final SurnameDao surnameDao;
     private final TreeDao treeDao;
+    private final GedcomDao gedcomDao;
 
     @Autowired
-    public OnsServiceImpl(PersonDao personDao, ConfigDao configDao, SurnameDao surnameDao, TreeDao treeDao) {
+    public OnsServiceImpl(PersonDao personDao, ConfigDao configDao, SurnameDao surnameDao, TreeDao treeDao, GedcomDao gedcomDao) {
         this.personDao = personDao;
         this.configDao = configDao;
         this.surnameDao = surnameDao;
         this.treeDao =  treeDao;
+        this.gedcomDao = gedcomDao;
     }
 
 
@@ -79,6 +82,16 @@ public class OnsServiceImpl implements OnsService {
     @Override
     public ImmediateFamily findRelativesFor(int personId) {
         return FamilyFactory.buildImmediateFamilyFor(personId, personDao);
+    }
+
+    @Override
+    public List<Gedcom> findAllGedcoms() {
+        return gedcomDao.findAllGedcoms();
+    }
+
+    @Override
+    public void storeGedcom(Gedcom gedcom) {
+        gedcomDao.storeGedcom(gedcom);
     }
 
     @Override

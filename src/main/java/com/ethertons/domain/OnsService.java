@@ -28,4 +28,8 @@ public interface OnsService {
     List<Tree> findAllTrees();
 
     ImmediateFamily findRelativesFor(int personId);
+
+    List<Gedcom> findAllGedcoms();
+
+    void storeGedcom(Gedcom gedcom);
 }

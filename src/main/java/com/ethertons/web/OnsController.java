@@ -2,6 +2,7 @@ package com.ethertons.web;
 
 import java.util.List;
 
+import com.ethertons.domain.Gedcom;
 import com.ethertons.domain.ImmediateFamily;
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.Person;
@@ -63,6 +64,13 @@ public class OnsController {
         List<Surname> surnames = onsService.findAllSurnames();
         model.addAttribute("surnames", surnames);
         return "surnames/list";
+    }
+
+    @RequestMapping(value="/gedcoms")
+    public String findAllGedcoms(Model model) {
+        List<Gedcom> gedcoms = onsService.findAllGedcoms();
+        model.addAttribute("gedcoms", gedcoms);
+        return "gedcoms/list";
     }
 
     @RequestMapping(value="/trees/{personId}/view")

@@ -8,6 +8,7 @@ import static org.easymock.EasyMock.verify;
 import java.util.ArrayList;
 
 import com.ethertons.persistence.ConfigDao;
+import com.ethertons.persistence.GedcomDao;
 import com.ethertons.persistence.PersonDao;
 import com.ethertons.persistence.SurnameDao;
 import com.ethertons.persistence.TreeDao;
@@ -25,6 +26,7 @@ public class OnsServiceImplTest {
     private Tree tree;
     private OnsService onsService;
     private TreeDao treeDao;
+    private GedcomDao gedcomDao;
 
     @Before
     public void setUp() throws Exception {
@@ -35,7 +37,7 @@ public class OnsServiceImplTest {
         person = new Person();
         surname = new Surname();
         tree = new Tree();
-        onsService = new OnsServiceImpl(personDao, configDao, surnameDao, treeDao);
+        onsService = new OnsServiceImpl(personDao, configDao, surnameDao, treeDao, gedcomDao);
     }
 
     @Test
