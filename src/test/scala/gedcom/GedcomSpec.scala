@@ -3,6 +3,8 @@ package gedcom
 import org.scalatest.{BeforeAndAfter, GivenWhenThen, FeatureSpec}
 import org.scalatest.mock.{MockitoSugar, EasyMockSugar}
 import org.scalatest.matchers.ShouldMatchers
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 
 class GedcomSpec extends FeatureSpec  with GivenWhenThen with ShouldMatchers with MockitoSugar with BeforeAndAfter {
 
@@ -10,7 +12,8 @@ class GedcomSpec extends FeatureSpec  with GivenWhenThen with ShouldMatchers wit
     scenario("returns a person after parsing file") {
       when("file is read")
         val gedcomParser = new GedcomParser("/Users/metherton/Downloads/EthertonLondon.ged")
-        val firstPersonFound = gedcomParser.individuals().head
+        val individuals = gedcomParser.individuals()
+        val firstPersonFound = individuals.head
       then ("a person is returned with first name Martin")
         firstPersonFound.firstName() should be("Martin")
       and  ("surname is Etherton")

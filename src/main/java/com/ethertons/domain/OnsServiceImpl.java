@@ -95,6 +95,17 @@ public class OnsServiceImpl implements OnsService {
     }
 
     @Override
+    public Gedcom findGedcomWith(int gedcomId) {
+        return gedcomDao.findGedcomWith(gedcomId);
+    }
+
+    @Override
+    public List<Person> findPersonsFrom(int gedcomId) {
+
+        return null;
+    }
+
+    @Override
     public List<Surname> findAllSurnames() {
         return surnameDao.findAllSurnames();
     }

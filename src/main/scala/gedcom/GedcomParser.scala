@@ -2,10 +2,12 @@ package gedcom
 
 import io.Source
 import collection.generic.CanBuildFrom
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 
 class GedcomParser(_gedComFile: String) {
 
-  def individuals(): List[GedcomIndividual] = {
+  def individuals(): java.util.List[GedcomIndividual] = {
     val listOf0ElementsAndTheirAssociatedChildElements =  splitFileIntoChunksTokenizedOnLinesBeginningWith0(Source.fromFile(_gedComFile, "latin1").getLines().toList)( _.charAt(0).equals('0') )
     val listOfLinesGroupedByZeroElement = merge0ElementWithItsChildElements(Nil, listOf0ElementsAndTheirAssociatedChildElements).reverse
     val gedcomRecords = listOfLinesGroupedByZeroElement map (xs =>
@@ -18,7 +20,7 @@ class GedcomParser(_gedComFile: String) {
         case _ => new UnknownGedcomRecord
       }
     )
-    gedcomRecords.filter(_.isInstanceOf[GedcomIndividual]).asInstanceOf[List[GedcomIndividual]]
+    (gedcomRecords.filter(_.isInstanceOf[GedcomIndividual]).asInstanceOf[List[GedcomIndividual]]).asJava
   }
 
   def surname(s: Option[String]): String =

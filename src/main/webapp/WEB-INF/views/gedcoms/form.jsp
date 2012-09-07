@@ -19,7 +19,7 @@ Gedcom
     <%--<form:form modelAttribute="gedcom" method="${method}"  >--%>
 
     <p class="container">
-        <form:label class="form-label" path="title"  cssErrorClass="form-label errors">First Name</form:label>
+        <form:label class="form-label" path="title"  cssErrorClass="form-label errors">Title</form:label>
         <form:input class="input-text" path="title" />
         <form:errors path="title" cssClass="errors" />
     </p>

@@ -32,4 +32,8 @@ public interface OnsService {
     List<Gedcom> findAllGedcoms();
 
     void storeGedcom(Gedcom gedcom);
+
+    Gedcom findGedcomWith(int gedcomId);
+
+    List<Person> findPersonsFrom(int gedcomId);
 }

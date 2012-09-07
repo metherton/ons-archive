@@ -36,27 +36,16 @@ public class AddGedcomForm extends OnsForm {
 
     @RequestMapping(method = RequestMethod.POST)
     public String processSubmit(@ModelAttribute("gedcom") @Valid Gedcom gedcom, BindingResult result, @RequestParam(value="gedcomfile",required=false) MultipartFile gedcomfile) {
-//    public String processSubmit(@ModelAttribute("gedcom") @Valid Gedcom gedcom, BindingResult result) {
         if (result.hasErrors()) {
             return GEDCOMS_FORM;
         } else {
             this.onsService.storeGedcom(gedcom);
-//            return "redirect:/gedcoms/" + gedcom.getId();
         }
-
-
-
-//        spitterService.saveSpitter(spitter);
-            if(!gedcomfile.isEmpty()){
-                validateImage(gedcomfile);
-                saveGedcomFile(gedcomfilesDirectory + gedcom.getId()+".ged",gedcomfile);//
-            }
-//        } catch(ImageUploadExceptione){
-//            bindingResult.reject(e.getMessage());
-//            return"spitters/edit";
-//        }
+        if(!gedcomfile.isEmpty()){
+            validateImage(gedcomfile);
+            saveGedcomFile(gedcomfilesDirectory + gedcom.getId()+".ged",gedcomfile);//
+        }
         return "redirect:/gedcoms/" + gedcom.getId();
-
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -68,14 +57,10 @@ public class AddGedcomForm extends OnsForm {
 
     private void validateImage(MultipartFile gedcomFile){
         return;
-//        if(!image.getContentType().equals("image/jpeg")){
-//            throw newImageUploadException("OnlyJPGimagesaccepted");
-//        }
     }
 
     private void saveGedcomFile(String filename, MultipartFile gedcomfile) throws GedcomUploadException {
         try {
-//            File file=new File(webRootPath+"/resources/"+filename);
             File file=new File(filename);
             FileUtils.writeByteArrayToFile(file, gedcomfile.getBytes());
         } catch(IOException e){

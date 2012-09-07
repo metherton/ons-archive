@@ -52,6 +52,13 @@ public class OnsController {
         return "trees/show";
     }
 
+    @RequestMapping(value="/gedcoms/{gedcomId}")
+    public String showGedcomDetails(@PathVariable("gedcomId") int gedcomId, Model model) {
+        Gedcom gedcom = onsService.findGedcomWith(gedcomId);
+        model.addAttribute("gedcom", gedcom);
+        return "gedcoms/show";
+    }
+
     @RequestMapping(value="/trees")
     public String findAllTrees(Model model) {
         List<Tree> trees = onsService.findAllTrees();
@@ -80,5 +87,12 @@ public class OnsController {
         model.addAttribute("immediateFamily", immediateFamily);
         model.addAttribute("childPositioningOffset", immediateFamily.findSiblingPosition(personId));
         return "trees/view";
+    }
+
+    @RequestMapping(value="/gedcoms/{gedcomId}/view")
+    public String showGedcomContents(@PathVariable("gedcomId") int gedcomId, Model model) {
+        List<Person> persons = onsService.findPersonsFrom(gedcomId);
+        model.addAttribute("persons", persons);
+        return "gedcoms/view";
     }
 }
