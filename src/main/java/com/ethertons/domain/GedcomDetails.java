@@ -6,8 +6,8 @@ public class GedcomDetails {
 
     private GedcomParser gedcomParser;
 
-    public GedcomDetails() {
-        gedcomParser = new GedcomParser("/Users/metherton/Downloads/EthertonLondon.ged");
+    public GedcomDetails(String gedcomFileName) {
+        gedcomParser = new GedcomParser(gedcomFileName);
     }
 
     public GedcomParser getGedcomParser() {
