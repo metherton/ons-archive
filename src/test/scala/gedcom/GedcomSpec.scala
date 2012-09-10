@@ -1,12 +1,14 @@
 package gedcom
 
 import org.scalatest.{BeforeAndAfter, GivenWhenThen, FeatureSpec}
-import org.scalatest.mock.{MockitoSugar, EasyMockSugar}
+import org.scalatest.mock.{EasyMockSugar}
 import org.scalatest.matchers.ShouldMatchers
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-class GedcomSpec extends FeatureSpec  with GivenWhenThen with ShouldMatchers with MockitoSugar with BeforeAndAfter {
+class GedcomSpec extends FeatureSpec with GivenWhenThen with ShouldMatchers with BeforeAndAfter {
 
   feature("person returned after parsing file")  {
     scenario("returns a person after parsing file") {
