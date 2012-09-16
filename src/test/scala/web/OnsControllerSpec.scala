@@ -4,10 +4,10 @@ import java.util.ArrayList
 import org.easymock.EasyMock
 import org.easymock.EasyMock._
 import org.hamcrest.Matchers
-import org.scalatest.Spec
+import org.scalatest.{FunSpec, Spec}
 import web.OnsMock
 
-class OnsControllerSpec extends Spec with OnsMock {
+class OnsControllerSpec extends FunSpec with OnsMock {
 
   describe("list of persons") {
     it("should show list of persons")  {

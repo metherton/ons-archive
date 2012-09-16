@@ -6,6 +6,7 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 import com.ethertons.domain.GedcomDetails;
+import com.ethertons.domain.Tree;
 import gedcom.GedcomIndividual;
 
 
@@ -19,8 +20,6 @@ public class GedcomTag extends SimpleTagSupport {
             getJspContext().setAttribute("gedcomIndividual", gedcomIndividual);
             getJspBody().invoke(null);
         }
-
-
     }
 
     public void setGedcomDetails(GedcomDetails gedcomDetails) {

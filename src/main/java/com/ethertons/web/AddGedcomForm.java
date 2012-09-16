@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.validation.Valid;
 
+import com.ethertons.common.FileHandler;
 import com.ethertons.domain.Gedcom;
 import com.ethertons.domain.OnsService;
 import org.apache.commons.io.FileUtils;
@@ -29,9 +30,12 @@ public class AddGedcomForm extends OnsForm {
     @Value("${gedcomfiles.directory}")
     public String gedcomfilesDirectory;
 
+    private FileHandler fileHandler;
+
     @Autowired
-    public AddGedcomForm(OnsService onsService) {
+    public AddGedcomForm(OnsService onsService, FileHandler fileHandler) {
         super(onsService);
+        this.fileHandler = fileHandler;
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -43,7 +47,7 @@ public class AddGedcomForm extends OnsForm {
         }
         if(!gedcomfile.isEmpty()){
             validateImage(gedcomfile);
-            saveGedcomFile(gedcomfilesDirectory + gedcom.getId()+".ged",gedcomfile);//
+            fileHandler.save(gedcomfilesDirectory + gedcom.getId()+".ged",gedcomfile);//
         }
         return "redirect:/gedcoms/" + gedcom.getId();
     }

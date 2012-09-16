@@ -8,6 +8,7 @@ import static org.easymock.EasyMock.verify;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import com.ethertons.common.FileHandler;
 import com.ethertons.domain.Gedcom;
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.OnsServiceImpl;
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class AddGedcomFormTest {
 
     private OnsService onsService;
+    private FileHandler fileHandler;
     private AddGedcomForm addGedcomForm;
     private Model model;
     private BindingResult result;
@@ -28,8 +30,9 @@ public class AddGedcomFormTest {
 
     @Before
     public void setUp() {
+        fileHandler = EasyMock.createMock(FileHandler.class);
         onsService = EasyMock.createMock(OnsServiceImpl.class);
-        addGedcomForm = new AddGedcomForm(onsService);
+        addGedcomForm = new AddGedcomForm(onsService, fileHandler);
         model = EasyMock.createMock(Model.class);
         result = EasyMock.createMock(BindingResult.class);
         file = EasyMock.createMock(MultipartFile.class);
@@ -56,10 +59,10 @@ public class AddGedcomFormTest {
 
         expect(result.hasErrors()).andReturn(false);
         onsService.storeGedcom(gedcom);
+        fileHandler.save("", file);
 
         replay(onsService, result);
         String showGedcomForm = addGedcomForm.processSubmit(gedcom, result, file);
-//        String showGedcomForm = addGedcomForm.processSubmit(gedcom, result);
         verify(onsService, result);
 
         assertThat(showGedcomForm, is("redirect:/gedcoms/1"));
