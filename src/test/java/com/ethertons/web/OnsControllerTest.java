@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.ethertons.common.GedcomRetriever;
 import com.ethertons.domain.ImmediateFamily;
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.OnsServiceImpl;
@@ -28,6 +29,7 @@ public class OnsControllerTest {
     private Person person;
     private Model model;
     private OnsService onsService;
+    private GedcomRetriever gedcomRetriever;
     private OnsController onsController;
     private Surname surname;
 
@@ -36,7 +38,8 @@ public class OnsControllerTest {
         person = new Person();
         model = EasyMock.createMock(Model.class);
         onsService = EasyMock.createMock(OnsServiceImpl.class);
-        onsController = new OnsController(onsService);
+        gedcomRetriever = EasyMock.createMock(GedcomRetriever.class);
+        onsController = new OnsController(onsService, gedcomRetriever);
         surname = new Surname();
     }
 

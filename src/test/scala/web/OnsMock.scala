@@ -9,9 +9,11 @@ import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
 import reflect.Class
 import com.ethertons.web.{AddTreeForm, OnsController, AddPersonForm}
+import com.ethertons.common.GedcomRetriever
 
 trait OnsMock extends EasyMockSugar {
   val onsService = mock[OnsServiceImpl]
+  val gedcomRetriever = mock[GedcomRetriever]
   val model = mock[Model]
   val result = mock[BindingResult]
   val addPersonForm = new AddPersonForm(onsService)
@@ -20,7 +22,7 @@ trait OnsMock extends EasyMockSugar {
   val possibleFathers = listPossibleFathers()
   val possibleMothers = listPossibleMothers()
   val person = aNewPerson()
-  val onsController = new OnsController(onsService)
+  val onsController = new OnsController(onsService, gedcomRetriever)
 
   def listPossibleFathers(): ArrayList[Person] = {
     var possibleFathers = new ArrayList[Person]

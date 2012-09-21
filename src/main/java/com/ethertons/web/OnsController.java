@@ -2,8 +2,8 @@ package com.ethertons.web;
 
 import java.util.List;
 
+import com.ethertons.common.GedcomRetriever;
 import com.ethertons.domain.Gedcom;
-import com.ethertons.domain.GedcomDetails;
 import com.ethertons.domain.ImmediateFamily;
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.Person;
@@ -20,13 +20,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class OnsController {
 
     private final OnsService onsService;
+    private final GedcomRetriever gedcomRetriever;
 
     @Value("${gedcomfiles.directory}")
     public String gedcomfilesDirectory;
 
     @Autowired
-    public OnsController(OnsService onsService) {
+    public OnsController(OnsService onsService, GedcomRetriever gedcomRetriever) {
         this.onsService = onsService;
+        this.gedcomRetriever = gedcomRetriever;
     }
 
     @RequestMapping(value="/persons/{personId}")
@@ -96,8 +98,7 @@ public class OnsController {
 
     @RequestMapping(value="/gedcoms/{gedcomId}/view")
     public String showGedcomContents(@PathVariable("gedcomId") int gedcomId, Model model) {
-        GedcomDetails gedcomDetails = new GedcomDetails(gedcomfilesDirectory + gedcomId +".ged");
-        model.addAttribute("gedcomDetails", gedcomDetails);
+        model.addAttribute("gedcomDetails", gedcomRetriever.retrieveGedcom(gedcomfilesDirectory + gedcomId +".ged"));
         List<Tree> trees = onsService.findAllTrees();
         model.addAttribute("trees", trees);
         return "gedcoms/view";
