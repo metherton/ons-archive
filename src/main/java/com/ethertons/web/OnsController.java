@@ -98,6 +98,8 @@ public class OnsController {
     public String showGedcomContents(@PathVariable("gedcomId") int gedcomId, Model model) {
         GedcomDetails gedcomDetails = new GedcomDetails(gedcomfilesDirectory + gedcomId +".ged");
         model.addAttribute("gedcomDetails", gedcomDetails);
+        List<Tree> trees = onsService.findAllTrees();
+        model.addAttribute("trees", trees);
         return "gedcoms/view";
     }
 }

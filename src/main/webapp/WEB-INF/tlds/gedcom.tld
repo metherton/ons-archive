@@ -10,6 +10,16 @@
     <uri>gedcomContents</uri>
 
     <tag>
+        <name>gedcomtree</name>
+        <tag-class>com.ethertons.common.GedcomTreeTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>trees</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
         <name>gedcom</name>
         <tag-class>com.ethertons.common.GedcomTag</tag-class>
         <body-content>scriptless</body-content>
@@ -18,11 +28,7 @@
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
-        <attribute>
-            <name>trees</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
     </tag>
+
 
 </taglib>

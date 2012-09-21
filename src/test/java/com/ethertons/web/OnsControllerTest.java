@@ -137,4 +137,12 @@ public class OnsControllerTest {
         
         assertThat(view, is("surnames/list"));
     }
+
+    @Test
+    public void gedcomDetailsShouldBeShown() throws Exception {
+
+
+        String gedcomContentsView = onsController.showGedcomContents(1, model);
+        assertThat(gedcomContentsView, is("gedcoms/1/view"));
+    }
 }
