@@ -98,7 +98,7 @@ public class OnsController {
 
     @RequestMapping(value="/gedcoms/{gedcomId}/view")
     public String showGedcomContents(@PathVariable("gedcomId") int gedcomId, Model model) {
-        model.addAttribute("gedcomDetails", gedcomRetriever.retrieveGedcom(gedcomfilesDirectory + gedcomId +".ged"));
+        model.addAttribute("gedcomDetails", gedcomRetriever.retrieveGedcom(gedcomId));
         List<Tree> trees = onsService.findAllTrees();
         model.addAttribute("trees", trees);
         return "gedcoms/view";

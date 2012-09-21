@@ -1,5 +1,6 @@
 package com.ethertons.web;
 
+import static com.google.common.collect.Lists.newArrayList;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
@@ -11,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.ethertons.common.GedcomRetriever;
+import com.ethertons.domain.GedcomDetails;
 import com.ethertons.domain.ImmediateFamily;
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.OnsServiceImpl;
@@ -144,8 +146,16 @@ public class OnsControllerTest {
     @Test
     public void gedcomDetailsShouldBeShown() throws Exception {
 
+        GedcomDetails gedcomDetails = new GedcomDetails("file");
+        expect(gedcomRetriever.retrieveGedcom(1)).andReturn(gedcomDetails);
+        expect(model.addAttribute("gedcomDetails", gedcomDetails )).andReturn(model);
+        List<Tree> trees = newArrayList();
+        expect(onsService.findAllTrees()).andReturn(trees);
+        expect(model.addAttribute("trees", trees)).andReturn(model);
 
+        replay(model, gedcomRetriever, onsService);
         String gedcomContentsView = onsController.showGedcomContents(1, model);
-        assertThat(gedcomContentsView, is("gedcoms/1/view"));
+        verify(model, gedcomRetriever, onsService);
+        assertThat(gedcomContentsView, is("gedcoms/view"));
     }
 }
