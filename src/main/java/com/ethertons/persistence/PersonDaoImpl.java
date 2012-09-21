@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.ethertons.domain.Person;
-import common.TreeResolver;
+import com.ethertons.common.TreeResolver;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -18,9 +18,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PersonDaoImpl extends GenericDao implements PersonDao {
 
+    private final TreeResolver treeResolver;
+
     @Autowired
-    public PersonDaoImpl(SessionFactory sessionFactory) {
+    public PersonDaoImpl(SessionFactory sessionFactory, TreeResolver treeResolver) {
         super(sessionFactory);
+        this.treeResolver = treeResolver;
     }
 
     @Override
@@ -141,9 +144,9 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
 
     @Override
     public List<Person> findAllPersonsInTree(int treeId) {
-        TreeResolver treeResolver = new TreeResolver();
+//        TreeResolver treeResolver = new TreeResolver();
         List<Integer> personIds = treeResolver.ids();
-        return null;
+        return (List<Person>)currentSession().createCriteria(Person.class).add(Restrictions.in("id", personIds)).list();
     }
 
 }

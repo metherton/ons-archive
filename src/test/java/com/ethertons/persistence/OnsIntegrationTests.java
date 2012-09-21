@@ -147,6 +147,6 @@ public class OnsIntegrationTests {
     @Test
     public void findAllPersonsInTree() throws Exception {
         List<Person> personsInTree = personDao.findAllPersonsInTree(1);
-        assertThat(personsInTree.size(), greaterThan(10));
+        assertThat(personsInTree.size(), greaterThan(1));
     }
 }
