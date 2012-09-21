@@ -36,4 +36,6 @@ public interface OnsService {
     Gedcom findGedcomWith(int gedcomId);
 
     List<Person> findPersonsFrom(int gedcomId);
+
+    List<Person> findAllPersonsInTree(int treeId);
 }

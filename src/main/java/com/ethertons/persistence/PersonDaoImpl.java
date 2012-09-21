@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.ethertons.domain.Person;
+import common.TreeResolver;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -131,13 +132,18 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
                 }
             }
         }
-        System.out.println("spouseids" + spouseIds);
         for (int spouseId : spouseIds) {
             Person spouse = this.findPersonWithId(spouseId);
             spouses.add(spouse);
         }
-        System.out.println(spouses);
         return spouses;
+    }
+
+    @Override
+    public List<Person> findAllPersonsInTree(int treeId) {
+        TreeResolver treeResolver = new TreeResolver();
+        List<Integer> personIds = treeResolver.ids();
+        return null;
     }
 
 }

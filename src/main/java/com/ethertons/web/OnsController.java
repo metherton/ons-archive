@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class OnsController {
@@ -97,10 +98,14 @@ public class OnsController {
     }
 
     @RequestMapping(value="/gedcoms/{gedcomId}/view")
-    public String showGedcomContents(@PathVariable("gedcomId") int gedcomId, Model model) {
+    public String showGedcomContents(@PathVariable("gedcomId") int gedcomId, Model model,  @RequestParam("treeId") int treeId) {
         model.addAttribute("gedcomDetails", gedcomRetriever.retrieveGedcom(gedcomId));
         List<Tree> trees = onsService.findAllTrees();
         model.addAttribute("trees", trees);
+        if (treeId > 0) {
+            List<Person> treePersons = onsService.findAllPersonsInTree(treeId);
+            model.addAttribute("treePersons", treePersons);
+        }
         return "gedcoms/view";
     }
 }

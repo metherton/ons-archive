@@ -12,6 +12,7 @@ import com.ethertons.persistence.GedcomDao;
 import com.ethertons.persistence.PersonDao;
 import com.ethertons.persistence.SurnameDao;
 import com.ethertons.persistence.TreeDao;
+import com.google.common.collect.Lists;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
@@ -143,4 +144,13 @@ public class OnsServiceImplTest {
         verify(treeDao);
     }
 
+    @Test
+    public void findAllPersonsForTreeShouldRetrieveAllPersonsForTree() throws Exception {
+
+        expect(personDao.findAllPersonsInTree(1)).andReturn(Lists.newArrayList(new Person()));
+
+        replay(personDao);
+        onsService.findAllPersonsInTree(1);
+        verify(personDao);
+    }
 }

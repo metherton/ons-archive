@@ -143,4 +143,10 @@ public class OnsIntegrationTests {
         List<Person> children = personDao.findChildrenFor(father);
         assertThat(children.size(), Matchers.is(1));
     }
+
+    @Test
+    public void findAllPersonsInTree() throws Exception {
+        List<Person> personsInTree = personDao.findAllPersonsInTree(1);
+        assertThat(personsInTree.size(), greaterThan(10));
+    }
 }

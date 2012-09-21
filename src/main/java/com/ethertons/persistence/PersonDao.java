@@ -26,4 +26,6 @@ public interface PersonDao {
     List<Person> findChildrenForCouple(Person person, Person wife);
 
     List<Person> findSpousesFor(int activePersonId);
+
+    List<Person> findAllPersonsInTree(int treeId);
 }
