@@ -146,11 +146,15 @@ public class OnsServiceImplTest {
 
     @Test
     public void findAllPersonsForTreeShouldRetrieveAllPersonsForTree() throws Exception {
+        Tree tree = new Tree();
+        Person rootPerson = new Person();
+        rootPerson.setId(42);
+        tree.setPerson(rootPerson);
+        expect(treeDao.findTreeWith(1)).andReturn(tree);
+        expect(personDao.findAllDescendentsOfPerson(42)).andReturn(Lists.newArrayList(new Person()));
 
-        expect(personDao.findAllPersonsInTree(1)).andReturn(Lists.newArrayList(new Person()));
-
-        replay(personDao);
+        replay(personDao, treeDao);
         onsService.findAllPersonsInTree(1);
-        verify(personDao);
+        verify(personDao, treeDao);
     }
 }

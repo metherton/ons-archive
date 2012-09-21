@@ -27,5 +27,5 @@ public interface PersonDao {
 
     List<Person> findSpousesFor(int activePersonId);
 
-    List<Person> findAllPersonsInTree(int treeId);
+    List<Person> findAllDescendentsOfPerson(int treeId);
 }

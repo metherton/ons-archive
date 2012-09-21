@@ -143,9 +143,8 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
     }
 
     @Override
-    public List<Person> findAllPersonsInTree(int treeId) {
-//        TreeResolver treeResolver = new TreeResolver();
-        List<Integer> personIds = treeResolver.ids();
+    public List<Person> findAllDescendentsOfPerson(int rootAncestorPersonId) {
+        List<Integer> personIds = treeResolver.ids(rootAncestorPersonId);
         return (List<Person>)currentSession().createCriteria(Person.class).add(Restrictions.in("id", personIds)).list();
     }
 
