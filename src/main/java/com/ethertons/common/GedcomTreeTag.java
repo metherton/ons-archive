@@ -11,6 +11,7 @@ import com.ethertons.domain.Tree;
 public class GedcomTreeTag extends SimpleTagSupport {
 
     private List<Tree> trees;
+    private int selectedTree;
 
     public void doTag() throws IOException, JspException {
         for(Tree tree : trees)  {
@@ -23,5 +24,7 @@ public class GedcomTreeTag extends SimpleTagSupport {
         this.trees = trees;
     }
 
-
+    public void setSelectedTree(int selectedTree) {
+        this.selectedTree = selectedTree;
+    }
 }

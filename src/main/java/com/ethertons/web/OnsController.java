@@ -114,8 +114,10 @@ public class OnsController {
         if (treeId > 0) {
             List<Person> treePersons = onsService.findAllPersonsInTree(treeId);
             model.addAttribute("persons", treePersons);
+            model.addAttribute("selectedTree", treeId);
         } else {
             model.addAttribute("persons", Lists.newArrayList());
+            model.addAttribute("selectedTree", 0);
         }
         return "gedcoms/view";
     }
