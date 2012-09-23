@@ -23,9 +23,10 @@
 <select name="person">
     <option value="">Please select a person to merge with</option>
     <gedcomContents:person persons="${persons}">
-        <option id=${person.id} value="${person.id}">${person.fullname}</option>
+        <option id=${person.id} value="${person.id}">${person.fullname}&nbsp;${person.birthDate}&nbsp;${person.address}</option>
     </gedcomContents:person>
 </select>
-
+<br />
+<input type="submit" />
 </form>    
 <%@ include file="/WEB-INF/views/footer.jsp" %>
