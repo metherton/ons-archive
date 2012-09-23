@@ -9,6 +9,7 @@ import com.ethertons.domain.OnsService;
 import com.ethertons.domain.Person;
 import com.ethertons.domain.Surname;
 import com.ethertons.domain.Tree;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -113,6 +114,8 @@ public class OnsController {
         if (treeId > 0) {
             List<Person> treePersons = onsService.findAllPersonsInTree(treeId);
             model.addAttribute("persons", treePersons);
+        } else {
+            model.addAttribute("persons", Lists.newArrayList());
         }
         return "gedcoms/view";
     }

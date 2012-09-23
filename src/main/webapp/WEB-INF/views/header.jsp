@@ -8,7 +8,6 @@
     <script type="text/javascript" src="<c:url value="/resources/js/jquery-1.5.1.min.js" /> "></script>
     <script type="text/javascript" src="<c:url value="/resources/js/jquery-ui-1.8.14.custom.min.js" /> "></script>
     <script type="text/javascript" src="<c:url value="/resources/js/main.js" /> "></script>
-
 </head>
 <body style="background-color:ghostwhite;margin:0">
 <div id="container" style="width:100%">
