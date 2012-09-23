@@ -16,7 +16,9 @@ class GedcomParser(_gedComFile: String) {
         case s if s.startsWith("0 @P") => new GedcomIndividual( firstName(xs.tail find (_ startsWith("1 NAME"))),
                                                                 surname(xs.tail find (_ startsWith("1 NAME"))),
                                                                 birthDate(xs.tail find (_ startsWith("2 DATE"))),
-                                                                birthPlace(xs.tail find (_ startsWith("2 PLAC"))))
+                                                                birthPlace(xs.tail find (_ startsWith("2 PLAC"))),
+                                                                id(Some(s)),
+                                                                familyId(xs.tail find (_ startsWith("1 FAMC"))))
         case _ => new UnknownGedcomRecord
       }
     )
@@ -35,6 +37,19 @@ class GedcomParser(_gedComFile: String) {
       case s: Some[String] => stripOutFirstName(s)
       case _ => "unknown name"
     }
+
+  def id(s: Option[String]): String =
+    s match {
+      case s: Some[String] => stripOutId(s)
+      case _ => "unknown id"
+    }
+
+  def familyId(s: Option[String]): String =
+    s match {
+      case s: Some[String] => stripOutFamilyId(s)
+      case _ => "unknown family id"
+    }
+
 
   def birthDate(s: Option[String]): String =
     s match {
@@ -64,6 +79,13 @@ class GedcomParser(_gedComFile: String) {
     s.getOrElse("Unknown value").stripPrefix("2 PLAC ")
   }
 
+  def stripOutId(s: Some[String]): String =  {
+    s.getOrElse("Unknown value").stripPrefix("0 @P").stripSuffix("@ INDI ")
+  }
+
+  def stripOutFamilyId(s: Some[String]): String =  {
+    s.getOrElse("Unknown value").stripPrefix("1 FAMC @F").stripSuffix("@")
+  }
 
   def getFirstName(names: List[String]) =  {
     if (names.isEmpty)

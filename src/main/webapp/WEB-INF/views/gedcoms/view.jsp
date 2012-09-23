@@ -7,7 +7,7 @@
 
 <select name="individual">
 <gedcomContents:gedcom gedcomDetails="${gedcomDetails}">
-    <option id=${gedcom.id}>${gedcomIndividual.firstName}&nbsp;${gedcomIndividual.surname}&nbsp;${gedcomIndividual.birthDate}&nbsp;,&nbsp;${gedcomIndividual.birthPlace}</option>
+    <option id=${gedcom.id} value="${gedcomIndividual.id}">${gedcomIndividual.firstName}&nbsp;${gedcomIndividual.surname}&nbsp;${gedcomIndividual.birthDate}&nbsp;,&nbsp;${gedcomIndividual.birthPlace}</option>
 </gedcomContents:gedcom>
 </select>
 <br />

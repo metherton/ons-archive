@@ -24,6 +24,10 @@ class GedcomSpec extends FeatureSpec with GivenWhenThen with ShouldMatchers with
         firstPersonFound.birthDate() should be ("4 MAR 1963")
       and ("place of birth is Sheffield")
         firstPersonFound.birthPlace() should be ("Sheffield")
+      and ("id is ")
+        firstPersonFound.id() should be ("7")
+      and ("family id is ")
+        firstPersonFound.familyId() should be ("1")
     }
   }
 
