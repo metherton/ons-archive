@@ -97,14 +97,22 @@ public class OnsController {
         return "trees/view";
     }
 
+//    @RequestMapping(value="/gedcoms/{gedcomId}/view")
+//    public String showGedcomContents(@PathVariable("gedcomId") int gedcomId, Model model) {
+//        model.addAttribute("gedcomDetails", gedcomRetriever.retrieveGedcom(gedcomId));
+//        List<Tree> trees = onsService.findAllTrees();
+//        model.addAttribute("trees", trees);
+//        return "gedcoms/view";
+//    }
+
     @RequestMapping(value="/gedcoms/{gedcomId}/view")
-    public String showGedcomContents(@PathVariable("gedcomId") int gedcomId, Model model,  @RequestParam("treeId") int treeId) {
+    public String showGedcomContents(@PathVariable("gedcomId") int gedcomId,  @RequestParam("tree") int treeId, Model model) {
         model.addAttribute("gedcomDetails", gedcomRetriever.retrieveGedcom(gedcomId));
         List<Tree> trees = onsService.findAllTrees();
         model.addAttribute("trees", trees);
         if (treeId > 0) {
             List<Person> treePersons = onsService.findAllPersonsInTree(treeId);
-            model.addAttribute("treePersons", treePersons);
+            model.addAttribute("persons", treePersons);
         }
         return "gedcoms/view";
     }

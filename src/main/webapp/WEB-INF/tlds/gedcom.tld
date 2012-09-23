@@ -29,6 +29,15 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
-
+    <tag>
+        <name>person</name>
+        <tag-class>com.ethertons.common.PersonTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>persons</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 
 </taglib>

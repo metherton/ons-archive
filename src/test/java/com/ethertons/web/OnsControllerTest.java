@@ -150,7 +150,7 @@ public class OnsControllerTest {
         expectBaseCallsForViewingGedcom();
 
         replay(model, gedcomRetriever, onsService);
-        String gedcomContentsView = onsController.showGedcomContents(1, model, 0);
+        String gedcomContentsView = onsController.showGedcomContents(1, 0, model);
         verify(model, gedcomRetriever, onsService);
         assertThat(gedcomContentsView, is("gedcoms/view"));
     }
@@ -164,7 +164,7 @@ public class OnsControllerTest {
         expect(model.addAttribute("treePersons", personsInTree)).andReturn(model);
 
         replay(model, gedcomRetriever, onsService);
-        String gedcomContentsView = onsController.showGedcomContents(1, model, 2);
+        String gedcomContentsView = onsController.showGedcomContents(1, 0, model);
         verify(model, gedcomRetriever, onsService);
         assertThat(gedcomContentsView, is("gedcoms/view"));
     }
