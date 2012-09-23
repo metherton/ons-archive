@@ -3,7 +3,7 @@
 
 <%@ taglib prefix="gedcomContents" uri="gedcomContents" %>
 
-<form method="POST" >
+<form method="GET" >
 
 <select name="individual">
 <gedcomContents:gedcom gedcomDetails="${gedcomDetails}">
@@ -21,6 +21,7 @@
 <input type="radio" name="relation" value="parent">Parent&nbsp;<input type="radio" name="relation" value="child">Child&nbsp;<input type="radio" name="relation" value="sibling">Sibling
 <br />
 <select name="person">
+    <option>Please select a tree to merge into</option>
     <gedcomContents:person persons="${persons}">
         <option id=${person.id}>${person.fullname}</option>
     </gedcomContents:person>
