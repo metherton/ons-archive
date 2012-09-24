@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -98,16 +99,23 @@ public class OnsController {
         return "trees/view";
     }
 
-//    @RequestMapping(value="/gedcoms/{gedcomId}/view")
-//    public String showGedcomContents(@PathVariable("gedcomId") int gedcomId, Model model) {
-//        model.addAttribute("gedcomDetails", gedcomRetriever.retrieveGedcom(gedcomId));
-//        List<Tree> trees = onsService.findAllTrees();
-//        model.addAttribute("trees", trees);
-//        return "gedcoms/view";
-//    }
-
-    @RequestMapping(value="/gedcoms/{gedcomId}/view")
+    @RequestMapping(value="/gedcoms/{gedcomId}/view", method={RequestMethod.GET}, params={"tree"})
     public String showGedcomContents(@PathVariable("gedcomId") int gedcomId,  @RequestParam("tree") int treeId, Model model) {
+        model.addAttribute("gedcomDetails", gedcomRetriever.retrieveGedcom(gedcomId));
+        List<Tree> trees = onsService.findAllTrees();
+        model.addAttribute("trees", trees);
+        if (treeId > 0) {
+            List<Person> treePersons = onsService.findAllPersonsInTree(treeId);
+            model.addAttribute("persons", treePersons);
+            model.addAttribute("selectedTree", treeId);
+        } else {
+            model.addAttribute("persons", Lists.newArrayList());
+            model.addAttribute("selectedTree", 0);
+        }
+        return "gedcoms/view";
+    }
+    @RequestMapping(value="/gedcoms/{gedcomId}/view", method={RequestMethod.GET}, params={"tree", "individual", "person", "relation"})
+    public String showGedcomContents1(@PathVariable("gedcomId") int gedcomId,  @RequestParam("tree") int treeId, @RequestParam("individual") String individualId, @RequestParam("person") int personId, @RequestParam("relation") String relationId,  Model model) {
         model.addAttribute("gedcomDetails", gedcomRetriever.retrieveGedcom(gedcomId));
         List<Tree> trees = onsService.findAllTrees();
         model.addAttribute("trees", trees);
