@@ -9,15 +9,12 @@ import com.ethertons.domain.OnsService;
 import com.ethertons.domain.Person;
 import com.ethertons.domain.Surname;
 import com.ethertons.domain.Tree;
-import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class OnsController {
@@ -99,34 +96,46 @@ public class OnsController {
         return "trees/view";
     }
 
-    @RequestMapping(value="/gedcoms/{gedcomId}/view", method={RequestMethod.GET}, params={"tree"})
-    public String showGedcomContents(@PathVariable("gedcomId") int gedcomId,  @RequestParam("tree") int treeId, Model model) {
-        model.addAttribute("gedcomDetails", gedcomRetriever.retrieveGedcom(gedcomId));
-        List<Tree> trees = onsService.findAllTrees();
-        model.addAttribute("trees", trees);
-        if (treeId > 0) {
-            List<Person> treePersons = onsService.findAllPersonsInTree(treeId);
-            model.addAttribute("persons", treePersons);
-            model.addAttribute("selectedTree", treeId);
-        } else {
-            model.addAttribute("persons", Lists.newArrayList());
-            model.addAttribute("selectedTree", 0);
-        }
-        return "gedcoms/view";
-    }
-    @RequestMapping(value="/gedcoms/{gedcomId}/view", method={RequestMethod.GET}, params={"tree", "individual", "person", "relation"})
-    public String showGedcomContents1(@PathVariable("gedcomId") int gedcomId,  @RequestParam("tree") int treeId, @RequestParam("individual") String individualId, @RequestParam("person") int personId, @RequestParam("relation") String relationId,  Model model) {
-        model.addAttribute("gedcomDetails", gedcomRetriever.retrieveGedcom(gedcomId));
-        List<Tree> trees = onsService.findAllTrees();
-        model.addAttribute("trees", trees);
-        if (treeId > 0) {
-            List<Person> treePersons = onsService.findAllPersonsInTree(treeId);
-            model.addAttribute("persons", treePersons);
-            model.addAttribute("selectedTree", treeId);
-        } else {
-            model.addAttribute("persons", Lists.newArrayList());
-            model.addAttribute("selectedTree", 0);
-        }
-        return "gedcoms/view";
-    }
+//    @RequestMapping(value="/gedcoms/{gedcomId}/view", method={RequestMethod.GET}, params={"tree"})
+//    public String showGedcomContents(@PathVariable("gedcomId") int gedcomId,  Model model) {
+//        model.addAttribute("gedcomDetails", gedcomRetriever.retrieveGedcom(gedcomId));
+//        List<Tree> trees = onsService.findAllTrees();
+//        model.addAttribute("trees", trees);
+//        model.addAttribute("persons", Lists.newArrayList());
+//        return "gedcoms/view";
+//    }
+
+//    @RequestMapping(value="/gedcoms/{gedcomId}/view", method={RequestMethod.POST})
+////    public String showGedcomContentsWithTree(@PathVariable("gedcomId") int gedcomId,  @RequestParam("tree") String treeId, Model model) {
+//    public String showGedcomContentsWithTree(@ModelAttribute("viewgedcomform") ViewGedcomForm viewGedcomForm, BindingResult result) {
+//        model.addAttribute("gedcomDetails", gedcomRetriever.retrieveGedcom(gedcomId));
+//        List<Tree> trees = onsService.findAllTrees();
+//        model.addAttribute("trees", trees);
+//        if (treeId != "" && Integer.parseInt(treeId) > 0) {
+//            List<Person> treePersons = onsService.findAllPersonsInTree(Integer.parseInt(treeId));
+//            model.addAttribute("persons", treePersons);
+//            model.addAttribute("selectedTree", treeId);
+//        } else {
+//            model.addAttribute("persons", Lists.newArrayList());
+//            model.addAttribute("selectedTree", 0);
+//        }
+//        return "gedcoms/view";
+//    }
+
+//    @RequestMapping(value="/gedcoms/{gedcomId}/view", method={RequestMethod.POST}, params={"tree", "individual", "person", "relation"})
+//    public String handleGedcomAndTreeAndPersonSelection(@PathVariable("gedcomId") int gedcomId,  @RequestParam("tree") String treeId, @RequestParam("individual") String individualId, @RequestParam("person") String personId, @RequestParam("relation") String relationId,  Model model) {
+//        model.addAttribute("gedcomDetails", gedcomRetriever.retrieveGedcom(gedcomId));
+//        List<Tree> trees = onsService.findAllTrees();
+//        model.addAttribute("trees", trees);
+//        if (treeId != "" && Integer.parseInt(treeId) > 0) {
+//            List<Person> treePersons = onsService.findAllPersonsInTree(Integer.parseInt(treeId));
+//            model.addAttribute("persons", treePersons);
+//            model.addAttribute("selectedTree", treeId);
+//        } else {
+//            model.addAttribute("persons", Lists.newArrayList());
+//            model.addAttribute("selectedTree", 0);
+//        }
+//        return "gedcoms/view";
+//    }
+
 }

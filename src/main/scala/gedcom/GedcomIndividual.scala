@@ -1,5 +1,8 @@
 package gedcom
 
+import org.springframework.stereotype.Component
+
+@Component
 class GedcomIndividual(_firstName: String, _surname: String, _birthDate: String, _birthPlace: String, _id: String, _familyId: String) extends GedcomRoot {
 
   def firstName(): String = _firstName
