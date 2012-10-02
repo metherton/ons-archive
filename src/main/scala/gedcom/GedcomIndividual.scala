@@ -11,6 +11,7 @@ class GedcomIndividual(_firstName: String, _surname: String, _birthDate: String,
   def birthPlace(): String = _birthPlace
   def id(): String = _id
   def familyId(): String = _familyId
+  def getFullDetails(): String = getFirstName() + " " + getSurname() + " " + getBirthDate() + " " + getBirthPlace()
 
   def getFirstName(): String = _firstName
   def getSurname(): String = _surname
