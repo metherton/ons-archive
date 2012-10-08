@@ -17,6 +17,11 @@
 <br />
 <%--<input type="radio" <c:if test="${disabled}">disabled</c:if> name="relation" value="parent">Parent&nbsp;<input type="radio" name="relation" value="child">Child&nbsp;<input type="radio" name="relation" value="sibling">Sibling--%>
 <br />
+    <form:select path="person">
+        <form:option value="" label="--Please Select"/>
+        <form:options items="${persons}" itemValue="id" itemLabel="fullname" />
+    </form:select>
+
 <%--<select name="person" <c:if test="${disabled}">disabled</c:if> >--%>
     <%--<option value="">Please select a person to merge with</option>--%>
     <%--<gedcomContents:person persons="${persons}">--%>
