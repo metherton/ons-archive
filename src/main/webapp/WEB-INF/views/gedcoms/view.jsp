@@ -22,6 +22,16 @@
         <form:options items="${persons}" itemValue="id" itemLabel="fullname" />
     </form:select>
 
+    <%--<p class="container">--%>
+        <%--<form:label class="form-label" path="father"  cssErrorClass="form-label errors">Father</form:label>--%>
+        <%--<form:select class="input-select" path="father">--%>
+            <%--<form:option value="" label="--Please Select"/>--%>
+            <%--<form:options items="${fathers}" itemValue="id" itemLabel="fullname" />--%>
+        <%--</form:select>--%>
+        <%--<form:errors path="father" cssClass="errors" />--%>
+    <%--</p>    --%>
+
+
 <%--<select name="person" <c:if test="${disabled}">disabled</c:if> >--%>
     <%--<option value="">Please select a person to merge with</option>--%>
     <%--<gedcomContents:person persons="${persons}">--%>
