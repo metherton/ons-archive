@@ -2,7 +2,6 @@ package com.ethertons.web;
 
 import java.util.Collections;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 
 import com.ethertons.common.GedcomRetriever;
 import com.ethertons.domain.OnsService;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -38,14 +38,10 @@ public class GedcomController {
     }
 
     @InitBinder
-//    public void initBinder(WebDataBinder dataBinder, @RequestParam("tree") Tree tree) {
-    public void initBinder(WebDataBinder dataBinder, HttpServletRequest request) {
+    public void initBinder(WebDataBinder dataBinder) {
         dataBinder.registerCustomEditor(GedcomIndividual.class, "gedcomIndividual", new GedcomIndividualEditor());
         dataBinder.registerCustomEditor(Tree.class, "tree", new TreeEditor(onsService));
-        if (request.getParameter("tree") != null && Integer.parseInt(request.getParameter("tree")) > 0) {
-            dataBinder.registerCustomEditor(Person.class, "person", new PersonEditor(onsService));
-        }
-
+        dataBinder.registerCustomEditor(Person.class, "person", new PersonEditor(onsService));
     }
 
     @ModelAttribute("individuals")
@@ -59,21 +55,15 @@ public class GedcomController {
     }
 
     @ModelAttribute("persons")
-    public List<Person> populatePersons(HttpServletRequest request) {
-//        if (tree.getId() > 0) {
-//        List<Person> allPersonsInTree = onsService.findAllPersonsInTree(9);
-//        System.out.println(allPersonsInTree);
-//        return allPersonsInTree;
-//        }
-        if (request.getParameter("tree") != null && Integer.parseInt(request.getParameter("tree")) > 0) {
-            return onsService.findAllPersonsInTree(Integer.parseInt(request.getParameter("tree")));
+    public List<Person> populatePersons(@RequestParam( value="tree", required = false) String tree) {
+        if (tree != null && Integer.parseInt(tree) > 0) {
+            return onsService.findAllPersonsInTree(Integer.parseInt(tree));
         }
-
         return Collections.emptyList();
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String showViewGedcomForm(@PathVariable("gedcomId") int gedcomId,  Model model) {
+    public String showViewGedcomForm(@PathVariable("gedcomId") int gedcomId, Model model) {
         this.gedcomId = gedcomId;
         model.addAttribute("viewgedcomform", new ViewGedcomForm());
         return "gedcoms/view";
