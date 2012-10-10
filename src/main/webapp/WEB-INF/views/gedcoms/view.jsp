@@ -15,6 +15,8 @@
     <form:options items="${trees}" itemValue="id" itemLabel="description" />
 </form:select>
 <br />
+    <form:radiobuttons path="relation" items="${relationOptions}" />
+
 <%--<input type="radio" <c:if test="${disabled}">disabled</c:if> name="relation" value="parent">Parent&nbsp;<input type="radio" name="relation" value="child">Child&nbsp;<input type="radio" name="relation" value="sibling">Sibling--%>
 <br />
     <form:select path="person">

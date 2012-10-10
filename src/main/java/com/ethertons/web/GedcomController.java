@@ -7,6 +7,7 @@ import com.ethertons.common.GedcomRetriever;
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.Person;
 import com.ethertons.domain.Tree;
+import com.google.common.collect.Lists;
 import gedcom.GedcomIndividual;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,6 +55,15 @@ public class GedcomController {
         return onsService.findAllTrees();
     }
 
+    @ModelAttribute("relationOptions")
+    public List<String> populateRelations() {
+        List<String> relationOptions = Lists.newArrayList();
+        relationOptions.add("Parent");
+        relationOptions.add("Child");
+        relationOptions.add("Sibling");
+        return relationOptions;
+    }
+
     @ModelAttribute("persons")
     public List<Person> populatePersons(@RequestParam( value="tree", required = false) String tree) {
         if (tree != null && Integer.parseInt(tree) > 0) {
@@ -69,13 +79,21 @@ public class GedcomController {
         return "gedcoms/view";
     }
 
+    @RequestMapping(method = RequestMethod.GET, value="/resolve/{gedcomIndividual}/{relation}/{person}" )
+    public String showResolveGedcomForm(@PathVariable("gedcomId") int gedcomId, @PathVariable("gedcomIndividual") int gedcomIndividualId, @PathVariable("relation") String relation, @PathVariable("person") int person, Model model) {
+        return "gedcoms/resolve";
+    }
+
     @RequestMapping(method = RequestMethod.POST)
-    public String processSubmit(@ModelAttribute("viewgedcomform") ViewGedcomForm viewGedcomForm, BindingResult result) {
+    public String fillPersonsFromTree(@PathVariable("gedcomId") int gedcomId, @ModelAttribute("viewgedcomform") ViewGedcomForm viewGedcomForm, BindingResult result) {
         if (result.hasErrors()) {
             return "gedcoms/view";
+        } else if (viewGedcomForm.getGedcomIndividual().getId() != null  && viewGedcomForm.getPerson() != null && viewGedcomForm.getRelation() != null) {
+            return "redirect:/gedcoms/" + gedcomId + "/view/resolve/" + viewGedcomForm.getGedcomIndividual().getId() + "/" + viewGedcomForm.getRelation() + "/" + viewGedcomForm.getPerson();
         } else {
             return "gedcoms/view";
         }
     }
+
 
 }
