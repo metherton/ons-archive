@@ -81,6 +81,11 @@ public class GedcomController {
 
     @RequestMapping(method = RequestMethod.GET, value="/resolve/{gedcomIndividual}/{relation}/{person}" )
     public String showResolveGedcomForm(@PathVariable("gedcomId") int gedcomId, @PathVariable("gedcomIndividual") int gedcomIndividualId, @PathVariable("relation") String relation, @PathVariable("person") int person, Model model) {
+        model.addAttribute("gedcomId", gedcomId);
+        model.addAttribute("gedcomIndividual", gedcomIndividualId);
+        model.addAttribute("relation", relation);
+        model.addAttribute("person", person);
+
         return "gedcoms/resolve";
     }
 

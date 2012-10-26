@@ -2,6 +2,6 @@
 <%@ include file="/WEB-INF/views/header.jsp" %>
 
 
-resolve
+resolve gedcom for gedcom id ${gedcomId} and individual ${gedcomIndividual} and relation ${relation} and person ${person}
 
 <%@ include file="/WEB-INF/views/footer.jsp" %>
