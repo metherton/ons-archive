@@ -4,3 +4,7 @@ src/test/resources/db.properties
 *.iml
 target/*
 lib/*
+.cache
+.project
+.settings/
+.classpath
