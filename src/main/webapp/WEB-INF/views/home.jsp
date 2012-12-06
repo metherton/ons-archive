@@ -9,7 +9,7 @@
 <div style="width:0.3%;float: left">&nbsp;</div>
 <div style="width: 45.7%;float: left;">
     <div class="innercontentright">
-        <div class="innercontentrightheader">In the news</div>
+        <div class="innercontentrightheader">In the newssss</div>
         <div class="innercontentrightbody">There is currently nothing in the news regarding Ethertons</div>
     </div>
 </div>
