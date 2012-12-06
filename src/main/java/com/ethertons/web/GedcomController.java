@@ -1,14 +1,10 @@
 package com.ethertons.web;
 
+import gedcom.GedcomIndividual;
+
 import java.util.Collections;
 import java.util.List;
 
-import com.ethertons.common.GedcomRetriever;
-import com.ethertons.domain.OnsService;
-import com.ethertons.domain.Person;
-import com.ethertons.domain.Tree;
-import com.google.common.collect.Lists;
-import gedcom.GedcomIndividual;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.ethertons.common.GedcomRetriever;
+import com.ethertons.domain.OnsService;
+import com.ethertons.domain.Person;
+import com.ethertons.domain.Tree;
+import com.google.common.collect.Lists;
 
 @Controller
 @SessionAttributes("viewgedcomform")

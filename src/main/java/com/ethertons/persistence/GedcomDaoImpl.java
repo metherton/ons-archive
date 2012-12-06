@@ -2,11 +2,12 @@ package com.ethertons.persistence;
 
 import java.util.List;
 
-import com.ethertons.domain.Gedcom;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.ethertons.domain.Gedcom;
 
 @Repository
 @Transactional

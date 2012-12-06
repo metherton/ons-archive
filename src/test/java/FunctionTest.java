@@ -2,15 +2,17 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
-import com.ethertons.RecursiveAdder;
-import com.google.common.collect.Lists;
-import functions.Function1;
-import functions.Function1Void;
-import functions.Function2;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.ethertons.RecursiveAdder;
+import com.google.common.collect.Lists;
+
+import functions.Function1;
+import functions.Function1Void;
+import functions.Function2;
 
 public class FunctionTest {
 

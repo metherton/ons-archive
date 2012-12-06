@@ -2,9 +2,10 @@ package com.ethertons.web;
 
 import java.beans.PropertyEditorSupport;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.ethertons.domain.OnsService;
 import com.ethertons.domain.Tree;
-import org.apache.commons.lang.StringUtils;
 
 public class TreeEditor  extends PropertyEditorSupport {
 

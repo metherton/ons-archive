@@ -5,14 +5,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.ethertons.domain.Person;
-import com.ethertons.common.TreeResolver;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.ethertons.common.TreeResolver;
+import com.ethertons.domain.Person;
 
 @Repository
 @Transactional

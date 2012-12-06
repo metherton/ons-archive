@@ -2,11 +2,9 @@ package com.ethertons.web;
 
 import java.io.File;
 import java.io.IOException;
+
 import javax.validation.Valid;
 
-import com.ethertons.common.FileHandler;
-import com.ethertons.domain.Gedcom;
-import com.ethertons.domain.OnsService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,6 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.ethertons.common.FileHandler;
+import com.ethertons.domain.Gedcom;
+import com.ethertons.domain.OnsService;
 
 @Controller
 @SessionAttributes("gedcom")

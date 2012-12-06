@@ -7,8 +7,9 @@ import static org.easymock.EasyMock.verify;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ethertons.persistence.PersonDao;
 import org.junit.Test;
+
+import com.ethertons.persistence.PersonDao;
 
 public class FamilyFactoryTest {
 

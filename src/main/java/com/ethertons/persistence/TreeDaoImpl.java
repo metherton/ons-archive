@@ -1,15 +1,13 @@
 package com.ethertons.persistence;
 
 import java.util.List;
-import javax.transaction.TransactionRolledbackException;
 
-import com.ethertons.domain.Person;
-import com.ethertons.domain.Surname;
-import com.ethertons.domain.Tree;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.ethertons.domain.Tree;
 
 @Repository
 @Transactional

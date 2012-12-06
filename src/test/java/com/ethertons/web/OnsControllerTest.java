@@ -11,6 +11,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.easymock.EasyMock;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.ui.Model;
+
 import com.ethertons.common.GedcomRetriever;
 import com.ethertons.domain.GedcomDetails;
 import com.ethertons.domain.ImmediateFamily;
@@ -21,10 +26,6 @@ import com.ethertons.domain.Surname;
 import com.ethertons.domain.Tree;
 import com.ethertons.persistence.PersonDao;
 import com.ethertons.persistence.PersonDaoImpl;
-import org.easymock.EasyMock;
-import org.junit.Before;
-import org.junit.Test;
-import org.springframework.ui.Model;
 
 public class OnsControllerTest {
 

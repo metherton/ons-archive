@@ -1,13 +1,14 @@
 package com.ethertons.common;
 
+import gedcom.GedcomIndividual;
+
 import java.io.IOException;
 import java.util.List;
+
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 import com.ethertons.domain.GedcomDetails;
-import com.ethertons.domain.Tree;
-import gedcom.GedcomIndividual;
 
 
 public class GedcomTag extends SimpleTagSupport {

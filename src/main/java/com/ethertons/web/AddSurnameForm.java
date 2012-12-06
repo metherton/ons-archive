@@ -1,8 +1,7 @@
 package com.ethertons.web;
 
-import com.ethertons.domain.OnsService;
-import com.ethertons.domain.Person;
-import com.ethertons.domain.Surname;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import javax.validation.Valid;
+import com.ethertons.domain.OnsService;
+import com.ethertons.domain.Surname;
 
 @Controller
 @SessionAttributes("surname")

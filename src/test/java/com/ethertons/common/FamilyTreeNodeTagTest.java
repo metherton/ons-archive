@@ -9,12 +9,14 @@ import static org.easymock.EasyMock.verify;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import javax.servlet.jsp.JspContext;
 import javax.servlet.jsp.tagext.JspFragment;
 
+import org.junit.Test;
+
 import com.ethertons.domain.ImmediateFamily;
 import com.ethertons.domain.Person;
-import org.junit.Test;
 
 public class FamilyTreeNodeTagTest {
 

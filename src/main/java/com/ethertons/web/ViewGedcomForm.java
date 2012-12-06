@@ -1,6 +1,7 @@
 package com.ethertons.web;
 
 import gedcom.GedcomIndividual;
+
 import org.springframework.stereotype.Component;
 
 @Component

@@ -7,9 +7,6 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
-import com.ethertons.domain.Person;
-import com.ethertons.domain.Surname;
-import com.ethertons.domain.Tree;
 import org.hamcrest.Matchers;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,6 +20,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.ethertons.domain.Person;
+import com.ethertons.domain.Surname;
+import com.ethertons.domain.Tree;
 
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class})
 @ContextConfiguration(locations = {"classpath:applicationContext-test.xml"})

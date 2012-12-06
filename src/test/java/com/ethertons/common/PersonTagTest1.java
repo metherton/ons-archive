@@ -2,12 +2,14 @@ package com.ethertons.common;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.servlet.jsp.JspContext;
 import javax.servlet.jsp.tagext.JspFragment;
 
-import com.ethertons.domain.Person;
 import org.easymock.EasyMock;
 import org.junit.Test;
+
+import com.ethertons.domain.Person;
 
 public class PersonTagTest1 {
 

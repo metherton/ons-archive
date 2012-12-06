@@ -1,12 +1,14 @@
 package com.ethertons.common;
 
-import static com.ethertons.common.FamilyTreeNodeConverter.*;
-import static com.ethertons.common.FamilyTreeNodeTag.AfterActivePersonOffset.*;
-import static com.ethertons.common.FamilyTreeNodeTag.AfterActivePersonWifeOffset.*;
+import static com.ethertons.common.FamilyTreeNodeConverter.convertParent;
+import static com.ethertons.common.FamilyTreeNodeConverter.convertSibling;
+import static com.ethertons.common.FamilyTreeNodeTag.AfterActivePersonOffset.calculate;
+import static com.ethertons.common.FamilyTreeNodeTag.AfterActivePersonWifeOffset.calculate;
 import static java.lang.String.format;
 
 import java.io.IOException;
 import java.util.Iterator;
+
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 

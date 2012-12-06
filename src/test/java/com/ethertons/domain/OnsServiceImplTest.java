@@ -7,15 +7,16 @@ import static org.easymock.EasyMock.verify;
 
 import java.util.ArrayList;
 
+import org.easymock.EasyMock;
+import org.junit.Before;
+import org.junit.Test;
+
 import com.ethertons.persistence.ConfigDao;
 import com.ethertons.persistence.GedcomDao;
 import com.ethertons.persistence.PersonDao;
 import com.ethertons.persistence.SurnameDao;
 import com.ethertons.persistence.TreeDao;
 import com.google.common.collect.Lists;
-import org.easymock.EasyMock;
-import org.junit.Before;
-import org.junit.Test;
 
 public class OnsServiceImplTest {
 

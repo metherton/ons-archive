@@ -1,19 +1,23 @@
 package com.ethertons.web;
 
-import com.ethertons.domain.OnsService;
-import com.ethertons.domain.OnsServiceImpl;
-import com.ethertons.domain.Person;
-import com.ethertons.domain.Tree;
+import static org.easymock.EasyMock.anyObject;
+import static org.easymock.EasyMock.eq;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
-import static org.easymock.EasyMock.*;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import com.ethertons.domain.OnsService;
+import com.ethertons.domain.OnsServiceImpl;
+import com.ethertons.domain.Person;
+import com.ethertons.domain.Tree;
 
 public class AddTreeFormTest {
 

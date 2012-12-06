@@ -1,8 +1,9 @@
 package com.ethertons.web;
 
+import gedcom.GedcomIndividual;
+
 import java.beans.PropertyEditorSupport;
 
-import gedcom.GedcomIndividual;
 import org.apache.commons.lang.StringUtils;
 
 public class GedcomIndividualEditor  extends PropertyEditorSupport {

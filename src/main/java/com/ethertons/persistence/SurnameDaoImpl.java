@@ -1,13 +1,13 @@
 package com.ethertons.persistence;
 
-import com.ethertons.domain.Surname;
-import org.hibernate.Session;
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.ethertons.domain.Surname;
 
 @Repository
 @Transactional

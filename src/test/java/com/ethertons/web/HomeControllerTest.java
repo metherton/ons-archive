@@ -1,16 +1,17 @@
 package com.ethertons.web;
 
-import com.ethertons.domain.OnsService;
-import org.easymock.EasyMock;
-import org.junit.Before;
-import org.junit.Test;
-import org.springframework.ui.Model;
-
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+
+import org.easymock.EasyMock;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.ui.Model;
+
+import com.ethertons.domain.OnsService;
 
 public class HomeControllerTest {
 

@@ -1,9 +1,10 @@
-import com.ethertons.Display;
-import com.ethertons.None;
-import com.ethertons.Some;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
+
+import com.ethertons.Display;
+import com.ethertons.None;
+import com.ethertons.Some;
 
 public class DisplayTest {
 

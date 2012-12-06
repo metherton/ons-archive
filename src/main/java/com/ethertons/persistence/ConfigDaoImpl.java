@@ -1,11 +1,11 @@
 package com.ethertons.persistence;
 
-import com.ethertons.domain.Config;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.ethertons.domain.Config;
 
 @Repository
 @Transactional

@@ -3,11 +3,11 @@ package com.ethertons.web;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-import com.ethertons.domain.Person;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.ui.Model;
+
+import com.ethertons.domain.Person;
 
 public class EditPersonFormTest extends FormTest {
 

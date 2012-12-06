@@ -4,10 +4,11 @@ import static datastructures2.ListModule.list;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Test;
+
 import com.ethertons.None;
 import com.ethertons.Option;
 import com.ethertons.Some;
-import org.junit.Test;
 
 public class ListModuleTest {
 

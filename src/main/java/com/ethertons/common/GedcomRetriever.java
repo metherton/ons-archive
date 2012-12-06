@@ -1,11 +1,13 @@
 package com.ethertons.common;
 
+import gedcom.GedcomIndividual;
+
 import java.util.List;
 
-import com.ethertons.domain.GedcomDetails;
-import gedcom.GedcomIndividual;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import com.ethertons.domain.GedcomDetails;
 
 @Service
 public class GedcomRetriever {

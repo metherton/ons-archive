@@ -8,16 +8,17 @@ import static org.easymock.EasyMock.verify;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-import com.ethertons.common.FileHandler;
-import com.ethertons.domain.Gedcom;
-import com.ethertons.domain.OnsService;
-import com.ethertons.domain.OnsServiceImpl;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.ethertons.common.FileHandler;
+import com.ethertons.domain.Gedcom;
+import com.ethertons.domain.OnsService;
+import com.ethertons.domain.OnsServiceImpl;
 
 public class AddGedcomFormTest {
 

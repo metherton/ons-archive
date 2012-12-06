@@ -1,12 +1,11 @@
 package com.ethertons.web;
 
-import com.ethertons.domain.OnsService;
-import com.ethertons.domain.Person;
-import com.ethertons.domain.Surname;
+import java.beans.PropertyEditorSupport;
+
 import org.apache.commons.lang.StringUtils;
 
-import java.beans.PropertyEditor;
-import java.beans.PropertyEditorSupport;
+import com.ethertons.domain.OnsService;
+import com.ethertons.domain.Person;
 
 public class PersonEditor  extends PropertyEditorSupport {
     

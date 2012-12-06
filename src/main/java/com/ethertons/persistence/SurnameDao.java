@@ -1,8 +1,8 @@
 package com.ethertons.persistence;
 
-import com.ethertons.domain.Surname;
-
 import java.util.List;
+
+import com.ethertons.domain.Surname;
 
 public interface SurnameDao {
     List<Surname> findAllSurnames();
