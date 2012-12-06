@@ -21,7 +21,7 @@ class AddPerson extends Spec with OnsMock {
       val formName = addPersonForm.processSubmit(person, result)
       verify(onsService, result)
 
-      assert(formName == "redirect:/persons/5")
+      assert(formName == "redirect:/persons/6")
     }
   }
 
