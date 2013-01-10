@@ -53,9 +53,9 @@ public class PersonForm extends OnsForm {
 
     @ModelAttribute("genderOptions")
     public Map<Boolean, String> populateGenders() {
-        Map genderOptions = new HashMap<String, String>();
-        genderOptions.put("male", true);
-        genderOptions.put("female", false);
+        Map genderOptions = new HashMap<Boolean, String>();
+        genderOptions.put(true, "male");
+        genderOptions.put(false, "female");
         return genderOptions;
     }
 

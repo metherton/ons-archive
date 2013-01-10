@@ -9,7 +9,7 @@
     <div class="innercontentmiddlebody">
         <div id="father"><div style="float:left;width:10em">Father:</div><div style="float:left;width:10em">${person.father.firstName} ${person.father.surname.name}</div><div style="clear:both;"></div></div>
         <div id="mother"><div style="float:left;width:10em">Mother:</div><div style="float:left;width:10em">${person.mother.firstName} ${person.mother.surname.name}</div><div style="clear:both;"></div></div>
-        <div id="gender"><div style="float:left;width:10em">Gender:</div><div style="float:left;width:10em"><c:if test="${person.gender}">Male</c:if><c:if test="not ${person.gender}">Female</c:if></div><div style="clear:both;"></div></div>
+        <div id="gender"><div style="float:left;width:10em">Gender:</div><div style="float:left;width:10em"><c:choose><c:when test="${person.gender}">Male</c:when><c:otherwise>Female</c:otherwise></c:choose></div><div style="clear:both;"></div></div>
         <div id="birthDate"><div style="float:left;width:10em">Date of Birth:</div><div style="float:left;width:10em"><fmt:formatDate value="${person.birthDate}" /></div><div style="clear:both;"></div></div>
         <div id="map_canvas" style="width:300px; height:300px"></div>
         <input type="hidden" id="latitude" value="${person.latitude}" />
