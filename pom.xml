@@ -76,6 +76,15 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+        <groupId>org.apache.activemq</groupId>
+        <artifactId>activemq-all</artifactId>
+        <version>5.7.0</version>
+<!--         <scope>compile</scope> -->
+    </dependency>
+
+
+
       <dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-webmvc</artifactId>
@@ -119,6 +128,13 @@
           <groupId>org.springframework.security</groupId>
           <artifactId>spring-security-web</artifactId>
           <version>3.0.5.RELEASE</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-jms</artifactId>
+          <version>3.0.5.RELEASE</version>
+<!--         <scope>compile</scope> -->          
       </dependency>
 
       <dependency>
@@ -212,6 +228,8 @@
           <artifactId>commons-fileupload</artifactId>
           <version>1.2.2</version>
       </dependency>
+
+            
 
   </dependencies>
 

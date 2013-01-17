@@ -6,7 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -20,7 +22,10 @@ import com.ethertons.domain.Surname;
 public class PersonForm extends OnsForm {
 
     protected static final String PERSONS_FORM = "persons/form";
-
+    
+    @Autowired
+    AlertServiceImpl alertServiceImpl;
+    
     public PersonForm(OnsService onsService) {
         super(onsService);
     }
@@ -67,7 +72,8 @@ public class PersonForm extends OnsForm {
     protected String savePersonAndReturnPersonView(Person person, BindingResult result) {
         if (result.hasErrors()) {
             return PERSONS_FORM;
-        } else {
+        } else {  
+           // alertServiceImpl.sendHelloAlert("helloWorldAGINA");
             person.setFullname(person.getFirstName() + " " + person.getSurname().getName());
             this.onsService.storePerson(person);
             return "redirect:/persons/" + person.getId();
