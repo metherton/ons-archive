@@ -28,7 +28,7 @@ import com.ethertons.domain.Tree;
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class})
 @ContextConfiguration(locations = {"classpath:applicationContext-test.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 @DirtiesContext
 public class OnsIntegrationTests {

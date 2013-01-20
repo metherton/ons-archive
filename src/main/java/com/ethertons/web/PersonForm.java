@@ -23,9 +23,9 @@ public class PersonForm extends OnsForm {
 
     protected static final String PERSONS_FORM = "persons/form";
     
-    @Autowired
-    AlertServiceImpl alertServiceImpl;
-    
+//    @Autowired
+//    AlertServiceImpl alertServiceImpl;
+//    
     public PersonForm(OnsService onsService) {
         super(onsService);
     }
