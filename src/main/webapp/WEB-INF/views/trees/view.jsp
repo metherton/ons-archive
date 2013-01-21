@@ -3,7 +3,7 @@
 
 <%@ taglib prefix="familyTreeNodeDetails" uri="familyTreeNodeDetails" %>
 
-<div class="tree-container" style="width:100%; overflow: auto; height: 28em; background-color: honeydew; border: 0.2em solid lightgrey;" >
+<div class="tree-container" style="width:100%; overflow: scroll; height: 28em; background-color: honeydew; border: 0.2em solid lightgrey;" >
     <familyTreeNodeDetails:familyTreeNode immediateFamily="${immediateFamily}">
         <c:if test="${familyTreeNode.id > 0}"><a class="treenode-link" href="<c:url value="/trees/${familyTreeNode.id}/view" />"></c:if>
         <div class="treenode" style="height:4em;width: 10em; top: ${familyTreeNode.top}em ; left: ${familyTreeNode.left}em" id="${familyTreeNode.id}">

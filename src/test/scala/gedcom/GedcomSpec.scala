@@ -13,7 +13,7 @@ class GedcomSpec extends FeatureSpec with GivenWhenThen with ShouldMatchers with
   feature("person returned after parsing file")  {
     scenario("returns a person after parsing file") {
       when("file is read")
-        val gedcomParser = new GedcomParser("/Users/martinetherton/Downloads/EthertonLondon.ged")
+        val gedcomParser = new GedcomParser("/opt/gedcomfiles/1.ged")
         val individuals = gedcomParser.individuals()
         val firstPersonFound = individuals.head
       then ("a person is returned with first name Martin")
