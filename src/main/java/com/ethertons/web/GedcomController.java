@@ -26,7 +26,7 @@ import com.google.common.collect.Lists;
 
 @Controller
 @SessionAttributes("viewgedcomform")
-@RequestMapping(value="/gedcoms/{gedcomId}/view")
+@RequestMapping(value="/gedcomsmerge/{gedcomId}")
 public class GedcomController {
 
     private final GedcomRetriever gedcomRetriever;
