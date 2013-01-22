@@ -7,7 +7,7 @@
     <div class="innercontentmiddlebody">
         <div id="title">${gedcom.title}</div>
     </div>
-    <div><a href="<c:url value="/gedcoms/${gedcom.id}/view" />">View Gedcom Contents</a></div>
+    <div><a class="mergegedcom" href="<c:url value="/gedcoms/${gedcom.id}/view" />">Merge Gedcom Contents</a></div>
 </div>
 <%@ include file="/WEB-INF/views/footer.jsp" %>
 
