@@ -77,7 +77,8 @@ public class GedcomController {
     @RequestMapping(method = RequestMethod.GET)
     public String showViewGedcomForm(@PathVariable("gedcomId") int gedcomId, Model model) {
         this.gedcomId = gedcomId;
-        model.addAttribute("viewgedcomform", new ViewGedcomForm());
+        //model.addAttribute("viewgedcomform", new ViewGedcomForm());
+        model.addAttribute("viewgedcomform", null);
         return "gedcoms/view";
     }
 
