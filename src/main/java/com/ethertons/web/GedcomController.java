@@ -77,27 +77,38 @@ public class GedcomController {
     @RequestMapping(method = RequestMethod.GET)
     public String showViewGedcomForm(@PathVariable("gedcomId") int gedcomId, Model model) {
         this.gedcomId = gedcomId;
-        //model.addAttribute("viewgedcomform", new ViewGedcomForm());
-        model.addAttribute("viewgedcomform", null);
+        model.addAttribute("viewgedcomform", new ViewGedcomForm());
         return "gedcoms/view";
     }
 
-    @RequestMapping(method = RequestMethod.GET, value="/resolve/{gedcomIndividual}/{relation}/{person}" )
-    public String showResolveGedcomForm(@PathVariable("gedcomId") int gedcomId, @PathVariable("gedcomIndividual") int gedcomIndividualId, @PathVariable("relation") String relation, @PathVariable("person") int person, Model model) {
-        model.addAttribute("gedcomId", gedcomId);
-        model.addAttribute("gedcomIndividual", gedcomIndividualId);
-        model.addAttribute("relation", relation);
-        model.addAttribute("person", person);
+    @RequestMapping(method = RequestMethod.GET, value="/gedcomIndividualId/{gedcomIndividualId}/treeId/{treeId}/relation/{relation}/treeIndividualId/{treeIndividualId}")
+    public String showResolveGedcomForm(@PathVariable("gedcomId") int gedcomId, 
+                                        @PathVariable("gedcomIndividualId") int gedcomIndividualId, 
+                                        @PathVariable("treeId") int treeId,
+                                        @PathVariable("relation") String relation,
+                                        @PathVariable("treeIndividualId") int treeIndividualId,
+                                        Model model) {
+//        model.addAttribute("gedcomId", gedcomId);
+//        model.addAttribute("gedcomIndividualId", gedcomIndividualId);
+//        model.addAttribute("relation", relation);
+//        model.addAttribute("treeIndividualId", treeIndividualId);
+//        model.addAttribute("treeId", treeId);
+        
 
         return "gedcoms/resolve";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String fillPersonsFromTree(@PathVariable("gedcomId") int gedcomId, @ModelAttribute("viewgedcomform") ViewGedcomForm viewGedcomForm, BindingResult result) {
+    public String fillPersonsFromTree(@PathVariable("gedcomId") int gedcomId, 
+                                        @ModelAttribute("viewgedcomform") ViewGedcomForm viewGedcomForm, BindingResult result) {
         if (result.hasErrors()) {
             return "gedcoms/view";
         } else if (viewGedcomForm.getGedcomIndividual().getId() != null  && viewGedcomForm.getPerson() != null && viewGedcomForm.getRelation() != null) {
-            return "redirect:/gedcoms/" + gedcomId + "/view/resolve/" + viewGedcomForm.getGedcomIndividual().getId() + "/" + viewGedcomForm.getRelation() + "/" + viewGedcomForm.getPerson();
+            return "redirect:/gedcomsmerge/" + gedcomId + 
+                            "/gedcomIndividualId/" + viewGedcomForm.getGedcomIndividual().getId() +
+                            "/treeId/" + viewGedcomForm.getTree() +
+                            "/relation/" + viewGedcomForm.getRelation() +
+                            "/treeIndividualId/" + viewGedcomForm.getPerson();
         } else {
             return "gedcoms/view";
         }

@@ -43,25 +43,13 @@ public class GedcomControllerTest {
     }
 
     @Test
-//    @Ignore
     public void viewGedcomFormShouldBeShown() throws Exception {
         List<GedcomIndividual> gedcomIndividuals = Lists.newArrayList();
 
-//        expect(gedcomRetriever.retrieveGedcomIndividuals(1)).andReturn(gedcomIndividuals);
-//        expect(model.addAttribute("individuals", gedcomIndividuals)).andReturn(model);
-//
-//        List<Tree> trees = newArrayList();
-//        expect(onsService.findAllTrees()).andReturn(trees);
-//        expect(model.addAttribute("trees", trees)).andReturn(model);
-
-       // expect(model.addAttribute("viewgedcomform",Matchers.instanceOf(ViewGedcomForm.class))).andStubReturn(model);
-       // expect(model.addAttribute("viewgedcomform",Matchers.anything())).andStubReturn(model);
         expect(model.addAttribute(eq("viewgedcomform"), anyObject(ViewGedcomForm.class))).andReturn(model);
 
-        //        replay(model, gedcomRetriever, onsService);
         replay(model);
         String view = gedcomController.showViewGedcomForm(1, model);
-//        verify(model, gedcomRetriever, onsService);
         verify(model);
 
         assertThat(view, is("gedcoms/view"));
