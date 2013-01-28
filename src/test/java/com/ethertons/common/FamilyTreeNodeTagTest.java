@@ -39,9 +39,6 @@ public class FamilyTreeNodeTagTest {
         expect((immediateFamily.getSpouses())).andReturn(Collections.<Person>emptyList());
         expectLastCall().times(3);
 
-
-
-
         FamilyTreeNode grandadNode = new FamilyTreeNode.Builder().left("0")
                                                                  .top("0")
                                                                  .id("1")
@@ -53,6 +50,8 @@ public class FamilyTreeNodeTagTest {
                                                                  .l1PlineDisplay("none")
                                                                  .l2PlineDisplay("none")
                                                                  .l3PlineDisplay("none")
+                                                                 .height("4")
+                                                                 .width("10")
                                                                  .build();
 
         FamilyTreeNode nannanNode = new FamilyTreeNode.Builder().left("14")

@@ -1,6 +1,176 @@
 package com.ethertons.common;
 
+import com.ethertons.common.FamilyTreeNode.Builder;
+
 public class FamilyTreeNode {
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result
+                + ((fullname == null) ? 0 : fullname.hashCode());
+        result = prime * result + ((height == null) ? 0 : height.hashCode());
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result
+                + ((l1PlineDisplay == null) ? 0 : l1PlineDisplay.hashCode());
+        result = prime * result
+                + ((l1PlineLeft == null) ? 0 : l1PlineLeft.hashCode());
+        result = prime * result
+                + ((l1PlineTop == null) ? 0 : l1PlineTop.hashCode());
+        result = prime * result
+                + ((l1PlineWidth == null) ? 0 : l1PlineWidth.hashCode());
+        result = prime * result
+                + ((l2PlineDisplay == null) ? 0 : l2PlineDisplay.hashCode());
+        result = prime * result
+                + ((l2PlineLeft == null) ? 0 : l2PlineLeft.hashCode());
+        result = prime * result
+                + ((l2PlineTop == null) ? 0 : l2PlineTop.hashCode());
+        result = prime * result
+                + ((l2PlineWidth == null) ? 0 : l2PlineWidth.hashCode());
+        result = prime * result
+                + ((l3PlineDisplay == null) ? 0 : l3PlineDisplay.hashCode());
+        result = prime * result
+                + ((l3PlineLeft == null) ? 0 : l3PlineLeft.hashCode());
+        result = prime * result
+                + ((l3PlineTop == null) ? 0 : l3PlineTop.hashCode());
+        result = prime * result
+                + ((l3PlineWidth == null) ? 0 : l3PlineWidth.hashCode());
+        result = prime * result + ((left == null) ? 0 : left.hashCode());
+        result = prime * result
+                + ((mlineDisplay == null) ? 0 : mlineDisplay.hashCode());
+        result = prime * result
+                + ((mlineLeft == null) ? 0 : mlineLeft.hashCode());
+        result = prime * result
+                + ((mlineTop == null) ? 0 : mlineTop.hashCode());
+        result = prime * result
+                + ((mlineWidth == null) ? 0 : mlineWidth.hashCode());
+        result = prime * result + ((top == null) ? 0 : top.hashCode());
+        result = prime * result + ((width == null) ? 0 : width.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        FamilyTreeNode other = (FamilyTreeNode) obj;
+        if (fullname == null) {
+            if (other.fullname != null)
+                return false;
+        } else if (!fullname.equals(other.fullname))
+            return false;
+        if (height == null) {
+            if (other.height != null)
+                return false;
+        } else if (!height.equals(other.height))
+            return false;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        if (l1PlineDisplay == null) {
+            if (other.l1PlineDisplay != null)
+                return false;
+        } else if (!l1PlineDisplay.equals(other.l1PlineDisplay))
+            return false;
+        if (l1PlineLeft == null) {
+            if (other.l1PlineLeft != null)
+                return false;
+        } else if (!l1PlineLeft.equals(other.l1PlineLeft))
+            return false;
+        if (l1PlineTop == null) {
+            if (other.l1PlineTop != null)
+                return false;
+        } else if (!l1PlineTop.equals(other.l1PlineTop))
+            return false;
+        if (l1PlineWidth == null) {
+            if (other.l1PlineWidth != null)
+                return false;
+        } else if (!l1PlineWidth.equals(other.l1PlineWidth))
+            return false;
+        if (l2PlineDisplay == null) {
+            if (other.l2PlineDisplay != null)
+                return false;
+        } else if (!l2PlineDisplay.equals(other.l2PlineDisplay))
+            return false;
+        if (l2PlineLeft == null) {
+            if (other.l2PlineLeft != null)
+                return false;
+        } else if (!l2PlineLeft.equals(other.l2PlineLeft))
+            return false;
+        if (l2PlineTop == null) {
+            if (other.l2PlineTop != null)
+                return false;
+        } else if (!l2PlineTop.equals(other.l2PlineTop))
+            return false;
+        if (l2PlineWidth == null) {
+            if (other.l2PlineWidth != null)
+                return false;
+        } else if (!l2PlineWidth.equals(other.l2PlineWidth))
+            return false;
+        if (l3PlineDisplay == null) {
+            if (other.l3PlineDisplay != null)
+                return false;
+        } else if (!l3PlineDisplay.equals(other.l3PlineDisplay))
+            return false;
+        if (l3PlineLeft == null) {
+            if (other.l3PlineLeft != null)
+                return false;
+        } else if (!l3PlineLeft.equals(other.l3PlineLeft))
+            return false;
+        if (l3PlineTop == null) {
+            if (other.l3PlineTop != null)
+                return false;
+        } else if (!l3PlineTop.equals(other.l3PlineTop))
+            return false;
+        if (l3PlineWidth == null) {
+            if (other.l3PlineWidth != null)
+                return false;
+        } else if (!l3PlineWidth.equals(other.l3PlineWidth))
+            return false;
+        if (left == null) {
+            if (other.left != null)
+                return false;
+        } else if (!left.equals(other.left))
+            return false;
+        if (mlineDisplay == null) {
+            if (other.mlineDisplay != null)
+                return false;
+        } else if (!mlineDisplay.equals(other.mlineDisplay))
+            return false;
+        if (mlineLeft == null) {
+            if (other.mlineLeft != null)
+                return false;
+        } else if (!mlineLeft.equals(other.mlineLeft))
+            return false;
+        if (mlineTop == null) {
+            if (other.mlineTop != null)
+                return false;
+        } else if (!mlineTop.equals(other.mlineTop))
+            return false;
+        if (mlineWidth == null) {
+            if (other.mlineWidth != null)
+                return false;
+        } else if (!mlineWidth.equals(other.mlineWidth))
+            return false;
+        if (top == null) {
+            if (other.top != null)
+                return false;
+        } else if (!top.equals(other.top))
+            return false;
+        if (width == null) {
+            if (other.width != null)
+                return false;
+        } else if (!width.equals(other.width))
+            return false;
+        return true;
+    }
 
     private String left;
     private String top;
@@ -22,9 +192,13 @@ public class FamilyTreeNode {
     private String l3PlineLeft;
     private String l3PlineWidth;
     private String l3PlineDisplay;
+    private String height;
+    private String width;
 
     public static class Builder {
 
+        private static final String NODE_WIDTH = "10";
+        private static final String NODE_HEIGHT = "4";
         private String left;
         private String top;
         private String id;
@@ -45,9 +219,12 @@ public class FamilyTreeNode {
         private String l3PlineLeft;
         private String l3PlineWidth;
         private String l3PlineDisplay;
+        private String height;
+        private String width;
 
         public Builder() {
-
+            this.height = NODE_HEIGHT;
+            this.width = NODE_WIDTH;
         }
 
         public Builder left(String val) {
@@ -130,9 +307,20 @@ public class FamilyTreeNode {
             return this;
         }
 
+        public Builder height(String val) {
+            height = val;
+            return this;
+        }
+        
         public FamilyTreeNode build() {
             return new FamilyTreeNode(this);
         }
+
+        public Builder width(String val) {
+            width = val;
+            return this;
+        }
+
     }
 
     private FamilyTreeNode(Builder builder) {
@@ -147,6 +335,8 @@ public class FamilyTreeNode {
         l1PlineDisplay = builder.l1PlineDisplay;
         l2PlineDisplay = builder.l2PlineDisplay;
         l3PlineDisplay = builder.l3PlineDisplay;
+        height = builder.height;
+        width = builder.width;
     }
 
     public String getMlineWidth() {
@@ -309,89 +499,20 @@ public class FamilyTreeNode {
         this.l3PlineDisplay = l3PlineDisplay;
     }
 
-    @Override
-    public String toString() {
-        return "FamilyTreeNode{" +
-                "left='" + left + '\'' +
-                ", top='" + top + '\'' +
-                ", id='" + id + '\'' +
-                ", fullname='" + fullname + '\'' +
-                ", mlineDisplay='" + mlineDisplay + '\'' +
-                ", mlineTop='" + mlineTop + '\'' +
-                ", mlineLeft='" + mlineLeft + '\'' +
-                ", mlineWidth='" + mlineWidth + '\'' +
-                ", l1PlineDisplay='" + l1PlineDisplay + '\'' +
-                ", l2PlineDisplay='" + l2PlineDisplay + '\'' +
-                ", l3PlineDisplay='" + l3PlineDisplay + '\'' +
-                ", l1PlineLeft='" + l1PlineLeft + '\'' +
-                ", l2PlineTop='" + l2PlineTop + '\'' +
-                ", l2PlineLeft='" + l2PlineLeft + '\'' +
-                ", l3PlineTop='" + l3PlineTop + '\'' +
-                ", l3PlineLeft='" + l3PlineLeft + '\'' +
-                ", l1PlineTop='" + l1PlineTop + '\'' +
-                ", l1PlineWidth='" + l1PlineWidth + '\'' +
-                ", l2PlineWidth='" + l2PlineWidth + '\'' +
-                ", l3PlineWidth='" + l3PlineWidth + '\'' +
-                '}';
+    public String getHeight() {
+        return height;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        FamilyTreeNode that = (FamilyTreeNode) o;
-
-        if (fullname != null ? !fullname.equals(that.fullname) : that.fullname != null) return false;
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (l1PlineDisplay != null ? !l1PlineDisplay.equals(that.l1PlineDisplay) : that.l1PlineDisplay != null)
-            return false;
-        if (l1PlineLeft != null ? !l1PlineLeft.equals(that.l1PlineLeft) : that.l1PlineLeft != null) return false;
-        if (l1PlineTop != null ? !l1PlineTop.equals(that.l1PlineTop) : that.l1PlineTop != null) return false;
-        if (l1PlineWidth != null ? !l1PlineWidth.equals(that.l1PlineWidth) : that.l1PlineWidth != null) return false;
-        if (l2PlineDisplay != null ? !l2PlineDisplay.equals(that.l2PlineDisplay) : that.l2PlineDisplay != null)
-            return false;
-        if (l2PlineLeft != null ? !l2PlineLeft.equals(that.l2PlineLeft) : that.l2PlineLeft != null) return false;
-        if (l2PlineTop != null ? !l2PlineTop.equals(that.l2PlineTop) : that.l2PlineTop != null) return false;
-        if (l2PlineWidth != null ? !l2PlineWidth.equals(that.l2PlineWidth) : that.l2PlineWidth != null) return false;
-        if (l3PlineDisplay != null ? !l3PlineDisplay.equals(that.l3PlineDisplay) : that.l3PlineDisplay != null)
-            return false;
-        if (l3PlineLeft != null ? !l3PlineLeft.equals(that.l3PlineLeft) : that.l3PlineLeft != null) return false;
-        if (l3PlineTop != null ? !l3PlineTop.equals(that.l3PlineTop) : that.l3PlineTop != null) return false;
-        if (l3PlineWidth != null ? !l3PlineWidth.equals(that.l3PlineWidth) : that.l3PlineWidth != null) return false;
-        if (left != null ? !left.equals(that.left) : that.left != null) return false;
-        if (mlineDisplay != null ? !mlineDisplay.equals(that.mlineDisplay) : that.mlineDisplay != null) return false;
-        if (mlineLeft != null ? !mlineLeft.equals(that.mlineLeft) : that.mlineLeft != null) return false;
-        if (mlineTop != null ? !mlineTop.equals(that.mlineTop) : that.mlineTop != null) return false;
-        if (mlineWidth != null ? !mlineWidth.equals(that.mlineWidth) : that.mlineWidth != null) return false;
-        if (top != null ? !top.equals(that.top) : that.top != null) return false;
-
-        return true;
+    public void setHeight(String height) {
+        this.height = height;
     }
 
-    @Override
-    public int hashCode() {
-        int result = left != null ? left.hashCode() : 0;
-        result = 31 * result + (top != null ? top.hashCode() : 0);
-        result = 31 * result + (id != null ? id.hashCode() : 0);
-        result = 31 * result + (fullname != null ? fullname.hashCode() : 0);
-        result = 31 * result + (mlineDisplay != null ? mlineDisplay.hashCode() : 0);
-        result = 31 * result + (mlineTop != null ? mlineTop.hashCode() : 0);
-        result = 31 * result + (mlineLeft != null ? mlineLeft.hashCode() : 0);
-        result = 31 * result + (mlineWidth != null ? mlineWidth.hashCode() : 0);
-        result = 31 * result + (l1PlineDisplay != null ? l1PlineDisplay.hashCode() : 0);
-        result = 31 * result + (l2PlineDisplay != null ? l2PlineDisplay.hashCode() : 0);
-        result = 31 * result + (l3PlineDisplay != null ? l3PlineDisplay.hashCode() : 0);
-        result = 31 * result + (l1PlineLeft != null ? l1PlineLeft.hashCode() : 0);
-        result = 31 * result + (l2PlineTop != null ? l2PlineTop.hashCode() : 0);
-        result = 31 * result + (l2PlineLeft != null ? l2PlineLeft.hashCode() : 0);
-        result = 31 * result + (l3PlineTop != null ? l3PlineTop.hashCode() : 0);
-        result = 31 * result + (l3PlineLeft != null ? l3PlineLeft.hashCode() : 0);
-        result = 31 * result + (l1PlineTop != null ? l1PlineTop.hashCode() : 0);
-        result = 31 * result + (l1PlineWidth != null ? l1PlineWidth.hashCode() : 0);
-        result = 31 * result + (l2PlineWidth != null ? l2PlineWidth.hashCode() : 0);
-        result = 31 * result + (l3PlineWidth != null ? l3PlineWidth.hashCode() : 0);
-        return result;
+    public String getWidth() {
+        return width;
+    }
+
+    public void setWidth(String width) {
+        this.width = width;
     }
 
 }

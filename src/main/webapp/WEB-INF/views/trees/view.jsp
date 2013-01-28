@@ -6,7 +6,7 @@
 <div class="tree-container" style="width:100%; overflow: scroll; height: 28em; background-color: honeydew; border: 0.2em solid lightgrey;" >
     <familyTreeNodeDetails:familyTreeNode immediateFamily="${immediateFamily}">
         <c:if test="${familyTreeNode.id > 0}"><a class="treenode-link" href="<c:url value="/trees/${familyTreeNode.id}/view" />"></c:if>
-        <div class="treenode" style="height:4em;width: 10em; top: ${familyTreeNode.top}em ; left: ${familyTreeNode.left}em" id="${familyTreeNode.id}">
+        <div class="treenode" style="height:${familyTreeNode.height}em;width: ${familyTreeNode.width}em; top: ${familyTreeNode.top}em ; left: ${familyTreeNode.left}em" id="${familyTreeNode.id}">
             <div style="background-color: #F5FAFF" id="${familyTreeNode.id}" class="fullname">${familyTreeNode.fullname}</div>
             <div class="mline" style="display: ${familyTreeNode.mlineDisplay};top:${familyTreeNode.mlineTop}em; left: ${familyTreeNode.mlineLeft}em; width: ${familyTreeNode.mlineWidth}em "></div>
             <div class="pline">
