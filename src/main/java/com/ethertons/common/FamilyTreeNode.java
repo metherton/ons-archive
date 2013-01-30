@@ -175,6 +175,43 @@ public class FamilyTreeNode {
     private String left;
     private String top;
     private String id;
+    public String getPaddingTop() {
+        return paddingTop;
+    }
+
+    public void setPaddingTop(String paddingTop) {
+        this.paddingTop = paddingTop;
+    }
+
+    public String getPaddingBottom() {
+        return paddingBottom;
+    }
+
+    public void setPaddingBottom(String paddingBottom) {
+        this.paddingBottom = paddingBottom;
+    }
+
+    public String getPaddingLeft() {
+        return paddingLeft;
+    }
+
+    public void setPaddingLeft(String paddingLeft) {
+        this.paddingLeft = paddingLeft;
+    }
+
+    public String getPaddingRight() {
+        return paddingRight;
+    }
+
+    public void setPaddingRight(String paddingRight) {
+        this.paddingRight = paddingRight;
+    }
+
+    private String paddingTop;
+    private String paddingBottom;
+    private String paddingLeft;
+    private String paddingRight;
+
     private String fullname;
     private String mlineDisplay;
     private String mlineTop;
@@ -197,8 +234,8 @@ public class FamilyTreeNode {
 
     public static class Builder {
 
-        private static final String NODE_WIDTH = "10";
-        private static final String NODE_HEIGHT = "4";
+        public static final String NODE_WIDTH = "10";
+        public static final String NODE_HEIGHT = "4";
         private String left;
         private String top;
         private String id;

@@ -6,7 +6,9 @@ import com.ethertons.domain.Person;
 
 public class FamilyTreeNodeConverter {
 
-    private static final int FAMILY_NODE_WIDTH_EM = 14;
+    private static final int FAMILY_NODE_HORIZONTAL_SPACE_EM = 4;
+    private static final int FAMILY_NODE_VERTICAL_SPACE_EM = 4;
+    private static final int FAMILY_NODE_WIDTH_EM = FAMILY_NODE_HORIZONTAL_SPACE_EM + Integer.parseInt(FamilyTreeNode.Builder.NODE_WIDTH);
 
     public static FamilyTreeNode convertParent(int parentCounter, Person person) {
         FamilyTreeNode familyTreeNode = new FamilyTreeNode.Builder().build();
@@ -14,11 +16,16 @@ public class FamilyTreeNodeConverter {
         familyTreeNode.setTop("0");
         familyTreeNode.setId(format("%d", person.getId()));
         familyTreeNode.setFullname(person.getFullname());
+        familyTreeNode.setPaddingTop(String.valueOf(FAMILY_NODE_VERTICAL_SPACE_EM / 2));
+        familyTreeNode.setPaddingBottom(String.valueOf(FAMILY_NODE_VERTICAL_SPACE_EM / 2));
+        familyTreeNode.setPaddingLeft(String.valueOf(FAMILY_NODE_HORIZONTAL_SPACE_EM / 2));
+        familyTreeNode.setPaddingRight(String.valueOf(FAMILY_NODE_HORIZONTAL_SPACE_EM / 2));
+        
         if (parentCounter==0) {
             familyTreeNode.setMlineDisplay("block");
-            familyTreeNode.setMlineLeft("12");
-            familyTreeNode.setMlineTop("3.8");
-            familyTreeNode.setMlineWidth("4");
+            familyTreeNode.setMlineLeft(String.valueOf((2 + Integer.parseInt(FamilyTreeNode.Builder.NODE_WIDTH))));
+            familyTreeNode.setMlineTop(String.valueOf(2 + Integer.parseInt(FamilyTreeNode.Builder.NODE_HEIGHT)/2 - 0.2));
+            familyTreeNode.setMlineWidth(String.valueOf(FAMILY_NODE_HORIZONTAL_SPACE_EM));
         }
         familyTreeNode.setL1PlineDisplay("none");
         familyTreeNode.setL2PlineDisplay("none");
@@ -29,22 +36,25 @@ public class FamilyTreeNodeConverter {
 
     public static FamilyTreeNode convertSibling(int siblingCounter, Person person, int activePersonPosition, int afterActivePersonOffset) {
         FamilyTreeNode familyTreeNode = new FamilyTreeNode.Builder().build();
+        familyTreeNode.setTop(String.valueOf(FAMILY_NODE_VERTICAL_SPACE_EM + Integer.parseInt(FamilyTreeNode.Builder.NODE_HEIGHT)));
+        familyTreeNode.setPaddingTop(String.valueOf(FAMILY_NODE_VERTICAL_SPACE_EM / 2));
+        familyTreeNode.setPaddingBottom(String.valueOf(FAMILY_NODE_VERTICAL_SPACE_EM / 2));
+        familyTreeNode.setPaddingLeft(String.valueOf(FAMILY_NODE_HORIZONTAL_SPACE_EM / 2));
+        familyTreeNode.setPaddingRight(String.valueOf(FAMILY_NODE_HORIZONTAL_SPACE_EM / 2));        
         if (siblingCounter <= activePersonPosition) {
             familyTreeNode.setLeft(String.format("%d", (siblingCounter) * FAMILY_NODE_WIDTH_EM));
-            familyTreeNode.setTop("8");
             familyTreeNode.setId(format("%d", person.getId()));
             familyTreeNode.setFullname(person.getFullname());
         } else {
             familyTreeNode.setLeft(String.format("%d", (siblingCounter+afterActivePersonOffset)*FAMILY_NODE_WIDTH_EM));
-            familyTreeNode.setTop("8");
             familyTreeNode.setId(format("%d", person.getId()));
             familyTreeNode.setFullname(person.getFullname());
         }
 
+        familyTreeNode.setL1PlineTop(String.valueOf(FAMILY_NODE_VERTICAL_SPACE_EM / 2 + (Integer.parseInt(FamilyTreeNode.Builder.NODE_HEIGHT) / 2)));
         if (siblingCounter == 0) {
             familyTreeNode.setL1PlineLeft("100");
             familyTreeNode.setL2PlineWidth("50");
-            familyTreeNode.setL1PlineLeft("100");
             familyTreeNode.setL2PlineLeft("50");
         } else {
             if (siblingCounter <= activePersonPosition) {
