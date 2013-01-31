@@ -19,12 +19,19 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
 
     private ImmediateFamily immediateFamily;
     
-    private static final int FAMILY_NODE_HORIZONTAL_SPACE_EM = 4;
-    private static final int FAMILY_NODE_VERTICAL_SPACE_EM = 4;
-    private static final int FAMILY_NODE_WIDTH_EM = FAMILY_NODE_HORIZONTAL_SPACE_EM + Integer.parseInt(FamilyTreeNode.Builder.NODE_WIDTH);
     
-    
+    public static final String NODE_WIDTH = "10";
+    public static final String NODE_HEIGHT = "4";
+    public static final String NODE_PADDING_TOP = "2";
+    public static final String NODE_PADDING_BOTTOM = "2";
+    public static final String NODE_PADDING_LEFT = "2";
+    public static final String NODE_PADDING_RIGHT = "2";    
 
+    private static final int FAMILY_NODE_HORIZONTAL_SPACE_EM = Integer.parseInt(NODE_PADDING_LEFT) + Integer.parseInt(NODE_PADDING_RIGHT);
+    private static final int FAMILY_NODE_VERTICAL_SPACE_EM = Integer.parseInt(NODE_PADDING_TOP) + Integer.parseInt(NODE_PADDING_BOTTOM);;
+    private static final int FAMILY_NODE_WIDTH_EM = Integer.parseInt(NODE_PADDING_LEFT) + Integer.parseInt(NODE_PADDING_RIGHT) + Integer.parseInt(FamilyTreeNode.Builder.NODE_WIDTH);
+    
+    
     public void doTag() throws IOException, JspException {
         renderParentNodes();
         renderSiblings();
