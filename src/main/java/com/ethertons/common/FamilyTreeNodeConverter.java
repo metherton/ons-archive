@@ -6,8 +6,15 @@ import com.ethertons.domain.Person;
 
 public class FamilyTreeNodeConverter {
 
-    private static final int FAMILY_NODE_HORIZONTAL_SPACE_EM = 4;
-    private static final int FAMILY_NODE_VERTICAL_SPACE_EM = 4;
+//    public static final String NODE_WIDTH = "10";
+//    public static final String NODE_HEIGHT = "4";
+//    public static final String NODE_PADDING_TOP = "2";
+//    public static final String NODE_PADDING_BOTTOM = "2";
+//    public static final String NODE_PADDING_LEFT = "2";
+//    public static final String NODE_PADDING_RIGHT = "2";    
+    
+    private static final int FAMILY_NODE_HORIZONTAL_SPACE_EM = Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_LEFT) + Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_RIGHT);
+    private static final int FAMILY_NODE_VERTICAL_SPACE_EM = Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_TOP) + Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_BOTTOM);;
     private static final int FAMILY_NODE_WIDTH_EM = FAMILY_NODE_HORIZONTAL_SPACE_EM + Integer.parseInt(FamilyTreeNode.Builder.NODE_WIDTH);
 
     public static FamilyTreeNode convertParent(int parentCounter, Person person) {

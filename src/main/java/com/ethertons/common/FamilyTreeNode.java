@@ -240,6 +240,15 @@ public class FamilyTreeNode {
         public static final String NODE_PADDING_BOTTOM = "2";
         public static final String NODE_PADDING_LEFT = "2";
         public static final String NODE_PADDING_RIGHT = "2";
+
+//        public static final String NODE_WIDTH = "20";
+//        public static final String NODE_HEIGHT = "8";
+//        public static final String NODE_PADDING_TOP = "2";
+//        public static final String NODE_PADDING_BOTTOM = "2";
+//        public static final String NODE_PADDING_LEFT = "2";
+//        public static final String NODE_PADDING_RIGHT = "2";
+//        
+        
         private String left;
         private String top;
         private String id;
