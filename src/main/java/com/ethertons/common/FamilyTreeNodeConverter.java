@@ -23,6 +23,8 @@ public class FamilyTreeNodeConverter {
         familyTreeNode.setTop("0");
         familyTreeNode.setId(format("%d", person.getId()));
         familyTreeNode.setFullname(person.getFullname());
+        familyTreeNode.setBirthDate(person.getBirthDate().toString());
+        familyTreeNode.setLocation(person.getAddress());
         familyTreeNode.setPaddingTop(String.valueOf(FAMILY_NODE_VERTICAL_SPACE_EM / 2));
         familyTreeNode.setPaddingBottom(String.valueOf(FAMILY_NODE_VERTICAL_SPACE_EM / 2));
         familyTreeNode.setPaddingLeft(String.valueOf(FAMILY_NODE_HORIZONTAL_SPACE_EM / 2));
@@ -47,7 +49,9 @@ public class FamilyTreeNodeConverter {
         familyTreeNode.setPaddingTop(String.valueOf(FAMILY_NODE_VERTICAL_SPACE_EM / 2));
         familyTreeNode.setPaddingBottom(String.valueOf(FAMILY_NODE_VERTICAL_SPACE_EM / 2));
         familyTreeNode.setPaddingLeft(String.valueOf(FAMILY_NODE_HORIZONTAL_SPACE_EM / 2));
-        familyTreeNode.setPaddingRight(String.valueOf(FAMILY_NODE_HORIZONTAL_SPACE_EM / 2));        
+        familyTreeNode.setPaddingRight(String.valueOf(FAMILY_NODE_HORIZONTAL_SPACE_EM / 2));    
+        familyTreeNode.setBirthDate(person.getBirthDate().toString());
+        familyTreeNode.setLocation(person.getAddress());        
         if (siblingCounter <= activePersonPosition) {
             familyTreeNode.setLeft(String.format("%d", (siblingCounter) * FAMILY_NODE_WIDTH_EM));
             familyTreeNode.setId(format("%d", person.getId()));

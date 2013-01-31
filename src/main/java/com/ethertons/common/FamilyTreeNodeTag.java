@@ -18,14 +18,6 @@ import com.ethertons.domain.Person;
 public class FamilyTreeNodeTag extends SimpleTagSupport {
 
     private ImmediateFamily immediateFamily;
-    
-    
-//    public static final String NODE_WIDTH = "10";
-//    public static final String NODE_HEIGHT = "4";
-//    public static final String NODE_PADDING_TOP = "2";
-//    public static final String NODE_PADDING_BOTTOM = "2";
-//    public static final String NODE_PADDING_LEFT = "2";
-//    public static final String NODE_PADDING_RIGHT = "2";    
 
     private static final int FAMILY_NODE_HORIZONTAL_SPACE_EM = Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_LEFT) + Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_RIGHT);
     private static final int FAMILY_NODE_VERTICAL_SPACE_EM = Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_TOP) + Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_BOTTOM);;
@@ -62,7 +54,6 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
             spouseFamilyFamilyTreeNode.setMlineDisplay("block");
             spouseFamilyFamilyTreeNode.setMlineLeft("-" + String.valueOf(FamilyTreeNode.Builder.NODE_PADDING_LEFT));
             spouseFamilyFamilyTreeNode.setMlineWidth(String.valueOf(Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_LEFT) + Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_RIGHT)) );
-            //spouseFamilyFamilyTreeNode.setMlineTop("3.8");
             spouseFamilyFamilyTreeNode.setMlineTop(String.valueOf(Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_TOP) + Integer.parseInt(FamilyTreeNode.Builder.NODE_HEIGHT)/2));
             spouseFamilyFamilyTreeNode.setL1PlineDisplay("none");
             spouseFamilyFamilyTreeNode.setL3PlineDisplay("none");
@@ -81,6 +72,8 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
                                                                                  .top(String.valueOf(THIRD_GENERATION_TOP))
                                                                                  .id(format("%d", child.getId()))
                                                                                  .fullname(child.getFullname())
+                                                                                 .birthDate(child.getBirthDate().toString())
+                                                                                 .location(child.getAddress())
                                                                                  .mLineDisplay("none").build();
 
                 familyTreeNodeChild.setPaddingTop(FamilyTreeNode.Builder.NODE_PADDING_TOP);
@@ -151,6 +144,8 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
                 familyTreeNodeChild.setFullname(child.getFullname());
                 familyTreeNodeChild.setMlineDisplay("none");
 
+                familyTreeNodeChild.setBirthDate(child.getBirthDate().toString());
+                familyTreeNodeChild.setLocation(child.getAddress());
                 familyTreeNodeChild.setL1PlineTop(String.valueOf(Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_TOP) + (Integer.parseInt(FamilyTreeNode.Builder.NODE_HEIGHT) / 2)));                
                 
                 if (childCount == 1) {

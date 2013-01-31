@@ -213,6 +213,24 @@ public class FamilyTreeNode {
     private String paddingRight;
 
     private String fullname;
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    private String birthDate;
+    private String location;
     private String mlineDisplay;
     private String mlineTop;
     private String mlineLeft;
@@ -234,25 +252,27 @@ public class FamilyTreeNode {
 
     public static class Builder {
 
-        public static final String NODE_WIDTH = "10";
-        public static final String NODE_HEIGHT = "4";
-        public static final String NODE_PADDING_TOP = "2";
-        public static final String NODE_PADDING_BOTTOM = "2";
-        public static final String NODE_PADDING_LEFT = "2";
-        public static final String NODE_PADDING_RIGHT = "2";
-
-//        public static final String NODE_WIDTH = "20";
-//        public static final String NODE_HEIGHT = "8";
+//        public static final String NODE_WIDTH = "10";
+//        public static final String NODE_HEIGHT = "4";
 //        public static final String NODE_PADDING_TOP = "2";
 //        public static final String NODE_PADDING_BOTTOM = "2";
 //        public static final String NODE_PADDING_LEFT = "2";
 //        public static final String NODE_PADDING_RIGHT = "2";
+
+        public static final String NODE_WIDTH = "20";
+        public static final String NODE_HEIGHT = "8";
+        public static final String NODE_PADDING_TOP = "2";
+        public static final String NODE_PADDING_BOTTOM = "2";
+        public static final String NODE_PADDING_LEFT = "2";
+        public static final String NODE_PADDING_RIGHT = "2";
 //        
         
         private String left;
         private String top;
         private String id;
         private String fullname;
+        private String birthDate;
+        private String location;       
         private String mlineDisplay;
         private String mlineTop;
         private String mlineLeft;
@@ -297,6 +317,16 @@ public class FamilyTreeNode {
             return this;
         }
 
+        public Builder birthDate(String val) {
+            birthDate = val;
+            return this;
+        }        
+
+        public Builder location(String val) {
+            location = val;
+            return this;
+        }         
+        
         public Builder mLineDisplay(String val) {
             mlineDisplay = val;
             return this;
@@ -387,6 +417,8 @@ public class FamilyTreeNode {
         l3PlineDisplay = builder.l3PlineDisplay;
         height = builder.height;
         width = builder.width;
+        birthDate = builder.birthDate;
+        location = builder.location;
     }
 
     public String getMlineWidth() {
