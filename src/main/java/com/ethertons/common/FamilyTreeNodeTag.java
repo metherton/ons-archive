@@ -1,33 +1,34 @@
 package com.ethertons.common;
 
+import static com.ethertons.common.FamilyTreeNode.FAMILY_NODE_VERTICAL_SPACE_EM;
+import static com.ethertons.common.FamilyTreeNode.FAMILY_NODE_WIDTH_EM;
+import static com.ethertons.common.FamilyTreeNode.NODE_HEIGHT;
+import static com.ethertons.common.FamilyTreeNode.NODE_PADDING_BOTTOM;
+import static com.ethertons.common.FamilyTreeNode.NODE_PADDING_LEFT;
+import static com.ethertons.common.FamilyTreeNode.NODE_PADDING_RIGHT;
+import static com.ethertons.common.FamilyTreeNode.NODE_PADDING_TOP;
+import static com.ethertons.common.FamilyTreeNode.NODE_WIDTH;
+import static com.ethertons.common.FamilyTreeNode.SECOND_GENERATION_TOP;
+import static com.ethertons.common.FamilyTreeNode.WIDTH_LESS_ONE_PADDING;
 import static com.ethertons.common.FamilyTreeNodeConverter.convertParent;
 import static com.ethertons.common.FamilyTreeNodeConverter.convertSibling;
 import static com.ethertons.common.FamilyTreeNodeTag.AfterActivePersonOffset.calculate;
 import static com.ethertons.common.FamilyTreeNodeTag.AfterActivePersonWifeOffset.calculate;
 import static java.lang.String.format;
+import static java.lang.String.valueOf;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.util.Iterator;
-
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
-
 import com.ethertons.domain.ImmediateFamily;
 import com.ethertons.domain.Person;
 
 public class FamilyTreeNodeTag extends SimpleTagSupport {
 
     private ImmediateFamily immediateFamily;
-
-    private static final int FAMILY_NODE_HORIZONTAL_SPACE_EM = Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_LEFT) + Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_RIGHT);
-    private static final int FAMILY_NODE_VERTICAL_SPACE_EM = Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_TOP) + Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_BOTTOM);;
-    private static final int FAMILY_NODE_WIDTH_EM = Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_LEFT) + Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_RIGHT) + Integer.parseInt(FamilyTreeNode.Builder.NODE_WIDTH);
-    
-    private static final int SECOND_GENERATION_TOP = Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_TOP) + Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_BOTTOM) + Integer.parseInt(FamilyTreeNode.Builder.NODE_HEIGHT);
-    private static final int THIRD_GENERATION_TOP = (Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_TOP) + Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_BOTTOM) + Integer.parseInt(FamilyTreeNode.Builder.NODE_HEIGHT)) * 2;
-
-    private static final int WIDTH_LESS_ONE_PADDING = Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_RIGHT) + Integer.parseInt(FamilyTreeNode.Builder.NODE_WIDTH);
-    
+    private static DateFormat d = DateFormat.getDateInstance(DateFormat.MEDIUM);
     
     
     public void doTag() throws IOException, JspException {
@@ -36,52 +37,44 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
         renderSpousesAndChildren();
     }
 
-
     private void convertSpouseAndChildren(int spouseNumber, Person spouse, int afterActivePersonOffset, int activePersonPosition) throws JspException, IOException {
-        FamilyTreeNode spouseFamilyFamilyTreeNode = new FamilyTreeNode.Builder().build();
-        
-        spouseFamilyFamilyTreeNode.setPaddingTop(FamilyTreeNode.Builder.NODE_PADDING_TOP);
-        spouseFamilyFamilyTreeNode.setPaddingBottom(FamilyTreeNode.Builder.NODE_PADDING_BOTTOM);
-        spouseFamilyFamilyTreeNode.setPaddingLeft(FamilyTreeNode.Builder.NODE_PADDING_LEFT);
-        spouseFamilyFamilyTreeNode.setPaddingRight(FamilyTreeNode.Builder.NODE_PADDING_RIGHT);   
-        
-        
+        FamilyTreeNode spouseFamilyFamilyTreeNode = new FamilyTreeNode.Builder().paddingTop(valueOf(NODE_PADDING_TOP))
+                                                                                .paddingBottom(valueOf(NODE_PADDING_BOTTOM))
+                                                                                .paddingLeft(valueOf(NODE_PADDING_LEFT))
+                                                                                .paddingRight(valueOf(NODE_PADDING_RIGHT))
+                                                                                .top(valueOf(SECOND_GENERATION_TOP))
+                                                                                .mLineDisplay("block")
+                                                                                .id(format("%d", spouse.getId()))
+                                                                                .fullname(spouse.getFullname())
+                                                                                .birthDate(birthDate(spouse))
+                                                                                .mLineTop(valueOf(NODE_PADDING_TOP + NODE_HEIGHT / 2))
+                                                                                .l1PlineDisplay("none")
+                                                                                .l3PlineDisplay("none")
+                                                                                .build();   
         if (spouseNumber == 1) {
             spouseFamilyFamilyTreeNode.setLeft(String.format("%d", (activePersonPosition + spouseNumber) * FAMILY_NODE_WIDTH_EM));
-            spouseFamilyFamilyTreeNode.setTop(String.valueOf(SECOND_GENERATION_TOP));
-            spouseFamilyFamilyTreeNode.setId(format("%d", spouse.getId()));
-            spouseFamilyFamilyTreeNode.setFullname(spouse.getFullname());
-            spouseFamilyFamilyTreeNode.setMlineDisplay("block");
-            spouseFamilyFamilyTreeNode.setMlineLeft("-" + String.valueOf(FamilyTreeNode.Builder.NODE_PADDING_LEFT));
-            spouseFamilyFamilyTreeNode.setMlineWidth(String.valueOf(Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_LEFT) + Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_RIGHT)) );
-            spouseFamilyFamilyTreeNode.setMlineTop(String.valueOf(Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_TOP) + Integer.parseInt(FamilyTreeNode.Builder.NODE_HEIGHT)/2));
-            spouseFamilyFamilyTreeNode.setL1PlineDisplay("none");
-            spouseFamilyFamilyTreeNode.setL3PlineDisplay("none");
-
+            spouseFamilyFamilyTreeNode.setMlineLeft("-" + String.valueOf(NODE_PADDING_LEFT));
+            spouseFamilyFamilyTreeNode.setMlineWidth(String.valueOf(NODE_PADDING_LEFT + NODE_PADDING_RIGHT));
             getJspContext().setAttribute("familyTreeNode", spouseFamilyFamilyTreeNode);
             getJspBody().invoke(null);
-
             Iterator children = immediateFamily.getChildrenWithWife(spouse.getId()).iterator();
-
-
             int childCount = 1;
-
             while (children.hasNext()) {
                 Person child = (Person) children.next();
-                FamilyTreeNode familyTreeNodeChild = new FamilyTreeNode.Builder().left(String.format("%d", (activePersonPosition + (childCount-1)) * FAMILY_NODE_WIDTH_EM))
-                                                                                 .top(String.valueOf(THIRD_GENERATION_TOP))
+                FamilyTreeNode familyTreeNodeChild = new FamilyTreeNode.Builder().left(String.format("%d", (activePersonPosition + (childCount-1)) * FamilyTreeNode.FAMILY_NODE_WIDTH_EM))
+                                                                                 .top(String.valueOf(FamilyTreeNode.THIRD_GENERATION_TOP))
                                                                                  .id(format("%d", child.getId()))
                                                                                  .fullname(child.getFullname())
-                                                                                 .birthDate(child.getBirthDate().toString())
+                                                                                 .birthDate(birthDate(child))
                                                                                  .location(child.getAddress())
                                                                                  .mLineDisplay("none").build();
 
-                familyTreeNodeChild.setPaddingTop(FamilyTreeNode.Builder.NODE_PADDING_TOP);
-                familyTreeNodeChild.setPaddingBottom(FamilyTreeNode.Builder.NODE_PADDING_BOTTOM);
-                familyTreeNodeChild.setPaddingLeft(FamilyTreeNode.Builder.NODE_PADDING_LEFT);
-                familyTreeNodeChild.setPaddingRight(FamilyTreeNode.Builder.NODE_PADDING_RIGHT);                 
+                familyTreeNodeChild.setPaddingTop(valueOf(NODE_PADDING_TOP));
+                familyTreeNodeChild.setPaddingBottom(valueOf(NODE_PADDING_BOTTOM));
+                familyTreeNodeChild.setPaddingLeft(valueOf(NODE_PADDING_LEFT));
+                familyTreeNodeChild.setPaddingRight(valueOf(NODE_PADDING_RIGHT));                 
                 
-                familyTreeNodeChild.setL1PlineTop(String.valueOf(FAMILY_NODE_VERTICAL_SPACE_EM / 2 + (Integer.parseInt(FamilyTreeNode.Builder.NODE_HEIGHT) / 2)));                
+                familyTreeNodeChild.setL1PlineTop(String.valueOf(FAMILY_NODE_VERTICAL_SPACE_EM / 2 + (NODE_HEIGHT / 2)));                
                 
                 if (childCount == 1) {
                     familyTreeNodeChild.setL1PlineLeft("100");
@@ -90,8 +83,8 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
                     familyTreeNodeChild.setL2PlineLeft("50");
                 } else {
                     familyTreeNodeChild.setL1PlineDisplay("none");
-                    familyTreeNodeChild.setL2PlineWidth(String.format("%d",50 + (childCount-2)*100));
-                    familyTreeNodeChild.setL2PlineLeft(String.format("%d",0 - (childCount-2)*100));
+                    familyTreeNodeChild.setL2PlineWidth(format("%d",50 + (childCount-2)*100));
+                    familyTreeNodeChild.setL2PlineLeft(format("%d",0 - (childCount-2)*100));
                 }
 
                 getJspContext().setAttribute("familyTreeNode", familyTreeNodeChild);
@@ -106,20 +99,9 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
 
 
         } else {
-
-            spouseFamilyFamilyTreeNode.setLeft(String.format("%d",
-                    (activePersonPosition + spouseNumber + afterActivePersonOffset) * FAMILY_NODE_WIDTH_EM));
-            spouseFamilyFamilyTreeNode.setTop(String.valueOf(SECOND_GENERATION_TOP));
-            spouseFamilyFamilyTreeNode.setId(format("%d", spouse.getId()));
-            spouseFamilyFamilyTreeNode.setFullname(spouse.getFullname());
-
-            spouseFamilyFamilyTreeNode.setMlineDisplay("block");
+            spouseFamilyFamilyTreeNode.setLeft(String.format("%d", (activePersonPosition + spouseNumber + afterActivePersonOffset) * FamilyTreeNode.FAMILY_NODE_WIDTH_EM));
             spouseFamilyFamilyTreeNode.setMlineLeft(String.format("-%d", ((activePersonPosition + spouseNumber + afterActivePersonOffset) * FAMILY_NODE_WIDTH_EM) - (((activePersonPosition + spouseNumber - 1) * FAMILY_NODE_WIDTH_EM) + WIDTH_LESS_ONE_PADDING)));
-            spouseFamilyFamilyTreeNode.setMlineWidth(String.format("%d", ((activePersonPosition + spouseNumber + afterActivePersonOffset) * FAMILY_NODE_WIDTH_EM) - ((activePersonPosition + spouseNumber - 1) * FAMILY_NODE_WIDTH_EM) - Integer.parseInt(FamilyTreeNode.Builder.NODE_WIDTH)));
-           // spouseFamilyFamilyTreeNode.setMlineTop("3.8");
-            spouseFamilyFamilyTreeNode.setMlineTop(String.valueOf(Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_TOP) + Integer.parseInt(FamilyTreeNode.Builder.NODE_HEIGHT)/2));
-            spouseFamilyFamilyTreeNode.setL1PlineDisplay("none");
-            spouseFamilyFamilyTreeNode.setL3PlineDisplay("none");
+            spouseFamilyFamilyTreeNode.setMlineWidth(String.format("%d", ((activePersonPosition + spouseNumber + afterActivePersonOffset) * FAMILY_NODE_WIDTH_EM) - ((activePersonPosition + spouseNumber - 1) * FAMILY_NODE_WIDTH_EM) - NODE_WIDTH));
 
             getJspContext().setAttribute("familyTreeNode", spouseFamilyFamilyTreeNode);
             getJspBody().invoke(null);
@@ -133,20 +115,20 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
                 Person child = (Person) children.next();
                 FamilyTreeNode familyTreeNodeChild = new FamilyTreeNode.Builder().build();
                 
-                familyTreeNodeChild.setPaddingTop(FamilyTreeNode.Builder.NODE_PADDING_TOP);
-                familyTreeNodeChild.setPaddingBottom(FamilyTreeNode.Builder.NODE_PADDING_BOTTOM);
-                familyTreeNodeChild.setPaddingLeft(FamilyTreeNode.Builder.NODE_PADDING_LEFT);
-                familyTreeNodeChild.setPaddingRight(FamilyTreeNode.Builder.NODE_PADDING_RIGHT);                
+                familyTreeNodeChild.setPaddingTop(valueOf(NODE_PADDING_TOP));
+                familyTreeNodeChild.setPaddingBottom(valueOf(NODE_PADDING_BOTTOM));
+                familyTreeNodeChild.setPaddingLeft(valueOf(NODE_PADDING_LEFT));
+                familyTreeNodeChild.setPaddingRight(valueOf(NODE_PADDING_RIGHT));                
                 
-                familyTreeNodeChild.setLeft(String.format("%d", (activePersonPosition + spouseNumber + afterActivePersonOffset + childCount-1) * FAMILY_NODE_WIDTH_EM));
-                familyTreeNodeChild.setTop(String.valueOf(THIRD_GENERATION_TOP));
+                familyTreeNodeChild.setLeft(format("%d", (activePersonPosition + spouseNumber + afterActivePersonOffset + childCount-1) * FamilyTreeNode.FAMILY_NODE_WIDTH_EM));
+                familyTreeNodeChild.setTop(String.valueOf(FamilyTreeNode.THIRD_GENERATION_TOP));
                 familyTreeNodeChild.setId(format("%d", child.getId()));
                 familyTreeNodeChild.setFullname(child.getFullname());
                 familyTreeNodeChild.setMlineDisplay("none");
 
-                familyTreeNodeChild.setBirthDate(child.getBirthDate().toString());
+                familyTreeNodeChild.setBirthDate(birthDate(child));
                 familyTreeNodeChild.setLocation(child.getAddress());
-                familyTreeNodeChild.setL1PlineTop(String.valueOf(Integer.parseInt(FamilyTreeNode.Builder.NODE_PADDING_TOP) + (Integer.parseInt(FamilyTreeNode.Builder.NODE_HEIGHT) / 2)));                
+                familyTreeNodeChild.setL1PlineTop(valueOf(FamilyTreeNode.NODE_PADDING_TOP + (FamilyTreeNode.NODE_HEIGHT / 2)));                
                 
                 if (childCount == 1) {
                     familyTreeNodeChild.setL1PlineDisplay("block");
@@ -165,6 +147,10 @@ public class FamilyTreeNodeTag extends SimpleTagSupport {
         }
     }
 
+    private static String birthDate(Person person) {
+        return (person.getBirthDate() != null) ?  d.format(person.getBirthDate()) : "Unknown";
+    }    
+    
     private void renderSiblings() throws JspException, IOException {
         Iterator siblings = immediateFamily.getSiblings().iterator();
         int siblingCount = 0;

@@ -1,180 +1,75 @@
 package com.ethertons.common;
 
+import static java.lang.String.valueOf;
+
 import com.ethertons.common.FamilyTreeNode.Builder;
 
 public class FamilyTreeNode {
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result
-                + ((fullname == null) ? 0 : fullname.hashCode());
-        result = prime * result + ((height == null) ? 0 : height.hashCode());
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result
-                + ((l1PlineDisplay == null) ? 0 : l1PlineDisplay.hashCode());
-        result = prime * result
-                + ((l1PlineLeft == null) ? 0 : l1PlineLeft.hashCode());
-        result = prime * result
-                + ((l1PlineTop == null) ? 0 : l1PlineTop.hashCode());
-        result = prime * result
-                + ((l1PlineWidth == null) ? 0 : l1PlineWidth.hashCode());
-        result = prime * result
-                + ((l2PlineDisplay == null) ? 0 : l2PlineDisplay.hashCode());
-        result = prime * result
-                + ((l2PlineLeft == null) ? 0 : l2PlineLeft.hashCode());
-        result = prime * result
-                + ((l2PlineTop == null) ? 0 : l2PlineTop.hashCode());
-        result = prime * result
-                + ((l2PlineWidth == null) ? 0 : l2PlineWidth.hashCode());
-        result = prime * result
-                + ((l3PlineDisplay == null) ? 0 : l3PlineDisplay.hashCode());
-        result = prime * result
-                + ((l3PlineLeft == null) ? 0 : l3PlineLeft.hashCode());
-        result = prime * result
-                + ((l3PlineTop == null) ? 0 : l3PlineTop.hashCode());
-        result = prime * result
-                + ((l3PlineWidth == null) ? 0 : l3PlineWidth.hashCode());
-        result = prime * result + ((left == null) ? 0 : left.hashCode());
-        result = prime * result
-                + ((mlineDisplay == null) ? 0 : mlineDisplay.hashCode());
-        result = prime * result
-                + ((mlineLeft == null) ? 0 : mlineLeft.hashCode());
-        result = prime * result
-                + ((mlineTop == null) ? 0 : mlineTop.hashCode());
-        result = prime * result
-                + ((mlineWidth == null) ? 0 : mlineWidth.hashCode());
-        result = prime * result + ((top == null) ? 0 : top.hashCode());
-        result = prime * result + ((width == null) ? 0 : width.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        FamilyTreeNode other = (FamilyTreeNode) obj;
-        if (fullname == null) {
-            if (other.fullname != null)
-                return false;
-        } else if (!fullname.equals(other.fullname))
-            return false;
-        if (height == null) {
-            if (other.height != null)
-                return false;
-        } else if (!height.equals(other.height))
-            return false;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        if (l1PlineDisplay == null) {
-            if (other.l1PlineDisplay != null)
-                return false;
-        } else if (!l1PlineDisplay.equals(other.l1PlineDisplay))
-            return false;
-        if (l1PlineLeft == null) {
-            if (other.l1PlineLeft != null)
-                return false;
-        } else if (!l1PlineLeft.equals(other.l1PlineLeft))
-            return false;
-        if (l1PlineTop == null) {
-            if (other.l1PlineTop != null)
-                return false;
-        } else if (!l1PlineTop.equals(other.l1PlineTop))
-            return false;
-        if (l1PlineWidth == null) {
-            if (other.l1PlineWidth != null)
-                return false;
-        } else if (!l1PlineWidth.equals(other.l1PlineWidth))
-            return false;
-        if (l2PlineDisplay == null) {
-            if (other.l2PlineDisplay != null)
-                return false;
-        } else if (!l2PlineDisplay.equals(other.l2PlineDisplay))
-            return false;
-        if (l2PlineLeft == null) {
-            if (other.l2PlineLeft != null)
-                return false;
-        } else if (!l2PlineLeft.equals(other.l2PlineLeft))
-            return false;
-        if (l2PlineTop == null) {
-            if (other.l2PlineTop != null)
-                return false;
-        } else if (!l2PlineTop.equals(other.l2PlineTop))
-            return false;
-        if (l2PlineWidth == null) {
-            if (other.l2PlineWidth != null)
-                return false;
-        } else if (!l2PlineWidth.equals(other.l2PlineWidth))
-            return false;
-        if (l3PlineDisplay == null) {
-            if (other.l3PlineDisplay != null)
-                return false;
-        } else if (!l3PlineDisplay.equals(other.l3PlineDisplay))
-            return false;
-        if (l3PlineLeft == null) {
-            if (other.l3PlineLeft != null)
-                return false;
-        } else if (!l3PlineLeft.equals(other.l3PlineLeft))
-            return false;
-        if (l3PlineTop == null) {
-            if (other.l3PlineTop != null)
-                return false;
-        } else if (!l3PlineTop.equals(other.l3PlineTop))
-            return false;
-        if (l3PlineWidth == null) {
-            if (other.l3PlineWidth != null)
-                return false;
-        } else if (!l3PlineWidth.equals(other.l3PlineWidth))
-            return false;
-        if (left == null) {
-            if (other.left != null)
-                return false;
-        } else if (!left.equals(other.left))
-            return false;
-        if (mlineDisplay == null) {
-            if (other.mlineDisplay != null)
-                return false;
-        } else if (!mlineDisplay.equals(other.mlineDisplay))
-            return false;
-        if (mlineLeft == null) {
-            if (other.mlineLeft != null)
-                return false;
-        } else if (!mlineLeft.equals(other.mlineLeft))
-            return false;
-        if (mlineTop == null) {
-            if (other.mlineTop != null)
-                return false;
-        } else if (!mlineTop.equals(other.mlineTop))
-            return false;
-        if (mlineWidth == null) {
-            if (other.mlineWidth != null)
-                return false;
-        } else if (!mlineWidth.equals(other.mlineWidth))
-            return false;
-        if (top == null) {
-            if (other.top != null)
-                return false;
-        } else if (!top.equals(other.top))
-            return false;
-        if (width == null) {
-            if (other.width != null)
-                return false;
-        } else if (!width.equals(other.width))
-            return false;
-        return true;
-    }
-
+    public static final int NODE_WIDTH = 20;
+    public static final int NODE_HEIGHT = 8;
+    public static final int NODE_PADDING_TOP = 2;
+    public static final int NODE_PADDING_BOTTOM = 2;
+    public static final int NODE_PADDING_LEFT = 2;
+    public static final int NODE_PADDING_RIGHT = 2;
+    public static final int FAMILY_NODE_VERTICAL_SPACE_EM = NODE_PADDING_TOP + NODE_PADDING_BOTTOM;
+    public static final int FAMILY_NODE_HORIZONTAL_SPACE_EM = NODE_PADDING_LEFT + NODE_PADDING_RIGHT;
+    public static final int FAMILY_NODE_WIDTH_EM = NODE_PADDING_LEFT + NODE_PADDING_RIGHT + NODE_WIDTH;       
+    public static final int SECOND_GENERATION_TOP = NODE_PADDING_TOP + NODE_PADDING_BOTTOM + NODE_HEIGHT;
+    public static final int THIRD_GENERATION_TOP = (NODE_PADDING_TOP + NODE_PADDING_BOTTOM + NODE_HEIGHT) * 2;
+    public static final int WIDTH_LESS_ONE_PADDING = NODE_PADDING_RIGHT + NODE_WIDTH;
+    
+    private String id;
     private String left;
     private String top;
-    private String id;
+    private String paddingTop;
+    private String paddingBottom;
+    private String paddingLeft;
+    private String paddingRight;
+    private String fullname;
+    private String birthDate;
+    private String location;
+    private String mlineDisplay;
+    private String mlineTop;
+    private String mlineLeft;
+    private String mlineWidth;
+    private String l1PlineTop;
+    private String l1PlineLeft;
+    private String l1PlineWidth;
+    private String l1PlineDisplay;
+    private String l2PlineTop;
+    private String l2PlineLeft;
+    private String l2PlineWidth;
+    private String l2PlineDisplay;
+    private String l3PlineTop;
+    private String l3PlineLeft;
+    private String l3PlineWidth;
+    private String l3PlineDisplay;
+    private String height;
+    private String width;    
+ 
+    private FamilyTreeNode(Builder builder) {
+        left = builder.left;
+        top = builder.top;
+        id = builder.id;
+        fullname = builder.fullname;
+        mlineDisplay = builder.mlineDisplay;
+        mlineTop = builder.mlineTop;
+        mlineLeft = builder.mlineLeft;
+        mlineWidth = builder.mlineWidth;
+        l1PlineDisplay = builder.l1PlineDisplay;
+        l2PlineDisplay = builder.l2PlineDisplay;
+        l3PlineDisplay = builder.l3PlineDisplay;
+        height = builder.height;
+        width = builder.width;
+        birthDate = builder.birthDate;
+        location = builder.location;
+        paddingTop = builder.paddingTop;
+        paddingBottom = builder.paddingBottom;
+        paddingLeft = builder.paddingLeft;
+        paddingRight = builder.paddingRight;
+    }    
+    
     public String getPaddingTop() {
         return paddingTop;
     }
@@ -207,12 +102,6 @@ public class FamilyTreeNode {
         this.paddingRight = paddingRight;
     }
 
-    private String paddingTop;
-    private String paddingBottom;
-    private String paddingLeft;
-    private String paddingRight;
-
-    private String fullname;
     public String getBirthDate() {
         return birthDate;
     }
@@ -227,198 +116,6 @@ public class FamilyTreeNode {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    private String birthDate;
-    private String location;
-    private String mlineDisplay;
-    private String mlineTop;
-    private String mlineLeft;
-    private String mlineWidth;
-    private String l1PlineTop;
-    private String l1PlineLeft;
-    private String l1PlineWidth;
-    private String l1PlineDisplay;
-    private String l2PlineTop;
-    private String l2PlineLeft;
-    private String l2PlineWidth;
-    private String l2PlineDisplay;
-    private String l3PlineTop;
-    private String l3PlineLeft;
-    private String l3PlineWidth;
-    private String l3PlineDisplay;
-    private String height;
-    private String width;
-
-    public static class Builder {
-
-//        public static final String NODE_WIDTH = "10";
-//        public static final String NODE_HEIGHT = "4";
-//        public static final String NODE_PADDING_TOP = "2";
-//        public static final String NODE_PADDING_BOTTOM = "2";
-//        public static final String NODE_PADDING_LEFT = "2";
-//        public static final String NODE_PADDING_RIGHT = "2";
-
-        public static final String NODE_WIDTH = "20";
-        public static final String NODE_HEIGHT = "8";
-        public static final String NODE_PADDING_TOP = "2";
-        public static final String NODE_PADDING_BOTTOM = "2";
-        public static final String NODE_PADDING_LEFT = "2";
-        public static final String NODE_PADDING_RIGHT = "2";
-//        
-        
-        private String left;
-        private String top;
-        private String id;
-        private String fullname;
-        private String birthDate;
-        private String location;       
-        private String mlineDisplay;
-        private String mlineTop;
-        private String mlineLeft;
-        private String mlineWidth;
-        private String l1PlineTop;
-        private String l1PlineLeft;
-        private String l1PlineWidth;
-        private String l1PlineDisplay;
-        private String l2PlineTop;
-        private String l2PlineLeft;
-        private String l2PlineWidth;
-        private String l2PlineDisplay;
-        private String l3PlineTop;
-        private String l3PlineLeft;
-        private String l3PlineWidth;
-        private String l3PlineDisplay;
-        private String height;
-        private String width;
-
-        public Builder() {
-            this.height = NODE_HEIGHT;
-            this.width = NODE_WIDTH;
-        }
-
-        public Builder left(String val) {
-            left = val;
-            return this;
-        }
-
-        public Builder top(String val) {
-            top = val;
-            return this;
-        }
-
-        public Builder id(String val) {
-            id = val;
-            return this;
-        }
-
-        public Builder fullname(String val) {
-            fullname = val;
-            return this;
-        }
-
-        public Builder birthDate(String val) {
-            birthDate = val;
-            return this;
-        }        
-
-        public Builder location(String val) {
-            location = val;
-            return this;
-        }         
-        
-        public Builder mLineDisplay(String val) {
-            mlineDisplay = val;
-            return this;
-        }
-
-        public Builder mLineTop(String val) {
-            mlineTop = val;
-            return this;
-        }
-
-        public Builder mLineLeft(String val) {
-            mlineLeft = val;
-            return this;
-        }
-
-        public Builder mLineWidth(String val) {
-            mlineWidth = val;
-            return this;
-        }
-
-        public Builder l1PlineDisplay(String val) {
-            l1PlineDisplay = val;
-            return this;
-        }
-
-        public Builder l2PlineDisplay(String val) {
-            l2PlineDisplay = val;
-            return this;
-        }
-
-        public Builder l3PlineDisplay(String val) {
-            l3PlineDisplay = val;
-            return this;
-        }
-
-        public Builder l1PlineLeft(String val) {
-            l1PlineLeft = val;
-            return this;
-        }
-
-        public Builder l2PlineLeft(String val) {
-            l2PlineLeft = val;
-            return this;
-        }
-
-        public Builder l3PlineLeft(String val) {
-            l3PlineLeft = val;
-            return this;
-        }
-
-        public Builder l2PlineTop(String val) {
-            l2PlineTop = val;
-            return this;
-        }
-
-        public Builder l3PlineTop(String val) {
-            l3PlineTop = val;
-            return this;
-        }
-
-        public Builder height(String val) {
-            height = val;
-            return this;
-        }
-        
-        public FamilyTreeNode build() {
-            return new FamilyTreeNode(this);
-        }
-
-        public Builder width(String val) {
-            width = val;
-            return this;
-        }
-
-    }
-
-    private FamilyTreeNode(Builder builder) {
-        left = builder.left;
-        top = builder.top;
-        id = builder.id;
-        fullname = builder.fullname;
-        mlineDisplay = builder.mlineDisplay;
-        mlineTop = builder.mlineTop;
-        mlineLeft = builder.mlineLeft;
-        mlineWidth = builder.mlineWidth;
-        l1PlineDisplay = builder.l1PlineDisplay;
-        l2PlineDisplay = builder.l2PlineDisplay;
-        l3PlineDisplay = builder.l3PlineDisplay;
-        height = builder.height;
-        width = builder.width;
-        birthDate = builder.birthDate;
-        location = builder.location;
     }
 
     public String getMlineWidth() {
@@ -597,4 +294,335 @@ public class FamilyTreeNode {
         this.width = width;
     }
 
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result
+                + ((fullname == null) ? 0 : fullname.hashCode());
+        result = prime * result + ((height == null) ? 0 : height.hashCode());
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result
+                + ((l1PlineDisplay == null) ? 0 : l1PlineDisplay.hashCode());
+        result = prime * result
+                + ((l1PlineLeft == null) ? 0 : l1PlineLeft.hashCode());
+        result = prime * result
+                + ((l1PlineTop == null) ? 0 : l1PlineTop.hashCode());
+        result = prime * result
+                + ((l1PlineWidth == null) ? 0 : l1PlineWidth.hashCode());
+        result = prime * result
+                + ((l2PlineDisplay == null) ? 0 : l2PlineDisplay.hashCode());
+        result = prime * result
+                + ((l2PlineLeft == null) ? 0 : l2PlineLeft.hashCode());
+        result = prime * result
+                + ((l2PlineTop == null) ? 0 : l2PlineTop.hashCode());
+        result = prime * result
+                + ((l2PlineWidth == null) ? 0 : l2PlineWidth.hashCode());
+        result = prime * result
+                + ((l3PlineDisplay == null) ? 0 : l3PlineDisplay.hashCode());
+        result = prime * result
+                + ((l3PlineLeft == null) ? 0 : l3PlineLeft.hashCode());
+        result = prime * result
+                + ((l3PlineTop == null) ? 0 : l3PlineTop.hashCode());
+        result = prime * result
+                + ((l3PlineWidth == null) ? 0 : l3PlineWidth.hashCode());
+        result = prime * result + ((left == null) ? 0 : left.hashCode());
+        result = prime * result
+                + ((mlineDisplay == null) ? 0 : mlineDisplay.hashCode());
+        result = prime * result
+                + ((mlineLeft == null) ? 0 : mlineLeft.hashCode());
+        result = prime * result
+                + ((mlineTop == null) ? 0 : mlineTop.hashCode());
+        result = prime * result
+                + ((mlineWidth == null) ? 0 : mlineWidth.hashCode());
+        result = prime * result + ((top == null) ? 0 : top.hashCode());
+        result = prime * result + ((width == null) ? 0 : width.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        FamilyTreeNode other = (FamilyTreeNode) obj;
+        if (fullname == null) {
+            if (other.fullname != null)
+                return false;
+        } else if (!fullname.equals(other.fullname))
+            return false;
+        if (height == null) {
+            if (other.height != null)
+                return false;
+        } else if (!height.equals(other.height))
+            return false;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        if (l1PlineDisplay == null) {
+            if (other.l1PlineDisplay != null)
+                return false;
+        } else if (!l1PlineDisplay.equals(other.l1PlineDisplay))
+            return false;
+        if (l1PlineLeft == null) {
+            if (other.l1PlineLeft != null)
+                return false;
+        } else if (!l1PlineLeft.equals(other.l1PlineLeft))
+            return false;
+        if (l1PlineTop == null) {
+            if (other.l1PlineTop != null)
+                return false;
+        } else if (!l1PlineTop.equals(other.l1PlineTop))
+            return false;
+        if (l1PlineWidth == null) {
+            if (other.l1PlineWidth != null)
+                return false;
+        } else if (!l1PlineWidth.equals(other.l1PlineWidth))
+            return false;
+        if (l2PlineDisplay == null) {
+            if (other.l2PlineDisplay != null)
+                return false;
+        } else if (!l2PlineDisplay.equals(other.l2PlineDisplay))
+            return false;
+        if (l2PlineLeft == null) {
+            if (other.l2PlineLeft != null)
+                return false;
+        } else if (!l2PlineLeft.equals(other.l2PlineLeft))
+            return false;
+        if (l2PlineTop == null) {
+            if (other.l2PlineTop != null)
+                return false;
+        } else if (!l2PlineTop.equals(other.l2PlineTop))
+            return false;
+        if (l2PlineWidth == null) {
+            if (other.l2PlineWidth != null)
+                return false;
+        } else if (!l2PlineWidth.equals(other.l2PlineWidth))
+            return false;
+        if (l3PlineDisplay == null) {
+            if (other.l3PlineDisplay != null)
+                return false;
+        } else if (!l3PlineDisplay.equals(other.l3PlineDisplay))
+            return false;
+        if (l3PlineLeft == null) {
+            if (other.l3PlineLeft != null)
+                return false;
+        } else if (!l3PlineLeft.equals(other.l3PlineLeft))
+            return false;
+        if (l3PlineTop == null) {
+            if (other.l3PlineTop != null)
+                return false;
+        } else if (!l3PlineTop.equals(other.l3PlineTop))
+            return false;
+        if (l3PlineWidth == null) {
+            if (other.l3PlineWidth != null)
+                return false;
+        } else if (!l3PlineWidth.equals(other.l3PlineWidth))
+            return false;
+        if (left == null) {
+            if (other.left != null)
+                return false;
+        } else if (!left.equals(other.left))
+            return false;
+        if (mlineDisplay == null) {
+            if (other.mlineDisplay != null)
+                return false;
+        } else if (!mlineDisplay.equals(other.mlineDisplay))
+            return false;
+        if (mlineLeft == null) {
+            if (other.mlineLeft != null)
+                return false;
+        } else if (!mlineLeft.equals(other.mlineLeft))
+            return false;
+        if (mlineTop == null) {
+            if (other.mlineTop != null)
+                return false;
+        } else if (!mlineTop.equals(other.mlineTop))
+            return false;
+        if (mlineWidth == null) {
+            if (other.mlineWidth != null)
+                return false;
+        } else if (!mlineWidth.equals(other.mlineWidth))
+            return false;
+        if (top == null) {
+            if (other.top != null)
+                return false;
+        } else if (!top.equals(other.top))
+            return false;
+        if (width == null) {
+            if (other.width != null)
+                return false;
+        } else if (!width.equals(other.width))
+            return false;
+        return true;
+    }
+
+    public static class Builder {
+        
+        private String left;
+        private String top;
+        private String id;
+        private String fullname;
+        private String birthDate;
+        private String location;       
+        private String mlineDisplay;
+        private String mlineTop;
+        private String mlineLeft;
+        private String mlineWidth;
+        private String l1PlineTop;
+        private String l1PlineLeft;
+        private String l1PlineWidth;
+        private String l1PlineDisplay;
+        private String l2PlineTop;
+        private String l2PlineLeft;
+        private String l2PlineWidth;
+        private String l2PlineDisplay;
+        private String l3PlineTop;
+        private String l3PlineLeft;
+        private String l3PlineWidth;
+        private String l3PlineDisplay;
+        private String height;
+        private String width;
+        private String paddingTop;
+        private String paddingBottom;
+        private String paddingLeft;
+        private String paddingRight;        
+
+        public Builder() {
+            this.height = valueOf(NODE_HEIGHT);
+            this.width = valueOf(NODE_WIDTH);
+        }
+
+        public Builder left(String val) {
+            left = val;
+            return this;
+        }
+
+        public Builder top(String val) {
+            top = val;
+            return this;
+        }
+
+        public Builder id(String val) {
+            id = val;
+            return this;
+        }
+
+        public Builder fullname(String val) {
+            fullname = val;
+            return this;
+        }
+
+        public Builder birthDate(String val) {
+            birthDate = val;
+            return this;
+        }        
+
+        public Builder location(String val) {
+            location = val;
+            return this;
+        }         
+        
+        public Builder mLineDisplay(String val) {
+            mlineDisplay = val;
+            return this;
+        }
+
+        public Builder mLineTop(String val) {
+            mlineTop = val;
+            return this;
+        }
+
+        public Builder mLineLeft(String val) {
+            mlineLeft = val;
+            return this;
+        }
+
+        public Builder mLineWidth(String val) {
+            mlineWidth = val;
+            return this;
+        }
+
+        public Builder l1PlineDisplay(String val) {
+            l1PlineDisplay = val;
+            return this;
+        }
+
+        public Builder l2PlineDisplay(String val) {
+            l2PlineDisplay = val;
+            return this;
+        }
+
+        public Builder l3PlineDisplay(String val) {
+            l3PlineDisplay = val;
+            return this;
+        }
+
+        public Builder l1PlineLeft(String val) {
+            l1PlineLeft = val;
+            return this;
+        }
+
+        public Builder l2PlineLeft(String val) {
+            l2PlineLeft = val;
+            return this;
+        }
+
+        public Builder l3PlineLeft(String val) {
+            l3PlineLeft = val;
+            return this;
+        }
+
+        public Builder l2PlineTop(String val) {
+            l2PlineTop = val;
+            return this;
+        }
+
+        public Builder l3PlineTop(String val) {
+            l3PlineTop = val;
+            return this;
+        }
+
+        public Builder height(String val) {
+            height = val;
+            return this;
+        }
+        
+        public FamilyTreeNode build() {
+            return new FamilyTreeNode(this);
+        }
+
+        public Builder width(String val) {
+            width = val;
+            return this;
+        }
+
+        public Builder paddingTop(String val) {
+            paddingTop = val;
+            return this;
+        }
+
+        public Builder paddingBottom(String val) {
+            paddingBottom = val;
+            return this;
+        }
+        
+        public Builder paddingLeft(String val) {
+            paddingLeft = val;
+            return this;
+        }
+
+        public Builder paddingRight(String val) {
+            paddingRight = val;
+            return this;
+        }        
+
+    }
+    
+    
 }

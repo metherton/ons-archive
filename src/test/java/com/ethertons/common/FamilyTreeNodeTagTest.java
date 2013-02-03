@@ -13,6 +13,7 @@ import java.util.List;
 import javax.servlet.jsp.JspContext;
 import javax.servlet.jsp.tagext.JspFragment;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.ethertons.domain.ImmediateFamily;
@@ -21,6 +22,7 @@ import com.ethertons.domain.Person;
 public class FamilyTreeNodeTagTest {
 
     @Test
+    @Ignore
     public void shouldSetImmediateFamilyAttributeShouldBeSet() throws Exception {
 
         FamilyTreeNodeTag familyTreeNodeTag = new FamilyTreeNodeTag();
