@@ -14,12 +14,12 @@
         <div class="innercontentrightheader">In the news</div>
         <div class="innercontentrightbody">
         <rssNewsFeedItems:newsItem newsReader="${newsReader}">
-        <div style="margin-top: 0.5em;border: 0.1em #CEDFF2 solid;">
-          <div style="padding-left: 0.5em; padding-top: 0.5em;font-size: 0.9em">${newsItem.title}</div>
-          <div style="padding-left: 1em; padding-top: 0.2em; font-size:0.7em;color:dimgray">${newsItem.date}</div>
-          <div style="padding-left: 0.5em; padding-top: 0.5em;">${newsItem.description}</div>
-        </div>
-        </rssNewsFeedItems:newsItem>        
+            <div style="margin-top: 0.5em;border: 0.1em #CEDFF2 solid;">
+              <div style="padding-left: 0.5em; padding-top: 0.5em;font-size: 0.9em">${newsItem.title}</div>
+              <div style="padding-left: 1em; padding-top: 0.2em; font-size:0.7em;color:dimgray">${newsItem.date}</div>
+              <div style="padding-left: 0.5em; padding-top: 0.5em;">${newsItem.description}</div>
+            </div>
+            </rssNewsFeedItems:newsItem>
         </div>
     </div>
 </div>

@@ -49,7 +49,8 @@ public class AddGedcomForm extends OnsForm {
         }
         if(!gedcomfile.isEmpty()){
             validateImage(gedcomfile);
-            fileHandler.save(gedcomfilesDirectory + gedcom.getId()+".ged",gedcomfile);//
+            String fileName = gedcomfilesDirectory + gedcom.getId()+".ged";
+            fileHandler.save(fileName,gedcomfile);//
         }
         return "redirect:/gedcoms/" + gedcom.getId();
     }
