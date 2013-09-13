@@ -11,14 +11,14 @@ import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-//@Service
+@Service
 public class AlertServiceImpl implements AlertService {
 
     public AlertServiceImpl() {
         
     }
     
-//	@Autowired
+	@Autowired
 	JmsTemplate jmsTemplate;	
 	
 	@Override

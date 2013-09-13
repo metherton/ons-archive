@@ -14,7 +14,7 @@ class OnsControllerSpec extends FunSpec with OnsMock {
       var persons = new ArrayList[Person]
       persons.add(new Person)
       
-      onsService.findAllPersons().andReturn(persons)
+      onsService.findAllPersons(25).andReturn(persons)
       model.addAttribute(anyObject(classOf[String]), anyObject(classOf[ArrayList[Person]])).andReturn(model)
 
       EasyMock.replay(onsService, model)

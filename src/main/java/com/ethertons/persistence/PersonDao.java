@@ -13,7 +13,7 @@ public interface PersonDao {
 
     List<Person> findAllFemalePersons();
 
-    List<Person> findAllPersons();
+    List<Person> findAllPersons(int personsPerPage);
 
     List<Person> findParentsFor(int personId);
 

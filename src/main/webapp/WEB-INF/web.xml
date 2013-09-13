@@ -25,6 +25,7 @@
             classpath:/security.xml
             classpath:/applicationContext.xml
             classpath:/database.xml
+            classpath:/queue.xml
         </param-value>
     </context-param>
 

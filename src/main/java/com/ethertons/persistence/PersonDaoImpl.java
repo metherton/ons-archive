@@ -55,11 +55,6 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
     }
 
     @Override
-    public List<Person> findAllPersons() {
-        return (List<Person>)currentSession().createCriteria(Person.class).addOrder(Order.asc("birthDate")).list();
-    }
-
-    @Override
     public List<Person> findParentsFor(int personId) {
         Person person = this.findPersonWithId(personId);
         List<Person> parents = new ArrayList<Person>();
@@ -147,6 +142,11 @@ public class PersonDaoImpl extends GenericDao implements PersonDao {
     public List<Person> findAllDescendentsOfPerson(int rootAncestorPersonId) {
         List<Integer> personIds = treeResolver.ids(rootAncestorPersonId);
         return (List<Person>)currentSession().createCriteria(Person.class).add(Restrictions.in("id", personIds)).list();
+    }
+
+    @Override
+    public List<Person> findAllPersons(int personsPerPage) {
+        return (List<Person>)currentSession().createCriteria(Person.class).addOrder(Order.asc("birthDate")).setMaxResults(personsPerPage).list();
     }
 
 }

@@ -37,6 +37,7 @@
                 <li style="padding-bottom: 0.5em;"> <a href="<c:url value="/persons" />">Births</a></li>
                 <li style="padding-bottom: 0.5em;"><a href="<c:url value="/surnames" />">Surnames</a></li>
                 <li style="padding-bottom: 0.5em;"><a id="upload-gedcom" href="<c:url value="/gedcoms" />">Gedcoms</a></li>
+                <li style="padding-bottom: 0.5em;"><a href="<c:url value="/marriages" />">Marriages</a></li>
             </ul>
         </div>
     </div>

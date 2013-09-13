@@ -19,7 +19,7 @@ public interface OnsService {
 
     List<Person> findAllFemalePersons();
 
-    List<Person> findAllPersons();
+    List<Person> findAllPersons(int personsPerPage);
 
     void storeTree(Tree tree);
 

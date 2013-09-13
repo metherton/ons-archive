@@ -60,10 +60,6 @@ public class OnsServiceImpl implements OnsService {
         return personDao.findAllFemalePersons();
     }
 
-    @Override
-    public List<Person> findAllPersons() {
-        return personDao.findAllPersons();
-    }
 
     @Override
     public void storeTree(Tree tree) {
@@ -120,5 +116,11 @@ public class OnsServiceImpl implements OnsService {
     @Override
     public void storePerson(Person person) {
         personDao.storePerson(person);
+    }
+
+
+    @Override
+    public List<Person> findAllPersons(int personsPerPage) {
+        return personDao.findAllPersons(personsPerPage);
     }
 }

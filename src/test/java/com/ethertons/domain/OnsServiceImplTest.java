@@ -129,10 +129,10 @@ public class OnsServiceImplTest {
 
     @Test
     public void findAllPersonsShouldRetrieveAllPersons() throws Exception {
-        EasyMock.expect(personDao.findAllPersons()).andReturn(new ArrayList<Person>());
+        EasyMock.expect(personDao.findAllPersons(25)).andReturn(new ArrayList<Person>());
         
         replay(personDao);
-        onsService.findAllPersons();
+        onsService.findAllPersons(25);
         verify(personDao);
     }
 

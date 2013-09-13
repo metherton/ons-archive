@@ -28,4 +28,14 @@
         <property name="maxUploadSize" value="500000" />
     </bean>
 
+    <context:mbean-server />
+
+    <bean id="mbeanExporter" class="org.springframework.jmx.export.MBeanExporter">
+        <property name="beans">
+            <map>
+            <entry key="ons:name=OnsController" value-ref="onsController"/>
+            </map>
+        </property>
+    </bean>
+
 </beans>

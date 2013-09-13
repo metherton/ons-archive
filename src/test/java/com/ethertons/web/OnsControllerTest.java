@@ -75,7 +75,7 @@ public class OnsControllerTest {
         persons.add(new Person());
         persons.add(new Person());
         
-        expect(onsService.findAllPersons()).andReturn(persons);
+        expect(onsService.findAllPersons(25)).andReturn(persons);
         expect(model.addAttribute("persons", persons)).andReturn(model);
 
         replay(onsService, model);

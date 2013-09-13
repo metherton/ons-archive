@@ -105,7 +105,7 @@ public class OnsIntegrationTests {
 
     @Test
     public void retrieveAllPersons() throws Exception {
-        List<Person> persons = personDao.findAllPersons();
+        List<Person> persons = personDao.findAllPersons(25);
         assertThat(persons.size(), is(greaterThan(0)));
     }
 

@@ -21,6 +21,9 @@ import com.ethertons.domain.Tree;
 @Controller
 public class OnsController {
 
+    public final static int NUMBER_OF_PERSONS_PER_PAGE = 25;
+    private int personsPerPage = NUMBER_OF_PERSONS_PER_PAGE;
+    
     private final OnsService onsService;
     private final GedcomRetriever gedcomRetriever;
 
@@ -49,7 +52,7 @@ public class OnsController {
 
     @RequestMapping(value="/persons")
     public String findAllPersons(Model model) {
-        List<Person> persons = onsService.findAllPersons();
+        List<Person> persons = onsService.findAllPersons(personsPerPage);
         model.addAttribute("persons", persons);
         return "persons/list";
     }
@@ -140,4 +143,12 @@ public class OnsController {
 //        return "gedcoms/view";
 //    }
 
+    
+    public void setPersonsPerPage(int personsPerPage) {
+        this.personsPerPage = personsPerPage;
+    }
+    
+    public int getPersonsPerPage() {
+        return personsPerPage;
+    }
 }

@@ -18,8 +18,6 @@ import com.ethertons.domain.Person;
 @RequestMapping("/persons/new")
 @SessionAttributes("person")
 public class AddPersonForm extends PersonForm {
-
-
     
     @Autowired
     public AddPersonForm(OnsService onsService) {
